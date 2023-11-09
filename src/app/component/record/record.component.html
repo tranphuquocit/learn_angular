@@ -1,0 +1,28 @@
+<div class="info">
+    <div class="new-user">
+        <div class="added">
+            <span>Thong tin user vừa mới add</span> <br>
+            <span>Ten la: {{userAdded.name}}</span> <br>
+            <span>Tuoi la: {{userAdded.age}}</span> <br>
+            <span>Que quan: {{userAdded.address}}</span> <br>
+        </div>   
+        <div class="form">
+            <span>Nhập user mới</span> <br>
+            <input type="text" placeholder="name" [(ngModel)]="userAdded.name"> <br>
+            <input type="text" placeholder="age" [(ngModel)]="userAdded.age"> <br>
+            <input type="text" placeholder="address" [(ngModel)]="userAdded.address"> <br>
+        </div>
+        <input type="button" value="Save" (click)="addUser()"> 
+        <input type="button" value="Show list" (click)="showListUser()">
+    </div>
+    <div class="old-user" *ngIf="show==true">
+        <span>LIST USER</span> <br>
+        <div *ngFor="let item of usersDefault">
+            <span>User {{item.stt}}</span> <br>
+            <span>Ten la: {{item.name}}</span> <br>
+            <span>Tuoi la: {{item.age}}</span> <br>
+            <span>Que quan: {{item.address}}</span> <br>    
+            <span>-------------------------</span>
+        </div>
+    </div>
+</div>

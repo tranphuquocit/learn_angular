@@ -1,0 +1,59 @@
+<input type="button" value="show calculator" class="show" (click)="showCal()">
+<input type="button" value="show user" class="show" (click)="showUserr()">
+<div *ngIf="showCalculator ==  true">
+        <div class="calculator">
+            <input type="button" value="{{phepTinhNhan}}">
+            <div class="so">
+                <app-btn-calculator [operator]="'1'" (phepTinhGui)="clickTinhToan($event)"></app-btn-calculator>
+                <app-btn-calculator [operator]="'2'" (phepTinhGui)="clickTinhToan($event)"></app-btn-calculator>
+                <app-btn-calculator [operator]="'3'" (phepTinhGui)="clickTinhToan($event)"></app-btn-calculator>
+                <app-btn-calculator [operator]="'4'" (phepTinhGui)="clickTinhToan($event)"></app-btn-calculator>
+                <app-btn-calculator [operator]="'5'" (phepTinhGui)="clickTinhToan($event)"></app-btn-calculator>
+                <app-btn-calculator [operator]="'6'" (phepTinhGui)="clickTinhToan($event)"></app-btn-calculator>
+                <app-btn-calculator [operator]="'7'" (phepTinhGui)="clickTinhToan($event)"></app-btn-calculator>
+                <app-btn-calculator [operator]="'8'" (phepTinhGui)="clickTinhToan($event)"></app-btn-calculator>
+                <app-btn-calculator [operator]="'9'" (phepTinhGui)="clickTinhToan($event)"></app-btn-calculator>
+            </div>
+            <div class="phep-tinh">
+                <app-btn-calculator [operator]="'+'" (phepTinhGui)="clickTinhToan($event)"></app-btn-calculator>
+                <app-btn-calculator [operator]="'-'" (phepTinhGui)="clickTinhToan($event)"></app-btn-calculator>
+                <app-btn-calculator [operator]="'*'" (phepTinhGui)="clickTinhToan($event)"></app-btn-calculator>
+                <app-btn-calculator [operator]="'/'" (phepTinhGui)="clickTinhToan($event)"></app-btn-calculator>
+                <app-btn-calculator [operator]="'='" (click)="bang()"></app-btn-calculator> <br>
+                <app-btn-calculator [operator]="'Delete'" (click)="delete()"></app-btn-calculator> <br>
+                <app-btn-calculator [operator]="'Clear'" (click)="clear()"></app-btn-calculator> <br>
+            </div>
+        </div>
+</div>
+
+<div *ngIf="showUser == true">
+    <app-record></app-record>
+</div>
+
+
+
+<!-- <header>
+    <div class="header-top">
+        <div class="header-logo">
+            <app-color-content [content]="'logo'" [bgColor]="'aqua'" (clickContent)="clickFunc($event)"></app-color-content>
+        </div>
+        <div class="header-banner">
+            <app-color-content [content]="'banner'" [bgColor]="'aquamarine'" (clickContent)="clickFunc($event)"></app-color-content>
+        </div>
+    </div>
+    <app-color-content [content]="'head-link'" [bgColor]="'rgb(178, 52, 178)'" (clickContent)="clickFunc($event)"></app-color-content>
+</header>
+<section>
+    <div class="section-left">
+        <app-color-content [content]="'left'" [bgColor]="'rgb(198, 147, 81)'" (clickContent)="clickFunc($event)"></app-color-content>
+    </div>
+    <div class="section-content">
+        <app-color-content [content]="'content'" [bgColor]="'rgb(255, 255, 255)'" (clickContent)="clickFunc($event)"></app-color-content>
+    </div>
+    <div class="section-right">
+        <app-color-content [content]="'right'" [bgColor]="'rgb(198, 147, 81)'" (clickContent)="clickFunc($event)"></app-color-content>
+    </div>
+</section>
+<footer>
+    <app-color-content [content]="'footer'" [bgColor]="'red'" (clickContent)="clickFunc($event)"></app-color-content>
+</footer> -->

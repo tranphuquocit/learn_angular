@@ -1,0 +1,23 @@
+.info {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    height: 500px;
+
+    .old-user {
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top:20px;
+        left: 300px;
+    }
+
+    .new-user {
+        width: 30%;
+        position: absolute;
+        top: 20px;
+        left:40px;
+    }
+}
