@@ -4,13 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 
 import { FormsModule } from '@angular/forms';
+import { ProgressBarComponent } from './component/progress-bar/progress-bar.component';
 
 const COMPONENT = [
+  ProgressBarComponent
 ]
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, ...COMPONENT
   ],
   imports: [
     BrowserModule,
