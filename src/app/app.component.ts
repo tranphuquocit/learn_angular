@@ -7,5 +7,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  public baCach: any;
+  progress: number = 0;
+
+  timeFunc() {
+    console.log(this.progress);
+    const timeOut = setTimeout(() => {
+      this.progress = this.progress + 5;
+      if(this.progress == 100) {
+        clearTimeout(timeOut);
+        return;
+      }
+      this.timeFunc();
+
+    }, 500)
+  }
 }

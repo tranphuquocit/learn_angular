@@ -1,0 +1,33 @@
+.input-color {
+    display: flex;
+    justify-content: space-between;
+
+    .box {
+        border: 4px solid black;
+        width: 162px;
+        height: 30px;
+    }
+}
+
+.progress-bar {
+    width: 100%;
+
+    .progress-bar-container {
+        height: 30px;
+        background-color: grey;
+
+        .progress {
+            height: 100%;
+        }
+    }
+}
+
+.list-color {
+    width: 40px;
+    height: 40px;
+
+    span {
+        width: 100%;
+        height: 100%;
+    }
+}

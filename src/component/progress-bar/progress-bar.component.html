@@ -1,0 +1,8 @@
+<div class="progress-bar-container" [style.backgroundColor]="bgColor">
+    <div class="progress-bar" 
+    [style]="{
+        backgroundColor: myFunc(progress),
+        width: progress + '%'
+    }"
+    ></div>
+</div>
