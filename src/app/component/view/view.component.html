@@ -1,0 +1,17 @@
+<div class="input-colors" >
+    <div>
+        <app-input-color (outputColor)="setColor($event)"></app-input-color>
+    </div>
+</div>
+
+<br> <br>
+<div class="progress-bar">
+    <div class="progress-bar-container">
+        <div class="progress" 
+        [style]="{
+            backgroundColor: colorFunc(),
+            width: progress + '%'
+        }"
+        ></div>
+    </div>
+</div>

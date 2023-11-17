@@ -1,0 +1,17 @@
+.progress-bar, .progress-bar-container {
+    height: 30px;
+}
+
+.progress {
+    height: 100%;
+}
+
+.progress-bar-container {
+    background-color: grey;
+}
+
+.input-colors {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

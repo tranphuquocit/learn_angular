@@ -1,43 +1,11 @@
 <div class="input-color">
-    <div>
-        <input type="text" [(ngModel)]="boxColor1"> <br> <br>
-        <div class="box" [style.backgroundColor]="boxColor1"></div>
-    </div> 
-    <div>
-        <input type="text" [(ngModel)]="boxColor2"> <br> <br>
-        <div class="box" [style.backgroundColor]="boxColor2"></div>
+    <div class="input" *ngIf="show">
+        <span>=>=>=>Bạn hãy nhập 5 màu!</span> <br> <br>
+        <span>Nhập màu:</span> <input type="text" [(ngModel)]="boxColor"> <br> <br>
+        <div class="box" [style.backgroundColor]="boxColor"></div> <br>
+        <input type="button" value="Thêm màu" (click)="addInputColor()">
     </div>
-    <div>
-        <input type="text" [(ngModel)]="boxColor3"> <br> <br>
-        <div class="box" [style.backgroundColor]="boxColor3"></div>
-    </div>
-    <div>
-        <input type="text" [(ngModel)]="boxColor4"> <br> <br>
-        <div class="box" [style.backgroundColor]="boxColor4"></div>
-    </div>
-    <div>
-        <input type="text" [(ngModel)]="boxColor5"> <br> <br>
-        <div class="box" [style.backgroundColor]="boxColor5"></div>
-    </div>
-    <div>
-        <input type="text" [(ngModel)]="boxColor6"> <br> <br>
-        <div class="box" [style.backgroundColor]="boxColor6"></div>
+    <div class="list" *ngFor="let item of arrayColor; index as i">
+        <span>{{i+1}} - {{item}}</span> <br>
     </div>
 </div>
-<br> <br>
-<div class="progress-bar">
-    <!-- <input type="button" value="Nhấp để chạy progress bar"> <br> -->
-    <div class="progress-bar-container">
-        <div 
-        class="progress"
-        [style]="{
-            backgroundColor: colorFunc(progress),
-            width: progress + '%'
-        }"
-        ></div>
-    </div>
-</div>
-<!-- <div class="list-color" *ngFor="let item of arrayColor">
-    <span>{{item}}</span>
-    <span>Hello</span>
-</div> -->

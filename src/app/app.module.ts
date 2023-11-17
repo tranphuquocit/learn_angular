@@ -5,9 +5,11 @@ import { AppComponent } from './app.component';
 
 import { FormsModule } from '@angular/forms';
 import { InputColorComponent } from './component/input-color/input-color.component';
+import { ViewComponent } from './component/view/view.component';
 
 const COMPONENT = [
-  InputColorComponent
+  InputColorComponent,
+  ViewComponent
 ]
 
 @NgModule({
