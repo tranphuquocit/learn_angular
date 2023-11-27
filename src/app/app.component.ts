@@ -15,10 +15,10 @@ export class AppComponent {
   autpProgress() {
     const timeOut = setTimeout(() => {
       this.progress = this.progress + 5;
-      if(this.progress > 100) {
-        // clearTimeout(timeOut);
-        // return;
-        this.progress = 0;
+      if(this.progress == 100) {
+        clearTimeout(timeOut);
+        return;
+        // this.progress = 0;
       }
       this.autpProgress();
     }, 500)

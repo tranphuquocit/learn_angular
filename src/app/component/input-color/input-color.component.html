@@ -1,6 +1,6 @@
 <div class="input-color">
     <div class="input" *ngIf="show">
-        <span>=>=>=>Bạn hãy nhập 5 màu!</span> <br> <br>
+        <span class="input-text">=>=>=>Bạn hãy nhập 5 màu!</span> <br> <br>
         <span>Nhập màu:</span> <input type="text" [(ngModel)]="boxColor"> <br> <br>
         <div class="box" [style.backgroundColor]="boxColor"></div> <br>
         <input type="button" value="Thêm màu" (click)="addInputColor()">
