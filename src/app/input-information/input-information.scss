@@ -1,0 +1,14 @@
+.screen {
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+}
+
+.form {
+    width: 600px;
+    height: 400px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+
+}

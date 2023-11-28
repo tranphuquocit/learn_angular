@@ -1,0 +1,60 @@
+.chart-container {
+    width: 100%;
+    display: flex;
+
+    .chart-canvas {
+        background-color: rgb(227, 227, 233);
+        width: 70%;
+        min-height: 50px;
+
+        .chart-vertical {
+            height: 200px;
+            width: 3px;
+            background-color: black;
+            margin-left: 60px;
+        }
+
+        .chart-horizonal {
+            height: 3px;
+            width: 600px;
+            background-color: black;
+            margin-left: 60px;
+            display: flex;
+            gap: 50px;
+            padding-left: 10px;
+            // position: relative;
+
+            .chart-horizonal-value {
+
+                position: relative;
+
+
+                .box-color {
+                    width: 30px;
+                    height: 15px;
+                    position: absolute;
+                    bottom: 3px;
+                }
+            }
+        }
+
+    }
+    
+    .chart-note {
+        background-color: rgb(211, 219, 211);
+        width: 30%;
+        min-height: 50px;
+        display: flex;
+        flex-direction: column;
+
+        .note-content {
+            display: flex;
+        }
+
+        .box-color {
+            width: 30px;
+            height: 15px;
+            background-color: red;
+        }
+    }
+}

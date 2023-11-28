@@ -1,0 +1,17 @@
+<div class="chart-container">
+    <div class="chart-canvas">
+        <div class="chart-vertical"></div> 
+        <div class="chart-horizonal">
+            <div class="chart-horizonal-value" *ngFor="let item of chartNoteList">
+                <div class="box-color" [style.backgroundColor]="item.color" [style.height]="progress"></div>
+                <span class="box-age">{{item.name}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="chart-note">
+        <div class="note-content" *ngFor="let item of chartNoteList">
+            <div class="box-color" [style.backgroundColor]="item.color"></div>
+            <span class="box-age">{{item.name}}</span>
+        </div>
+    </div>
+</div>
