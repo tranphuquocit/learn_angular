@@ -1,0 +1,21 @@
+<app-input-information (_userInfoList)="receiveUserInfoList($event)"></app-input-information>
+<div class="chart">
+    <div class="chart-canvas">
+        <div class="chart-canvas-vertical"></div>
+        <div class="chart-canvas-horizonal"></div>
+        <span class="chart-100">100%</span>
+        <span class="chart-50">50%</span>
+        <div class="chart-items">
+            <div class="chart-item" *ngFor="let item of chartList; let i = index">
+                <div class="box-color" [style.backgroundColor]="item.color" [style.height]="item.percent"></div>
+                <span>{{ item.name }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="chart-list-container">
+        <div class="chart-list" *ngFor="let item of chartList">
+            <div class="box-color" [style.backgroundColor]="item.color"></div>
+            <span>{{ item.name }}</span>
+        </div>
+    </div>
+</div>

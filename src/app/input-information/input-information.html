@@ -1,0 +1,8 @@
+<div class="container-form">
+    <span>Hãy nhập thông tin</span> <br>
+    Họ và tên: <input type="text" [(ngModel)]="userInfo.name"> <br>
+    Tuổi: <input type="number" [(ngModel)]="userInfo.age"> <br> 
+    Giới tính: <input type="text" [(ngModel)]="userInfo.sex"> <br>
+    <input type="button" value="Save" (click)="saveUserInfo()"> <br>
+    <!-- <div class="box" [style.backgroundColor]="userInfo.name"></div> -->
+</div>
