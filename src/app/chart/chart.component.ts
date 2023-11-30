@@ -12,78 +12,107 @@ export class ChartCompoennt {
             id: 10,
             name: '1-10',
             color: 'red',
-            progress: 0
+            count: 0,
+            percent: ''
         },
         {
             id: 20,
             name: '11-20',
             color: 'green',
-            progress: 0
+            count: 0,
+            percent: ''
 
         },
         {
             id: 30,
             name: '21-30',
             color: 'pink',
-            progress: 0
+            count: 0,
+            percent: ''
 
         },
         {
             id: 40,
             name: '31-40',
             color: 'blue',
-            progress: 0
+            count: 0,
+            percent: ''
 
         },
         {
             id: 50,
             name: '41-50',
             color: 'yellow',
-            progress: 0
+            count: 0,
+            percent: ''
 
         },
         {
-            id: 60,
+            id: 51,
             name: '60+',
             color: 'grey',
-            progress: 0
+            count: 0,
+            percent: ''
         },
     ];
     totalUser: number = 0 ;
-    _progress: string = '0';
-    @Input() userInfoList!: any[];
-    @Input()
-    get progress(): string {
-       return this._progress;
-    }
-
-    set progress(value: any) {
-        // for(let itemUser of this.userInfoList) {
-        //     if(itemUser.age >= 1 && itemUser.age <= 10) {
-        //         for(let itemChart of this.chartNoteList) {
-        //             if(itemChart.id == 10) {
-        //                 itemChart.progress = itemChart.progress + 1;
-        //                 this.totalUser++;
-        //                 this.progress1 = 100*itemChart.progress/this.totalUser + 'px';
-        //             }
-        //         }
-        //     }
-        //     else if(itemUser.age > 10 && itemUser.age <=20) {
-        //         for(let itemChart of this.chartNoteList) {
-        //             if(itemChart.id == 20) {
-        //                 itemChart.progress = itemChart.progress + 1;
-        //                 this.totalUser++;
-        //                 this.progress1 = 100*itemChart.progress/this.totalUser + 'px';
-        //             }
-        //         }
-        //     }
-        this._progress = '70px';
-        }
+    @Input() userInfoList: Array<any> = [];
     
-
-    constructor() {
-        console.log(this.userInfoList);
-    }
+    constructor() {}
 
     ngOnInit() {}
+
+    showChart() {
+        // console.log(this.userInfoList);
+        this.totalUser = this.userInfoList.length;
+
+        for(let item of this.chartNoteList) {
+            item.count = 0;
+        }
+
+        for(let itemUserInfo of this.userInfoList) {
+            for(let itemChartNote of this.chartNoteList) {
+                if(Number(itemUserInfo.age) > 1 && Number(itemUserInfo.age) <= 10) {
+                    if(itemChartNote.id == 10) {
+                        itemChartNote.count = itemChartNote.count + 1;
+                        // console.log(itemChartNote.count)
+                    }
+                }
+                else if (Number(itemUserInfo.age) > 10 && Number(itemUserInfo.age) <= 20) {
+                    if(itemChartNote.id == 20) {
+                        itemChartNote.count = itemChartNote.count + 1;
+                        console.log(itemChartNote.count)
+
+                    }
+                }
+                else if (Number(itemUserInfo.age) > 20 && Number(itemUserInfo.age) <= 30) {
+                    if(itemChartNote.id == 30) {
+                        itemChartNote.count = itemChartNote.count + 1;
+                    }
+                }
+                else if (Number(itemUserInfo.age) > 30 && Number(itemUserInfo.age) <= 40) {
+                    if(itemChartNote.id == 40) {
+                        itemChartNote.count = itemChartNote.count + 1;
+                    }
+                }
+                else if (Number(itemUserInfo.age) > 40 && Number(itemUserInfo.age) <= 50) {
+                    if(itemChartNote.id == 50) {
+                        itemChartNote.count = itemChartNote.count + 1;
+                    }
+                }
+                else if (Number(itemUserInfo.age) > 50) {
+                    if(itemChartNote.id == 51) {
+                        itemChartNote.count = itemChartNote.count + 1;
+                    }
+                }
+            }
+        }
+
+        for(let item of this.chartNoteList) {
+            item.percent = item.count/this.totalUser*200 + 'px';
+            // console.log(item.count);
+        }
+    }
+
 }
+        

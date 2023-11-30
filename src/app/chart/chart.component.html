@@ -3,10 +3,13 @@
         <div class="chart-vertical"></div> 
         <div class="chart-horizonal">
             <div class="chart-horizonal-value" *ngFor="let item of chartNoteList">
-                <div class="box-color" [style.backgroundColor]="item.color" [style.height]="progress"></div>
+                <div class="box-color" [style.backgroundColor]="item.color" [style.height]="item.percent"></div>
                 <span class="box-age">{{item.name}}</span>
             </div>
         </div>
+        <span class="percent-100">100%</span>
+        <span class="percent-50">50%</span>
+        <span class="percent-0">0</span>
     </div>
     <div class="chart-note">
         <div class="note-content" *ngFor="let item of chartNoteList">
@@ -15,3 +18,4 @@
         </div>
     </div>
 </div>
+<input class="show-chart" type="button" value="Show chart" (click)="showChart()">

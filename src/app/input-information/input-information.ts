@@ -19,18 +19,12 @@ export class InputInformationComponent {
     ngOnInit() {}
 
     saveFunc() {
-        if(Number.isNaN(this.user.age)) {
-            alert('Nhap tuoi la mot so nguyen!')
-            return;
-        }
-        else {
             this.info.push(
                 this.user
             )
             // console.log(this.info)
             this.userInfo.emit(this.info);
             this.resetFormUser();
-        }
     }
 
     resetFormUser() {

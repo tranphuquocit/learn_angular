@@ -9,9 +9,8 @@ export class AppComponent {
 
   public baCach: any;
   userInfoList = [];
-  userInfoFunc(userInfo: any) {
-    // console.log(userInfo);
+  receiveUserInfo(userInfo: any) {
     this.userInfoList = userInfo;
-    // console.log(this.userInfoList);
+    console.log(this.userInfoList);
   }
 }
