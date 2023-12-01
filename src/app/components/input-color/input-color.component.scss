@@ -1,0 +1,14 @@
+.container-input-color {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+
+    .input-color {
+        .box-color {
+            width: 90px;
+            height: 30px;
+            border: 2px solid black;
+            margin-top: 20px;
+        }
+    }
+}

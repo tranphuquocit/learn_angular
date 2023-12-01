@@ -1,0 +1,27 @@
+<div class="container-input-color">
+    <div class="input-color">
+        <input type="text" [(ngModel)]="listColor.color1"> 
+        <div class="box-color" [style.backgroundColor]="listColor.color1"></div>
+    </div>
+    <div class="input-color" >
+        <input type="text" [(ngModel)]="listColor.color2"> 
+        <div class="box-color" [style.backgroundColor]="listColor.color2"></div>
+    </div>
+    <div class="input-color">
+        <input type="text" [(ngModel)]="listColor.color3"> 
+        <div class="box-color" [style.backgroundColor]="listColor.color3"></div>
+    </div>
+    <div class="input-color">
+        <input type="text" [(ngModel)]="listColor.color4"> 
+        <div class="box-color" [style.backgroundColor]="listColor.color4"></div>
+    </div>
+    <div class="input-color">
+        <input type="text" [(ngModel)]="listColor.color5"> 
+        <div class="box-color" [style.backgroundColor]="listColor.color5"></div>
+    </div>
+    <div class="input-color">
+        <input type="text" [(ngModel)]="listColor.color6"> 
+        <div class="box-color" [style.backgroundColor]="listColor.color6"></div>
+    </div>
+</div>
+<input type="button" value="Save color" (click)="saveListColor()">

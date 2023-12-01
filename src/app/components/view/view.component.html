@@ -1,0 +1,8 @@
+<app-input-color (_listColor)="receiveListColor($event)"></app-input-color>
+<input type="button" value="Download" (click)="download()"> <br>
+<div class="progress-bar">
+    <div class="progress" [ngStyle]="{
+        backgroundColor: bgColor,
+        width: progress + '%'
+    }"></div>
+</div>
