@@ -4,13 +4,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 
 import { FormsModule } from '@angular/forms';
+import { InputInfoComponent } from './components/input-info/input-info.component';
+import { ChartComponent } from './components/chart/chart.component';
 
 const COMPONENT = [
+  ChartComponent,
+  InputInfoComponent
 ]
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ...COMPONENT
   ],
   imports: [
     BrowserModule,
