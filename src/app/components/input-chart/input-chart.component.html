@@ -23,6 +23,7 @@
             <span>Danh sách (Tổng: {{totalUser}} người)</span> <hr>
             <ol *ngFor="let item of userInfoList;let idx = index">
                 <span class="info">{{idx+1}}. {{item.name}} - {{item.age}}</span>
+                <input type="button" value="Sửa">
             </ol>
         </div>
     </div>
