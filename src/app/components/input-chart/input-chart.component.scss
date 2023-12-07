@@ -1,0 +1,152 @@
+.view-container {
+    display: flex;
+    flex-direction: column;
+
+    .input-container {
+        width: 100%;
+        height: 200px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        .form-container {
+            height: 100%;
+            width: 25%;
+            border: 3px solid black;
+            display: flex;
+            flex-direction: column;
+
+            span {
+                margin-top: 5px;
+                margin-left: 100px;
+                font-weight: 700;
+                font-size: 20px;
+            }
+
+            input {
+                float: right;
+                width: 70%;
+                margin-right: 10px;
+            }
+
+            .input {
+                margin-top: 3px;
+                margin-left: 5px;
+            }
+
+            .saveBtn {
+                margin-top: 10px;
+                margin-left: 100px;
+                width: 70px;
+            }
+        }
+
+        .list-info {
+            height: 100%;
+            width: 20%;
+            border: 3px solid black;
+            margin-left: 60px;
+            overflow: auto;
+
+            span {
+                margin-top: 5px;
+                margin-left: 45px;
+                font-weight: 700;
+                font-size: 20px;
+            }
+
+            span.info {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+.chart-container {
+    height: 400px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+
+    .chart-canvas {
+        width: 70%;
+        position: absolute;
+        left: 340px;
+        
+        .chart-canvas-vertical {
+            width: 2px;
+            height: 300px;
+            background-color: black;
+            margin-top: 80px;
+            margin-left: 40px;
+        }
+
+        .chart-canvas-horizonal {
+            width: 550px;
+            height: 2px;
+            background-color: black;
+            margin-left: 40px;
+        }
+
+        .chart-items {
+            display: flex;
+            flex-direction: row;
+            gap: 50px;
+            position: absolute;
+            left: 75px;
+            bottom: -16px;
+
+            .chart-item {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+    
+                .box-color {
+                    width: 40px;
+                }
+            }
+        }
+
+        .chart-100 {
+            position: absolute;
+            bottom: 288px;
+        }
+
+        .chart-50 {
+            position: absolute;
+            bottom: 138px;
+        }
+    }
+
+    .chart-list-container {
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        left: 1030px;
+        bottom: 130px;
+        border: 2px solid black;
+        padding: 4px;
+
+        .chart-list {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .box-color {
+            width: 50px;
+            height: 25px;
+        }
+
+        span {
+            font-size: 20px;
+        }
+
+        span.note{
+            text-decoration: underline;
+            font-weight: 700;
+            margin-left: 3px;
+            margin-bottom: 10px;
+        }
+    }
+}

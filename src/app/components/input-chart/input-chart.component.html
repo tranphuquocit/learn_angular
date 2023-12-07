@@ -1,0 +1,50 @@
+<div class="view-container">
+    <div class="input-container">
+        <div class="form-container">
+            <span>Hãy nhập thông tin</span> <br>
+            <div class="input">
+                Họ và tên: <input type="text" [(ngModel)]="userInfo.name"> 
+            </div>
+            <div class="input">
+                Tuổi: <input type="number" [(ngModel)]="userInfo.age"> 
+            </div>
+            <div class="input">
+                Giới tính: <input type="text" [(ngModel)]="userInfo.sex"> 
+            </div>
+            <div class="input">
+                Số điện thoại: <input type="text" [(ngModel)]="userInfo.phone"> 
+            </div>
+            <div class="input">
+                Địa chỉ: <input type="text" [(ngModel)]="userInfo.address"> 
+            </div>
+            <input class="saveBtn" type="button" value="Save" (click)="saveUserInfo()"> <br>
+        </div>
+        <div class="list-info">
+            <span>Danh sách (Tổng: {{totalUser}} người)</span> <hr>
+            <ol *ngFor="let item of userInfoList;let idx = index">
+                <span class="info">{{idx+1}}. {{item.name}} - {{item.age}}</span>
+            </ol>
+        </div>
+    </div>
+    <div class="chart-container">
+        <div class="chart-canvas">
+            <div class="chart-canvas-vertical"></div>
+            <div class="chart-canvas-horizonal"></div>
+            <span class="chart-100">100%</span>
+            <span class="chart-50">50%</span>
+            <div class="chart-items">
+                <div class="chart-item" *ngFor="let item of chartList; let i = index">
+                    <div class="box-color" [style.backgroundColor]="item.color" [style.height]="item.percent"></div>
+                    <span>{{ item.name }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="chart-list-container">
+            <span class="note">Chú thích</span>
+            <div class="chart-list" *ngFor="let item of chartList">
+                <div class="box-color" [style.backgroundColor]="item.color"></div>
+                <span>{{ item.name }}</span>
+            </div>
+        </div>
+    </div>
+</div>
