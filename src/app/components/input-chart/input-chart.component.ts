@@ -9,6 +9,8 @@ import { Component} from "@angular/core";
 
 export class InputChartComponent {
 
+    public indexSaveInfo: number = 0;
+    
     public chartList = [
         {
             name: '1-10',
@@ -62,21 +64,23 @@ export class InputChartComponent {
     constructor() {}
     ngOninit() {}
 
-    public saveUserInfo() {
+    public saveUserInfo(index: number) {
         if(!this.userInfo.name || !this.userInfo.age) {
             alert("Thông tin bạn nhập chưa hợp lệ!")
         } 
         else {
-            this.userInfoList.push(this.userInfo);
+            this.userInfoList[index] = this.userInfo;
+            // this.indexSaveInfo = index;
+            // this.indexSaveInfo = this.indexSaveInfo + 1;
             this.totalUser = this.userInfoList.length;
-            console.log(this.userInfoList)
             this.userInfo = {
             name: null,
             age: null,
             sex: null,
             phone: null,
             address: null
-        }
+            }
+            this.indexSaveInfo = this.userInfoList.length -1 + 1;
         }
 
         //chart
@@ -123,5 +127,22 @@ export class InputChartComponent {
             item.percent = item.count/this.totalUser*300 + 'px';
             console.log(item.percent)
         }
+    }
+
+    public updateInfo(index: number) {
+        this.userInfo = {
+            name: this.userInfoList[index].name,
+            age: this.userInfoList[index].age,
+            sex: null,
+            phone: null,
+            address: null
+        }
+        this.indexSaveInfo = index;
+        // this.saveUserInfo(index);
+    }
+
+    public deleteInfo(index: number) {
+        this.userInfoList.splice(index, 1);
+        console.log(this.userInfoList);
     }
 }
