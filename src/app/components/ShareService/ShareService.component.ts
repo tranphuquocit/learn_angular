@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable } from "rxjs";
 })
 
 export class ShareService {
-    // public varService: string = 'From service';
+    public varService: string = 'From service';
 
     private dataService: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
@@ -20,4 +20,16 @@ export class ShareService {
     public setDataService(data: any) {
         this.dataService.next(data);
     }
+    // dataService: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+
+    // constructor() {}
+    // ngOnInit() {}
+
+    // getData(): Observable<any> {
+    //     return this.dataService.asObservable();
+    // }
+
+    // setData(data: any) {
+    //     this.dataService.next(data);
+    // }
 }
