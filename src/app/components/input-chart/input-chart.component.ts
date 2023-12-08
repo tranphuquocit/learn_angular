@@ -80,7 +80,7 @@ export class InputChartComponent {
             phone: null,
             address: null
             }
-            this.indexSaveInfo = this.userInfoList.length -1 + 1;
+            this.indexSaveInfo = this.userInfoList.length -1 + 1;//set index tiep theo
         }
 
         //chart
@@ -142,7 +142,8 @@ export class InputChartComponent {
     }
 
     public deleteInfo(index: number) {
-        this.userInfoList.splice(index, 1);
+        this.userInfoList.splice(index, 1);//xoa phan tu trong mang vi tri index
+        this.indexSaveInfo = this.indexSaveInfo - 1;//set index lui di 1
         console.log(this.userInfoList);
     }
 }
