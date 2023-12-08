@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { ShareService } from "../ShareService/ShareService.component";
 
 @Component({
@@ -8,12 +8,10 @@ import { ShareService } from "../ShareService/ShareService.component";
 
 export class InputInfoComponent {
 
-    public inputValue!: string;
+    @Input() public inputValue!: string;
 
     constructor(private shareService: ShareService) {}
-    ngOnInit() {
-
-    }
+    ngOnInit() {}
 
     public setInfo() {
         this.shareService.setDataService(this.inputValue);
