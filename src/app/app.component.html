@@ -11,5 +11,43 @@
                 </span>
             </div>
         </div>
+
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="true"></button>
+                  Sorted by <span class="caret"></span>
+                  <ul class="dropdown-menu">
+                    <li><a role="button">Name ASC</a></li>
+                    <li><a role="button">Name DSC</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a role="button">Level ASC</a></li>
+                    <li><a role="button">Level DSC</a></li>
+                  </ul>
+                  <span class="label label-success label-medium">NAME - DESC</span>
+            </div>
+        </div>
+
+        <div class="col-xs-5" col-sm-5 col-md-5 col-lg-5>
+            <button class="btn btn-info btn-block marginB10" type="button">Add item</button>
+        </div>
+    </div>
+
+    <div class="row marginB10 mt-5">
+        <div class="col-md-offset-7 col-md-5">
+            <form class="form-inline">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Item name">
+                </div>
+                <div class="form-group ml-5">
+                    <select class="form-control">
+                        <option value="{0}">Small</option>
+                        <option value="{1}">Medium</option>
+                        <option value="{2}">High</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary ml-5">Submit</button>
+                <button class="btn btn-default ml-5">Cancel</button>
+            </form>
+        </div>
     </div>
 </div>
