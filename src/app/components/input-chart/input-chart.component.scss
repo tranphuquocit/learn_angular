@@ -46,10 +46,10 @@
             width: 20%;
             border: 3px solid black;
             margin-left: 60px;
-            overflow: auto;
+            overflow: hidden;
 
             span {
-                margin-top: 5px;
+                // margin-top: 5px;
                 margin-left: 45px;
                 font-weight: 700;
                 font-size: 20px;
@@ -59,10 +59,29 @@
                 margin-left: 0;
             }
 
+            span.list-heading {
+                border-bottom: 1px solid black;
+                position: sticky;
+                width: 100%;
+
+            }
+
             input {
                 float: right;
                 margin-right: 10px;
             }
+
+            .list {
+                overflow: auto;
+                height: 182px;
+                width: 100%;
+
+                .list-line {
+                    // margin-top: 10px;
+                    margin: 20px 0 10px 10px;
+                }
+            }
+            
         }
     }
 }

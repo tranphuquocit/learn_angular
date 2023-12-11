@@ -20,12 +20,14 @@
             <input class="saveBtn" type="button" value="Save" (click)="saveUserInfo(indexSaveInfo)"> <br>
         </div>
         <div class="list-info">
-            <span>Danh sách (Tổng: {{totalUser}} người)</span> <hr>
-            <ol *ngFor="let item of userInfoList;let idx = index">
-                <span class="info">{{idx+1}}. {{item.name}} - {{item.age}}</span>
-                <input type="button" value="Xóa" (click)="deleteInfo(idx)">
-                <input type="button" value="Sửa" (click)="updateInfo(idx)">
-            </ol>
+            <span class="list-heading">Danh sách (Tổng: {{totalUser}} người)</span> 
+            <div class="list">
+                <div class="list-line" *ngFor="let item of userInfoList;let idx = index">
+                    <span class="info">{{idx+1}}. {{item.name}} - {{item.age}}</span>
+                    <input type="button" value="Xóa" (click)="deleteInfo(idx)">
+                    <input type="button" value="Sửa" (click)="updateInfo(idx)">
+                </div>
+            </div>
         </div>
     </div>
     <div class="chart-container">
