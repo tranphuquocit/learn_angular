@@ -1,0 +1,26 @@
+<div class="container">
+    <input type="button" value="show chart" (click)="func()">
+    <div class="chart-canvas">
+        <div class="chart-vertical"></div>
+        <div class="chart-horizonal"></div>
+        <span class="percent-0">0</span>
+        <span class="percent-50">50</span>
+        <span class="percent-100">100</span>
+        <div class="chart-list">
+            <div class="chart-item" *ngFor="let item of chartList; let i = index">
+                <div class="item" [style.backgroundColor]="item.color" [style.height]="item.percent"></div>
+                <span>{{ item.name }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="chart-note">
+        <span class="heading">Chú thích</span>
+        <div class="note-list" *ngFor="let item of chartList">
+            <div class="note-item">
+                <div class="item" [style.backgroundColor]="item.color"></div>
+                <span>{{ item.name }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+    

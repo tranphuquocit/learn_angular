@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="main">
+        <div class="list-heading">
+            <span>Danh sách ( Tổng: {{userInfoList.length}} người )</span> 
+        </div>
+        <div class="list-content" >
+            <div class="list-line" *ngFor="let item of userInfoList; let idx = index">
+                <span>{{idx + 1}}. {{ item.name }} - {{ item.age }}</span>
+                <div class="btn">
+                    <input type="button" value="Delete" (click)="deleteUserInfo(idx)">
+                    <input type="button" value="Edit" (click)="editUserInfo(idx)">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="edit" *ngIf="showEdit">
+        Họ và tên: <input type="text" [(ngModel)]="userInfoList[idxEdit].name">
+        Tuổi: <input type="number" [(ngModel)]="userInfoList[idxEdit].age">
+        <input type="button" value="Save" (click)="saveEdit()">
+    </div>
+</div>
