@@ -9,7 +9,7 @@ import { ShareService } from "../shareService.service";
 })
 
 export class InputComponent {
-    public indexSaveUser: number = 0;
+    public indexSaveUser: number = this.shareService.getIdxSaveUser();//just added
 
     // private userInfoList: Array<UserInfo> = [];
     public userInfo: UserInfo = {
@@ -28,10 +28,12 @@ export class InputComponent {
             alert("Bạn hãy nhập thông tin hợp lệ!")
         }
         else {
-            // this.userInfoList.push(this.userInfo);
-            this.shareService.setUserInfoListById(this.userInfo, index);
+            this.indexSaveUser = this.shareService.getIdxSaveUser();//reset index from service
+            this.shareService.setUserInfoListById(this.userInfo, this.indexSaveUser);
             this.indexSaveUser = this.indexSaveUser + 1;
-            // console.log(this.shareService.getUserInfoList);
+            this.shareService.setIdxSaveUser(this.indexSaveUser);
+            const arr = this.shareService.getUserInfoList()
+            console.log(arr);
             this.userInfo = {
                 name: '',
                 age: 0,

@@ -1,15 +1,30 @@
 .container {
-    width: 600px;
+    width: 870px;
     height: 400px;
     border: 2px solid black;
     position: relative;
+
+    input {
+            width: 120px;
+            height: 25px;
+            font-size: 18px;
+            font-weight: 700;
+            margin-left: 100px;
+            margin-top: 5px;
+            border-radius: 5px;
+
+            &:hover {
+                background-color: pink;
+                border: none;
+            }
+    }
 
     .chart-canvas {
         width: 70%;
         position: relative;
 
         .chart-horizonal {
-            width: 360px;
+            width: 600px;
             height: 2px;
             background-color: blue;
             margin-left: 50px;
@@ -47,7 +62,7 @@
             position: absolute;
             bottom: -17px;
             left: 65px;
-            gap: 20px;
+            gap: 60px;
 
             .chart-item {
                 display: flex;
@@ -55,7 +70,7 @@
                 justify-content: flex-end;
 
                 .item {
-                    width: 30px;
+                    width: 40px;
                     // height: 60px;
                     // background-color: red;
                 }
@@ -69,7 +84,7 @@
         border: 2px solid black;
         position: absolute;
         bottom: 140px;
-        left: 450px;
+        left: 710px;
 
         span {
             font-size: 18px;

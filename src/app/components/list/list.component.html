@@ -14,8 +14,18 @@
         </div>
     </div>
     <div class="edit" *ngIf="showEdit">
-        Họ và tên: <input type="text" [(ngModel)]="userInfoList[idxEdit].name">
-        Tuổi: <input type="number" [(ngModel)]="userInfoList[idxEdit].age">
-        <input type="button" value="Save" (click)="saveEdit()">
+        <span class="heading">Số thứ tự : {{idxEdit + 1}}</span>
+        <div class="input-edit">
+            <div>
+                <span>Họ và tên</span> <input type="text" [(ngModel)]="userInfoList[idxEdit].name">
+            </div>
+            <div>
+                <span>Tuổi</span> <input type="number" [(ngModel)]="userInfoList[idxEdit].age">
+            </div>
+        </div>
+        <div class="btn">
+            <input type="button" value="Save" (click)="saveEdit()">
+            <input type="button" value="Cancel" (click)="cancelEdit()">
+        </div>
     </div>
 </div>

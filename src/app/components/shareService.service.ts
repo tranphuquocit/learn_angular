@@ -6,6 +6,7 @@ import { UserInfo } from "./UserInfo";
 })
 
 export class ShareService {
+    public idxSaveUser: number = 0; //just added
     protected userInfoList: Array<UserInfo> = [];
     protected chartList = [
         {
@@ -71,6 +72,16 @@ export class ShareService {
 
     public deleteUserInfoById(id: number) {
         this.userInfoList.splice(id, 1);
+        this.idxSaveUser = this.idxSaveUser - 1;
+    }
+
+    //just added
+    public getIdxSaveUser(): number {
+        return this.idxSaveUser;
+    }
+
+    public setIdxSaveUser(index: number) {
+        this.idxSaveUser = index;
     }
 
 }

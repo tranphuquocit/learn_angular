@@ -20,7 +20,7 @@ export class ChartComponent {
     }
     ngOnInit() {}
 
-    public func() {
+    public showChart() {
         for(let item of this.chartList) {
             item.count = 0;
         }
@@ -63,6 +63,12 @@ export class ChartComponent {
         for(let item of this.chartList) {
             item.percent = item.count/this.userInfoList.length*300 + 'px';
             // console.log(item.percent)
+        }
+
+        if(this.userInfoList.length == 0) {
+            for(let item of this.chartList) {
+                item.percent = '0';
+            }
         }
     }
 }

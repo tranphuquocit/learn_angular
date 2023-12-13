@@ -8,7 +8,7 @@ import { ShareService } from "../shareService.service";
 })
 
 export class ListComponent {
-
+    
     public showEdit: boolean = false;
     public idxEdit!: number;
     public idxDelete!: number;
@@ -28,18 +28,22 @@ export class ListComponent {
     public deleteUserInfo(index: number) {
         this.idxDelete = index;
         this.shareService.deleteUserInfoById(this.idxDelete);
-        // const userList: UserInfo[] = [];
-        // delete this.userInfoList[index];
-        // this.shareService.setUserInfoList(this.userInfoList);
         this.idxDelete = -1;
-        console.log(this.userInfoList.length);
+        console.log(this.shareService.getIdxSaveUser());
+        // console.log(this.userInfoList);
     }
 
     public saveEdit() {
-        // this.userInfoList[this.idxEdit].name = 
-        this.showEdit = false;
         // console.log(this.userInfoList)
         this.shareService.setUserInfoListById(this.userInfoList[this.idxEdit], this.idxEdit);
+        this.showEdit = false;
         this.idxEdit = -1;
     }
-}
+
+    public cancelEdit() {
+        this.idxEdit = -1;
+        this.showEdit = false;
+    }
+
+    
+ }
