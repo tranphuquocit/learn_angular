@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { ShareService } from "../shareService.service";
-import { UserInfo } from "../UserInfo";
+import { UserInfoModel } from "../model/user-info.model";
 
 @Component({
     selector: 'app-chart',
@@ -11,7 +11,7 @@ import { UserInfo } from "../UserInfo";
 export class ChartComponent {
 
     public chartList = this.shareService.getChartList();
-    public userInfoList: UserInfo[] = []
+    public userInfoList: UserInfoModel[] = []
 
     constructor(private shareService: ShareService) {
         this.userInfoList = this.shareService.getUserInfoList();
@@ -21,10 +21,12 @@ export class ChartComponent {
     ngOnInit() {}
 
     public showChart() {
+        //tach ra func
         for(let item of this.chartList) {
             item.count = 0;
         }
 
+        //tach ra func 
         for(let itemInfoList of this.userInfoList) {
             for(let itemChartList of this.chartList) {
                 if(itemInfoList.age >= 1 && itemInfoList.age <= 10) {

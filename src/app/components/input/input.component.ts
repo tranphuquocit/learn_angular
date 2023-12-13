@@ -1,5 +1,5 @@
 import { Component , Input } from "@angular/core";
-import { UserInfo } from "../UserInfo";
+import { UserInfoModel } from "../model/user-info.model";
 import { ShareService } from "../shareService.service";
 
 @Component({
@@ -12,7 +12,7 @@ export class InputComponent {
     public indexSaveUser: number = this.shareService.getIdxSaveUser();//just added
 
     // private userInfoList: Array<UserInfo> = [];
-    public userInfo: UserInfo = {
+    public userInfo: UserInfoModel = {
         name: '',
         age: 0,
         sex: '',
@@ -34,6 +34,7 @@ export class InputComponent {
             this.shareService.setIdxSaveUser(this.indexSaveUser);
             const arr = this.shareService.getUserInfoList()
             console.log(arr);
+            //tao func private 
             this.userInfo = {
                 name: '',
                 age: 0,

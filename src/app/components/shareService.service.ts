@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { UserInfo } from "./UserInfo";
+import { UserInfoModel } from "./model/user-info.model";
 
 @Injectable({
     providedIn: 'root'
@@ -7,7 +7,7 @@ import { UserInfo } from "./UserInfo";
 
 export class ShareService {
     public idxSaveUser: number = 0; //just added
-    protected userInfoList: Array<UserInfo> = [];
+    public userInfoList: Array<UserInfoModel> = [];
     protected chartList = [
         {
             name: '1-10',
@@ -50,7 +50,7 @@ export class ShareService {
     constructor() {}
     ngOnInit() {}
 
-    public getUserInfoList(): Array<UserInfo> {
+    public getUserInfoList(): Array<UserInfoModel> {
         return this.userInfoList;
     }
 
@@ -58,11 +58,11 @@ export class ShareService {
         return this.chartList;
     }
 
-    public setUserInfoListById(userInfo: UserInfo, index: number) {
+    public setUserInfoListById(userInfo: UserInfoModel, index: number) {
         this.userInfoList[index] = userInfo;
     }
 
-    public setUserInfoList(userInfoList: UserInfo[]) {
+    public setUserInfoList(userInfoList: UserInfoModel[]) {
         this.userInfoList = userInfoList;
     }
 

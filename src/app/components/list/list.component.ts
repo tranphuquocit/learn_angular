@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { UserInfo } from "../UserInfo";
+import { UserInfoModel } from "../model/user-info.model";
 import { ShareService } from "../shareService.service";
 @Component({
     selector: 'app-list',
@@ -12,7 +12,7 @@ export class ListComponent {
     public showEdit: boolean = false;
     public idxEdit!: number;
     public idxDelete!: number;
-    public userInfoList: UserInfo[] = [];
+    public userInfoList: UserInfoModel[] = [];
 
     constructor (private shareService: ShareService) {
         this.userInfoList = this.shareService.getUserInfoList();

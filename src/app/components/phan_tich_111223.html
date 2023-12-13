@@ -1,33 +1,26 @@
 <div class="app-container">
     <div class="heading">
-        <div class="heading-component">
-            <app-heading></app-heading>
-        </div>
+        <app-heading></app-heading>
+        <app-log-out></app-log-out>
     </div>
     <div class="content">
-        <div class="banner">
-            <div class="logout-component">
-                <app-log-out></app-log-out>
-            </div>
-        </div>
         <div class="main">
             <div class="main-left">
-                <div class="add-component">
-                    <app-add-record></app-add-record>
-                </div>
+                <app-add-record></app-add-record>
             </div>
             <div class="main-right">
                 <div class="main-right-top">
-                    <div class="my-results-component">
-                        <app-my-results></app-my-results>
-                    </div>
+                    <app-my-results></app-my-results>
                 </div>
                 <div class="main-right-bottom">
-                    <div class="list-component">
-                        <app-list></app-list>
-                    </div>
+                    <app-list></app-list>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<!-- component app-list -->
+<div class="app-list"> 
+    <app-item></app-item>
 </div>

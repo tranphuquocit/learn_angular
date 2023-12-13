@@ -1,4 +1,4 @@
-export interface UserInfo {
+export interface UserInfoModel {
     name: string;
     age: number,
     sex: string,
