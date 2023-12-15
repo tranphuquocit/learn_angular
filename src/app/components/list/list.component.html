@@ -1,0 +1,38 @@
+<div class="list-container">
+    <div class="edit-form" *ngIf="showEditForm">
+        <span class="input-heading">Hãy cập nhật thông tin!</span>
+        <div class="input-form">
+            <div class="input">
+                <span>Họ và tên</span> <input type="text" [(ngModel)]="userInfoList[indexEdit].name">
+            </div>
+            <div class="input">
+                <span>Tuổi</span> <input type="number" [(ngModel)]="userInfoList[indexEdit].age">
+            </div>
+            <div class="input">
+                <span>Giới tính</span> <input type="text" [(ngModel)]="userInfoList[indexEdit].sex">
+            </div>
+            <div class="input">
+            <span>Số điện thoại</span> <input type="text" [(ngModel)]="userInfoList[indexEdit].phone">
+            </div>
+            <div class="input">
+                <span>Địa chỉ</span> <input type="text" [(ngModel)]="userInfoList[indexEdit].address">
+            </div>
+            <input class="btnSave" type="button" value="Save" (click)="saveEdit()">
+            <input class="btnSave" type="button" value="Cancel" (click)="cancelEdit()">
+        </div>
+    </div>
+    <div class="list">
+        <div class="list-heading">
+            <span>Danh sách ( Tổng: {{userInfoList.length}} người )</span> 
+        </div>
+        <div class="list-content" >
+            <div class="list-line" *ngFor="let item of userInfoList; let idx = index">
+                <span>{{ idx + 1}}. {{ item.name }} - {{ item.age }}</span>
+                <div class="btn">
+                    <input type="button" value="Delete" (click)="deleteUser(idx)">
+                    <input type="button" value="Edit" (click)="editUser(idx)">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

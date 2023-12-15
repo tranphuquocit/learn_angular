@@ -1,0 +1,21 @@
+<div class="container" *ngIf="!showEditForm">
+    <span class="input-heading">Hãy nhập thông tin!</span>
+    <div class="input-form">
+        <div class="input">
+            <span>Họ và tên</span> <input type="text" [(ngModel)]="userInfo.name">
+        </div>
+        <div class="input">
+            <span>Tuổi</span> <input type="number" [(ngModel)]="userInfo.age">
+        </div>
+        <div class="input">
+            <span>Giới tính</span> <input type="text" [(ngModel)]="userInfo.sex">
+        </div>
+        <div class="input">
+            <span>Số điện thoại</span> <input type="text" [(ngModel)]="userInfo.phone">
+        </div>
+        <div class="input">
+            <span>Địa chỉ</span> <input type="text" [(ngModel)]="userInfo.address">
+        </div>
+        <input class="btnSave" type="button" value="Save" (click)="saveUserInfo()">
+    </div>
+</div>

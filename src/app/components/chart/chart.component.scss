@@ -1,0 +1,104 @@
+.container {
+    width: 910px;
+    height: 400px;
+    border: 2px solid black;
+    position: relative;
+
+    .chart-canvas {
+        width: 70%;
+        position: relative;
+
+        .chart-horizonal {
+            width: 600px;
+            height: 2px;
+            background-color: blue;
+            margin-left: 50px;
+        }
+        
+        .chart-vertical {
+            height: 300px;
+            width: 2px;
+            background-color: blue;
+            margin-left: 50px;
+            margin-top: 40px;
+        }
+
+        .percent-0 {
+            position: absolute;
+            bottom: 0px;
+            left: 34px;
+        }
+
+        .percent-50 {
+            position: absolute;
+            bottom: 146px;
+            left: 24px;
+        }
+
+        .percent-100 {
+            position: absolute;
+            bottom: 280px;
+            left: 19px;
+        }
+
+        .chart-list {
+            display: flex;
+            flex-direction: row;
+            position: absolute;
+            bottom: -16px;
+            left: 65px;
+            gap: 60px;
+
+            .chart-item {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+
+                .item {
+                    width: 40px;
+                }
+            }
+        }
+    }
+
+    .chart-note {
+        width: 120px;
+        height: 230px;
+        border: 2px solid black;
+        position: absolute;
+        bottom: 140px;
+        left: 760px;
+
+        span {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        span.heading {
+            margin-left: 15px;
+        }
+
+        .note-list {
+            display: flex;
+            flex-direction: column;
+            margin-top: 2px;
+            width: 100%;
+            gap: 20px;
+
+            .note-item {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin: 0 6px;
+                margin-top: 10px;
+
+                .item {
+                    width: 50px;
+                    height: 20px;
+                    float: right;
+                    // background-color: red;
+                }
+            }
+        }
+    }
+}

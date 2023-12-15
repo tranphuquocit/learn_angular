@@ -1,0 +1,96 @@
+.list-container {
+    height: 217px;
+    width: 600px;
+    // padding: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .list {
+        // margin-left: 290px;  
+        width: 300px;
+        border: 3px solid black;
+
+        .list-heading {
+            // width: 300px;
+            height: 30px;
+            position: sticky;
+        
+            span {
+                font-size: 18px;
+                margin-left: 50px;
+                font-weight: 700;
+                border-bottom: 2px solid black;
+            }
+            }
+        
+        .list-content {
+            width: 100%;
+            height: 170px;
+            margin-top: 6px;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        
+            .list-line {
+                width: 100%;
+        
+                span {
+                    font-size: 18px;
+                    margin-left: 5px;
+                }
+        
+                .btn {
+                    float: right;
+                    margin-left: 5px;
+        
+                    input {
+                        float: right;
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+
+        .edit-form {
+            width: 100%;
+            height: 250px;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+    
+            input {
+                float: right;
+                height: 18px;
+                width: 180px;
+                margin-bottom: 5px;
+            }
+    
+            .btnSave {
+                width: 90px;
+                height: 25px;
+                font-size: 20px;
+                font-weight: 700;
+                margin-left: 113px;
+                margin-top: 5px;
+                border-radius: 5px;
+    
+                &:hover {
+                    background-color: pink;
+                    border: none;
+                }
+            }
+        }
+    
+        span {
+            font-size: 18px;
+        }
+    
+        span.input-heading {
+            font-weight: 800;
+            padding: 0 20%;
+        }
+    }
+}
