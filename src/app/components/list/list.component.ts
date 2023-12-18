@@ -46,8 +46,10 @@ export class ListComponent {
 
     public saveEdit() {
         this.shareService.setShowEditForm(false);
+        // em chua set lại userInfoList mà nó cũng tự lưu lại
     }
 
+    // em chưa làm được
     public cancelEdit() {
         
         this.shareService.setShowEditForm(false);
