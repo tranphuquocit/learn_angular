@@ -1,7 +1,9 @@
 export interface UserInfoModel {
-    name: string;
+    id?: number;
+    name?: string;
     age: number,
-    sex: string,
-    phone: string,
-    address: string
+    sex?: string,
+    phone?: string,
+    address?: string,
+    isEdit?: boolean,
 }

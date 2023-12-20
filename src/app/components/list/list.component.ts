@@ -1,57 +1,38 @@
 import { Component } from "@angular/core";
+import { takeUntil } from "rxjs";
+import { Subject } from "rxjs/internal/Subject";
 import { UserInfoModel } from "src/app/model/user-info.model";
 import { ShareService } from "src/app/service/shareService.service";
 
 @Component({
-    selector: 'app-list',
-    templateUrl: './list.component.html',
-    styleUrls: ['./list.component.scss']
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.scss']
 })
 
 export class ListComponent {
-    public indexEdit: number = 0;
-    public showEditForm: boolean = false;
-    public userInfoList: UserInfoModel[] = [];
 
-    constructor(private shareService: ShareService) {}
-    ngOnInit() {
-        this.shareService.getUserInfoList().subscribe(data => {
-            this.userInfoList = data;
-        })
-        this.shareService.getShowEditForm().subscribe(data => {
-            this.showEditForm = data;
-        })
+  public userInfoList: UserInfoModel[] = [];
+  // Nhận list để đổ ra list danh sách không xử lý trên này nhiều về Array trả về input component sửa hết.
+  constructor(private shareService: ShareService) {
+    this.shareService.getUserInfo().subscribe(res => {
+      if(res && res.length > 0) {
+        this.userInfoList = res;
+      }
+    })
+  }
+  ngOnInit() {}
 
-        this.shareService.getIndexEdit().subscribe(data => {
-            this.indexEdit = data;
-        })
+  // Gửi id về cho input component xử lý Array
+  public editUser(item: UserInfoModel) {
+    item.isEdit = true;
+    const id: any = item.id;
+    this.shareService.setIdUserInfo(id);
+  }
 
-        this.shareService.getShowEditForm().subscribe(data => {
-            this.showEditForm = data;
-        })
-        // console.log(this.userInfoList);
-    }
-
-    public editUser(index: number) {
-        this.showEditForm = true;
-        this.shareService.setShowEditForm(true);
-        this.indexEdit = index;
-
-    }
-
-    public deleteUser(index: number) {
-        this.userInfoList.splice(index, 1);//xoa phan tu
-        this.shareService.setUserInfoList(this.userInfoList);
-    }
-
-    public saveEdit() {
-        this.shareService.setShowEditForm(false);
-        // em chua set lại userInfoList mà nó cũng tự lưu lại
-    }
-
-    // em chưa làm được
-    public cancelEdit() {
-        
-        this.shareService.setShowEditForm(false);
-    }
- }
+  // Gửi id về cho input component xử lý Array
+  public deleteUser(item: UserInfoModel) {
+    const id: any = item.id;
+    this.shareService.setIdUserInfo(id, 'delete');
+  }
+}

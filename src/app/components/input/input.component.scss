@@ -18,19 +18,34 @@
             margin-bottom: 5px;
         }
 
-        .btnSave {
+        .btn {
             width: 90px;
             height: 25px;
             font-size: 20px;
             font-weight: 700;
-            margin-left: 113px;
-            margin-top: 5px;
             border-radius: 5px;
 
-            &:hover {
-                background-color: pink;
-                border: none;
+            &-div {
+                display: flex;
+                align-items: center;
             }
+
+            &-save {
+                margin-left: 113px;
+                margin-right: 5px;
+                border: none;
+                &:hover {
+                    background-color: pink;
+                }
+            }
+
+            &-cancel {
+                border: none;
+                &:hover {
+                    background-color: gainsboro;
+                }
+            }
+
         }
     }
 

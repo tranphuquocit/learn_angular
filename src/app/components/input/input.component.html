@@ -1,4 +1,4 @@
-<div class="container" *ngIf="!showEditForm">
+<div class="container">
     <span class="input-heading">Hãy nhập thông tin!</span>
     <div class="input-form">
         <div class="input">
@@ -16,6 +16,9 @@
         <div class="input">
             <span>Địa chỉ</span> <input type="text" [(ngModel)]="userInfo.address">
         </div>
-        <input class="btnSave" type="button" value="Save" (click)="saveUserInfo()">
+        <div class="btn-div">
+            <input class="btn btn-save" type="button" value="Save" (click)="saveUserInfo()">
+            <input *ngIf="isEdit" class="btn btn-cancel" type="button" value="Cancel" (click)="cancelUserInfo()">
+        </div>
     </div>
 </div>
