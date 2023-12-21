@@ -1,0 +1,21 @@
+.menu-action-container {
+    display: flex;
+    gap: 5px;
+    
+    .btn {
+        min-width: 20px;
+        min-height: 10px;
+        border-radius: 4px;
+        box-sizing: border-box;
+        padding: 7px 0;
+        text-align: center;
+
+        // &-edit {
+        //     width: 20%;
+        // }
+
+        // &-delete {
+        //     width: 20%;
+        // }
+    }
+}

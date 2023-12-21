@@ -1,0 +1,47 @@
+.item-container {
+    width: 131.7%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+
+    .item-stt {
+        width: 10%;
+        text-align: center;
+    }
+
+    .item-content {
+        width: 60%;
+    }
+
+    .item-level {
+        width: 15%;
+        text-align: center;
+        color: white;
+
+        &-High {
+            background-color: red;
+        }
+    
+        &-Small {
+            background-color: rgb(62, 46, 46);
+        }
+    
+        &-Medium {
+            background-color: rgb(102, 199, 226);
+        }
+        
+        span {
+            width: fit-content;
+            padding: 2px;
+            border-radius: 2px;
+        }
+    }
+
+    .item-action {
+        width: 15%;
+        // padding-right: 50px;
+        // box-sizing: border-box;
+        text-align: left;
+    }
+}

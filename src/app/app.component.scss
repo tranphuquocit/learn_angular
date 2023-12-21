@@ -1,17 +1,9 @@
-// .mau-do {
-//   color: red;
-// }
+.app-container {
+  padding: 0 15%;
+  display: flex;
+  flex-direction: column;
 
-// .mau-xanh {
-//   color: blue;
-// }
-
-.mau {
-  color: yellow;
-  &-do {
-    color: red;
-  }
-  &-xanh {
-    color: blue;
+  .app-main {
+    margin-top: 20px;
   }
 }

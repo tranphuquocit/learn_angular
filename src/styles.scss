@@ -1,4 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
-h1 {
-    color: pink;
+.btn {
+    color: black;
+    border-radius: 4px;
+    border: 1px solid black;
+    padding: 5px;
+
+    &-add {
+        color: white;
+        background-color: rgb(102, 199, 226);
+        border: none;
+    }
+
+    &-submit {
+        color: white;
+        background-color: rgb(52, 52, 140);
+    }
+
+    &-clear {
+        background-color: rgb(102, 199, 226);
+        color: white;
+    }
+
+    &-edit {
+        background-color: rgb(226, 119, 53);
+        color: white;
+    }
+
+    &-delete {
+        background-color: red;
+        color: white;
+    }
+
+    &-save {
+        background-color: green;
+        color: white;
+    }
 }

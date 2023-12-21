@@ -1,0 +1,21 @@
+<div class="table-container">
+    <div class="table-title">List item</div>
+    <div class="table-main">
+        <thead class="table-head">
+            <tr class="table-head-row">
+                <th [style.width]="'10%'" >#</th>
+                <th [style.width]="'60%'" [style.textAlign]="'left'">Name</th>
+                <th [style.width]="'15%'" [style.textAlign]="'center'">Level</th>
+                <th [style.width]="'15%'">Action</th>
+            </tr>
+        </thead>
+        <tbody class="table-body">
+            <tr class="table-body-row">
+                <app-item></app-item>
+            </tr>
+            <tr>
+                <app-edit-item></app-edit-item>
+            </tr>
+        </tbody>
+    </div>
+</div>
