@@ -1,0 +1,56 @@
+.item-container {
+    border: 1px solid grey;
+    height: 156px;
+    width: 338px;
+    margin: 10px 20px;
+
+    .item-header {
+        height: 44px;
+        background-color: blue;
+        position: relative;
+
+        .item-header-text {
+            color: white;
+            font-size: 31px;
+            padding: 10px;
+        }
+
+        .item-header-close {
+            color: white;
+            font-size: 20px;
+            position: absolute;
+            left: 319px;
+
+            &:hover {
+                color: black;
+            }
+        }
+    }
+
+    .item-main {
+        display: flex;
+
+        .item-main-left {
+            width: 71px;
+            margin-left: 8px;
+            margin-top: 2px;
+        }
+
+        .item-main-right {
+            display: flex;
+            flex-direction: column;
+            margin-left: 30px;
+            font-size: 20px;
+            margin-top: 16px;
+            width: 107px;
+
+            .item-custom {
+                color: blue;
+            }
+
+            .item-address {
+                margin-bottom: 10px;
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+<div class="main-content-container">
+    <div class="list-item">
+        <div  *ngFor="let item of listItem">
+            <app-item [item]="item"></app-item>
+        </div>
+    </div>
+    <div class="page-nav">
+        <span>First</span>
+        <span>Previous</span>
+        <span class="item-custom">1</span>
+        <span class="item-custom">2</span>
+        <span class="item-custom">3</span>
+        <span class="item-custom">Next</span>
+        <span class="item-custom">Last</span>
+    </div>
+    <span class="last-text">Showing 10 of 23 total customers</span>
+</div>

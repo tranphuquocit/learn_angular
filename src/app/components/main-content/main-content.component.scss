@@ -1,0 +1,36 @@
+.main-content-container {
+    display: flex;
+    flex-direction: column;
+
+    .list-item {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .page-nav {
+        height: 35px;
+        margin-left: 20px;
+        margin-top: 10px;
+
+        span {
+            border: 1px solid grey;
+            padding: 5px;
+
+            &:hover {
+                background-color: blue;
+                color: white;
+            }
+        }
+
+        .item-custom {
+            color: blue;
+            
+        }
+    }
+
+    .last-text {
+        margin-left: 10px;
+        
+    }
+}
