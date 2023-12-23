@@ -15,7 +15,7 @@
 
         span {
             border: 1px solid grey;
-            padding: 5px;
+            padding: 10px;
 
             &:hover {
                 background-color: blue;
@@ -25,7 +25,12 @@
 
         .item-custom {
             color: blue;
+            padding: 10px 17px;
             
+        }
+
+        &:hover {
+            cursor: pointer;
         }
     }
 

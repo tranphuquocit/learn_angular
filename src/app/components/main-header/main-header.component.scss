@@ -9,6 +9,7 @@
 
     .main-header-content {
         display: flex;
+        justify-content: space-between;
         margin-top: 8px;
 
         .main-header-content-left {
@@ -34,27 +35,24 @@
 
                 &:hover {
                     background-color: rgb(183, 172, 172);
+                    cursor: pointer;
                 }
             }
         }
     }
 
     .main-header-content-right {
-        position: relative;
+
+        margin-right: 40px;
 
         .content-right-text {
-            position: absolute;
-            top: 4px;
-            left: 840px;
             font-weight: 700;
         }
 
         .content-right-input {
-            position: absolute;
-            top: 6px;
-            left: 891px;
             height: 27px;
-            width: 202px;
+            width: 300px;
+            margin-top: 20px;
         }
     }
 }
