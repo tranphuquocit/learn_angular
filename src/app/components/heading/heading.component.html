@@ -3,25 +3,31 @@
     <div class="header-main">
         <div class="search-sort-item">
             <div class="search-item">
-                <input class="search-key" type="text" placeholder="Search item name">
-                <span class="btn btn-clear">Clear</span>
+                <input class="search-key" type="text" placeholder="Search item name" [(ngModel)]="stringSearchKey">
+                <input class="btn btn-clear" value="Clear" type="button" (click)="clear('search')">
             </div>
             <div class="sort-item">
-                <select>
-                    <option value="">Sort By</option>
+                <select [(ngModel)]="stringSort">
+                    <!-- <option value="1">Sort By</option> -->
+                    <option value="Name - Desc">Name - Desc</option>
+                    <option value="Name - Esc">Name - Esc</option>
+                    <option value="Level - Desc">Level - Desc</option>
+                    <option value="Level - esc">Level - esc</option>
                 </select>
-                <span class="sort-by">NAME - DESC</span>
+                <span class="sort-by">{{ stringSort }}</span>
             </div>
         </div>
         <div class="add-item">
-            <input class="btn btn-add" type="button" value="Add item">
+            <input class="btn btn-add" type="button" value="Add item" (click)="addItem()">
             <div class="set-item">
-                <input class="set-item-name" type="text" placeholder="Item name">
-                <select name="" id="">
+                <input class="set-item-name" type="text" placeholder="Item name" [(ngModel)]="item.content">
+                <select name="" id="" [(ngModel)]="item.level">
                     <option value="">Small</option>
+                    <option value="">Medium</option>
+                    <option value="">High</option>
                 </select>
                 <input class="btn btn-submit" type="button" value="Submit">
-                <input class="btn btn-cancel" type="button" value="Cancel">
+                <input class="btn btn-cancel" type="button" value="Cancel" (click)="clear('add')">
             </div>
         </div>
     </div>

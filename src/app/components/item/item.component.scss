@@ -1,5 +1,5 @@
 .item-container {
-    width: 131.7%;
+    // width: 131.7%;
     height: 50px;
     display: flex;
     align-items: center;
@@ -33,7 +33,7 @@
         
         span {
             width: fit-content;
-            padding: 2px;
+            padding: 2px 4px;
             border-radius: 2px;
         }
     }

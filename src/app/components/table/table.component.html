@@ -1,21 +1,14 @@
 <div class="table-container">
     <div class="table-title">List item</div>
-    <div class="table-main">
-        <thead class="table-head">
-            <tr class="table-head-row">
-                <th [style.width]="'10%'" >#</th>
-                <th [style.width]="'60%'" [style.textAlign]="'left'">Name</th>
-                <th [style.width]="'15%'" [style.textAlign]="'center'">Level</th>
-                <th [style.width]="'15%'">Action</th>
+    <table class="table-main">
+        <tr class="table-head-row">
+            <th class="col-1">#</th>
+            <th class="col-2">Name</th>
+            <th class="col-3">Level</th>
+            <th class="col-4">Action</th>
             </tr>
-        </thead>
-        <tbody class="table-body">
-            <tr class="table-body-row">
-                <app-item></app-item>
-            </tr>
-            <tr>
-                <app-edit-item></app-edit-item>
-            </tr>
-        </tbody>
-    </div>
+        <tr class="table-body-row" *ngFor="let item of listItem">
+            <app-item [item]="item"></app-item>
+        </tr>
+    </table>
 </div>

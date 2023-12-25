@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component , Input} from "@angular/core";
+import { ItemModel } from "src/app/item.model";
 
 @Component({
     selector: 'app-table',
@@ -8,7 +9,11 @@ import { Component } from "@angular/core";
 
 export class TableComponent {
 
-    constructor() {}
+    @Input() listItem!: ItemModel[];
+
+    constructor() {
+        // console.log(this.listItem)
+    }
     ngOnInit() {}
 
 }
