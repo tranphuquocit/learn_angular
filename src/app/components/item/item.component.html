@@ -1,10 +1,26 @@
-<div class="item-container">
+<div class="item-container" *ngIf="!isEdit; else formEdit">
     <span class="item-stt">{{ item.stt }}</span>
     <span class="item-content">{{ item.content }}</span>
     <div class="item-level" >
         <span [ngClass]="'item-level ' + 'item-level-' + item.level">{{ item.level }}</span>
     </div>
     <div class="item-action">
-        <app-menu-action></app-menu-action>
+        <input type="text" class="btn btn-edit" value="Edit" (click)="editItem()">
+        <input type="text" class="btn btn-delete" value="Delete" (click)="deleteItem()">
     </div>
 </div>
+<ng-template #formEdit class="form-edit">
+    <span class="edit-item-stt">{{ item.stt }}</span>
+    <input class="edit-item-content" type="text" [value]="item.content" [(ngModel)]="item.content">
+    <div class="edit-item-level">
+        <select name="" id="" [value]="item.level" [(ngModel)]="item.level">
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+        </select>
+    </div>
+    <div class="edit-item-btn">
+        <input type="button" class="btn btn-cancel" value="Cancel" (click)="cancelItem()">
+        <input type="button" class="btn btn-save" value="Save" (click)="saveItem()">
+    </div>
+</ng-template>

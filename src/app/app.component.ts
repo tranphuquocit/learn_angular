@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ItemModel } from './item.model';
+import { ItemModel } from './models/item.model';
 import { ShareService } from './services/shareSv.service';
 
 @Component({

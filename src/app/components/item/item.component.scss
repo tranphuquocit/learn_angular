@@ -39,9 +39,21 @@
     }
 
     .item-action {
-        width: 15%;
-        // padding-right: 50px;
-        // box-sizing: border-box;
-        text-align: left;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+
+        input {
+            width: 20%;
+            text-align: center;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
     }
+}
+
+.form-edit {
+    display: flex;
 }

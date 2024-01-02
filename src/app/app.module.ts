@@ -6,16 +6,12 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HeadingComponent } from './components/heading/heading.component';
 import { TableComponent } from './components/table/table.component';
-import { MenuActionComponent } from './components/menu-action/menu-action.component';
 import { ItemComponent } from './components/item/item.component';
-import { EditItemComponent } from './components/edit-item/edit-item.component';
 
 const COMPONENT = [
   HeadingComponent,
   TableComponent,
-  MenuActionComponent,
   ItemComponent,
-  EditItemComponent
 ]
 
 @NgModule({

@@ -11,7 +11,7 @@
         margin-top: 10px;
 
         .search-sort-item {
-            width: 45%;
+            width: 50%;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -41,12 +41,14 @@
                 }
 
                 .sort-by {
+                    width: 111px;
                     border-radius: 4px;
                     padding: 5px;
                     text-align: center;
                     margin-left: 10px;
                     background: green;
                     color: white;
+                    text-transform: uppercase;
                 }
             }
         }
