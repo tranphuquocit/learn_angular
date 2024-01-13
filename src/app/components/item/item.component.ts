@@ -11,6 +11,7 @@ import { ShareService } from "src/app/services/shareSv.service";
 export class ItemComponent {
 
     @Input() item!: ItemModel;
+    @Input() typeOfItem!: string;
     private listItem: ItemModel[] = [];
     public isEdit: boolean = false;
     public tempEditItem!: ItemModel;
@@ -45,7 +46,7 @@ export class ItemComponent {
     }
 
     public saveItem() {
-        
+
 
         this.isEdit = false;
     }

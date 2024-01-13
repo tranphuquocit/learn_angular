@@ -8,14 +8,14 @@
                 <input class="btn btn-clear" value="Search" type="button" (click)="search()">
             </div>
             <div class="sort-item">
-                <select [(ngModel)]="stringSort">
+                <select [ngModel]="stringSort" (ngModelChange)="sortItem($event)">
                     <!-- <option value="1">Sort By</option> -->
-                    <option value="Name - Desc">Name - Desc</option>
-                    <option value="Name - Esc">Name - Esc</option>
-                    <option value="Level - Desc">Level - Desc</option>
-                    <option value="Level - esc">Level - esc</option>
+                    <option value="nameDesc">Name - Desc</option>
+                    <option value="nameEsc">Name - Esc</option>
+                    <option value="levelDesc">Level - Desc</option>
+                    <option value="levelEsc">Level - esc</option>
                 </select>
-                <span class="sort-by" (click)="sort()">{{ stringSort }}</span>
+                <span class="sort-by">{{ stringSort }}</span>
             </div>
         </div>
         <div class="add-item">
@@ -27,7 +27,7 @@
                     <option value="Medium">Medium</option>
                     <option value="High">High</option>
                 </select>
-                <input class="btn btn-submit" type="button" value="Submit" (click)="submitItem()">
+                <input class="btn btn-submit" type="button" value="Submit">
                 <input class="btn btn-cancel" type="button" value="Cancel" (click)="cancelItem()">
             </div>
         </div>

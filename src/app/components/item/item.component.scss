@@ -1,59 +1,44 @@
-.item-container {
-    // width: 131.7%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid black;
-
-    .item-stt {
-        width: 10%;
-        text-align: center;
-    }
-
-    .item-content {
-        width: 60%;
-    }
-
-    .item-level {
-        width: 15%;
-        text-align: center;
-        color: white;
-
-        &-High {
-            background-color: red;
-        }
-    
-        &-Small {
-            background-color: rgb(62, 46, 46);
-        }
-    
-        &-Medium {
-            background-color: rgb(102, 199, 226);
-        }
-        
-        span {
-            width: fit-content;
-            padding: 2px 4px;
-            border-radius: 2px;
-        }
-    }
-
-    .item-action {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-
-        input {
-            width: 20%;
-            text-align: center;
-
-            &:hover {
-                cursor: pointer;
-            }
-        }
-    }
+.header-stt {
+  width: 10%;
+}
+.header-content {
+  width: 60%;
+  text-align: left;
+}
+.header-level {
+  width:3%;
+  text-align: center;
+}
+.header-action {
+  width: 15%;
+  text-align: center;
 }
 
-.form-edit {
-    display: flex;
+.body-stt {
+  width: 10%;
+  text-align: center;
+}
+.body-content {
+  width: 60%;
+  text-align: left;
+}
+.body-level {
+  width: 4%;
+  text-align: center;
+}
+.body-action {
+  width: 15%;
+  text-align: center;
+
+  input {
+    margin-right: 10px;
+  }
+}
+
+.edit-item-stt {
+  color: red;
+}
+
+.edit-item-content {
+  height: 30px;
 }

@@ -1,6 +1,8 @@
 import { Component, Input } from "@angular/core";
 import { ShareService } from "src/app/services/shareSv.service";
 import { ItemModel } from "src/app/models/item.model";
+import { of } from 'rxjs'
+import { map } from 'rxjs/operators'
 
 @Component({
     selector: 'app-heading',
@@ -12,13 +14,15 @@ export class HeadingComponent {
 
     //string input
     @Input() stringSearchKey!: string;
-    //string input
+    //string sortby
     @Input() stringSort: string = 'Sort By';
+
     public item: ItemModel = {
         stt: 0,
         level: '',
         content: ''
     };
+
     //list item from service
     private listItem: ItemModel[] = [];
     //array tạm lưu list item ban đầu
@@ -58,17 +62,19 @@ export class HeadingComponent {
     }
 
     public addItem() {
-        this.item.stt = this.listItem.length + 1;
-        this.listItem.push(this.item);
-        this.service.setListItem(this.listItem);
-        this.resetAddItem();
-    }
-    
-    public cancelItem() {
-        this.resetAddItem();
+        if(!this.item.content || !this.item.level) {
+          alert('Nhập đầy đủ thông tin trước khi thêm!')
+        }
+        else {
+          this.item.stt = this.listItem.length + 1;
+          this.listItem.push(this.item);
+          this.service.setListItem(this.listItem);
+          this.resetAddItem();
+        }
     }
 
-    public submitItem() {
+    public cancelItem() {
+        this.resetAddItem();
     }
 
     private resetAddItem() {
@@ -82,48 +88,69 @@ export class HeadingComponent {
     private substringSearch(text: string, query: string): boolean {
         const textLower = (text || '').toLowerCase();
         const queryLower = (query || '').toLowerCase();
-    
+
         return textLower.includes(queryLower);//check substring
     }
-    
-    public sort() {
-        let listNum: any = [];
-        let listString: any = [];
-        let listArranged: any = [];
-        this.listItem.forEach(ele => {
-            if (ele.content && ele.content[0] && Number(ele.content[0]) >= 0 && Number(ele.content[0]) <= 9) {
-                listNum.push(ele);
-            }
-            else {
-                listString.push(ele);
-            }
-        })
-        listNum.sort();
-        listString.sort();
-        listArranged = listString.concat(listNum);
-        console.log(listArranged)
 
-        for(let item of this.listItem) {
-            if(item.content && item.content[0] == listArranged[0]) {
-                this.listItem[0] = item;
+    public sortItem(value: string) {
+      switch(value) {
+        case 'nameDesc' : {
+          this.listItem.sort((item1, item2) => {
+            const i1 = item1.content.charCodeAt(0);//chartAt to Int
+            const i2 = item2.content.charCodeAt(0);//chartAt to Int
+            this.listItem.sort
+            if(i1 > i2) {
+              return -1; //true => return -1
             }
-            if(item.content && item.content[0] == listArranged[1]) {
-                this.listItem[1] = item;
+            if(i1 < i2) {
+              return 1;//false => return -1
             }
-            if(item.content && item.content[0] == listArranged[2]) {
-                this.listItem[1] = item;
-            }
-            if(item.content && item.content[0] == listArranged[3]) {
-                this.listItem[2] = item;
-            }
-            if(item.content && item.content[0] == listArranged[4]) {
-                this.listItem[3] = item;
-            }
-
+            return 0;//equal
+          })
+          break;
         }
-
-        
-        // this.listItem = listArranged;
-        this.service.setListItem(this.listItem)
+        case 'nameEsc' : {
+          this.listItem.sort((item1, item2) => {
+            const c1 = item1.content.charCodeAt(0);
+            const c2 = item2.content.charCodeAt(0);
+            if(c1 < c2) {
+              return -1;
+            }
+            if(c1 > c2) {
+              return 1;
+            }
+            return 0;
+          })
+          break;
+        }
+        case 'levelDesc' : {
+          this.listItem.sort((item1, item2) => {
+            const level1 = item1.level;
+            const level2 = item2.level;
+            if(level1 === 'High' && (level2 === 'Medium') || level2 === 'Small') {
+              return -1;
+            }
+            if(level1 === 'Small' && (level2 === 'Medium') || level2 === 'High') {
+              return 1;
+            }
+            return 0;
+          })
+          break;
+        }
+        case 'levelEsc' : {
+          this.listItem.sort((item1, item2) => {
+            const level1 = item1.level;
+            const level2 = item2.level;
+            if(level1 === 'Small' && (level2 === 'Medium') || level2 === 'High') {
+              return -1;
+            }
+            if(level1 === 'High' && (level2 === 'Medium') || level2 === 'Small') {
+              return 1;
+            }
+            return 0;
+          })
+          break;
+        }
+      }
     }
 }

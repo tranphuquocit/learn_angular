@@ -1,15 +1,38 @@
-<div class="item-container" *ngIf="!isEdit; else formEdit">
-    <span class="item-stt">{{ item.stt }}</span>
-    <span class="item-content">{{ item.content }}</span>
-    <div class="item-level" >
-        <span [ngClass]="'item-level ' + 'item-level-' + item.level">{{ item.level }}</span>
+<ng-container class="item-container" *ngIf="typeOfItem === 'item'; then bodyTable; else headerTable">
+</ng-container>
+<ng-template #bodyTable>
+  <ng-container *ngIf="!isEdit" [style.color]="'red'">
+    <td class="body-stt">{{item.stt}}</td>
+    <td class="body-content">{{item.content}}</td>
+    <td class="body-level">{{item.level}}</td>
+    <td class="body-action">
+      <input type="button" class="btn btn-edit" value="Edit" (click)="editItem()">
+      <input type="button" class="btn btn-delete" value="Delete" (click)="deleteItem()">
+    </td>
+  </ng-container>
+  <ng-container *ngIf="isEdit">
+    <span class="edit-item-stt">{{ item.stt }}</span>
+    <input class="edit-item-content" type="text" [value]="item.content" [(ngModel)]="item.content">
+    <div class="edit-item-level">
+        <select name="" id="" [value]="item.level" [(ngModel)]="item.level">
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+        </select>
     </div>
-    <div class="item-action">
-        <input type="text" class="btn btn-edit" value="Edit" (click)="editItem()">
-        <input type="text" class="btn btn-delete" value="Delete" (click)="deleteItem()">
+    <div class="edit-item-btn">
+        <input type="button" class="btn btn-cancel" value="Cancel" (click)="cancelItem()">
+        <input type="button" class="btn btn-save" value="Save" (click)="saveItem()">
     </div>
-</div>
-<ng-template #formEdit class="form-edit">
+  </ng-container>
+</ng-template>
+<ng-template #headerTable>
+  <th class="header-stt">#</th>
+  <th class="header-content">Name</th>
+  <th class="header-level">Level</th>
+  <th class="header-action">Action</th>
+</ng-template>
+<ng-template #formEdit>
     <span class="edit-item-stt">{{ item.stt }}</span>
     <input class="edit-item-content" type="text" [value]="item.content" [(ngModel)]="item.content">
     <div class="edit-item-level">
@@ -24,3 +47,5 @@
         <input type="button" class="btn btn-save" value="Save" (click)="saveItem()">
     </div>
 </ng-template>
+
+
