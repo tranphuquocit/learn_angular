@@ -1,15 +1,51 @@
 <div class="table-container">
-    <div class="table-title">List item</div>
-    <table class="table-main">
-        <tr class="table-row">
-            <app-item></app-item>
-        </tr>
-        <tr class="table-row" *ngFor="let item of listItem">
-            <app-item [item]="item" [typeOfItem]="'item'"></app-item>
-            <!-- <td class="col-1">{{ item.stt }}</td>
-            <td class="col-2">{{ item.content }}</td>
-            <td class="col-3">{{ item.level }}</td>
-            <td class="col-4">{{ item.id }}</td> -->
-        </tr>
-    </table>
+  <div class="table-title">List item</div>
+  <table class="table-main">
+    <tr class="table-header-row">
+      <th class="header-stt">#</th>
+      <th class="header-content">Name</th>
+      <th class="header-level">Level</th>
+      <th class="header-action">Action</th>
+    </tr>
+    <tr class="table-body-row" *ngFor="let item of listItem">
+      <!-- Đây là phần item list -->
+      <!-- <ng-container> -->
+      <td class="body-stt">
+        <span>{{item.stt}}</span>
+      </td>
+      <td class="body-content">
+
+        <span *ngIf="!item.isEdit">
+          {{item.content}}
+        </span>
+
+        <input class="edit-item-content" type="text"
+        *ngIf="item.isEdit"
+          [value]="item.content"
+          [(ngModel)]="item.content">
+      </td>
+      <td class="body-level">
+        <ng-container *ngIf="!item.isEdit">
+          <span>{{item.level}}</span>
+        </ng-container>
+        <ng-container *ngIf="item.isEdit">
+          <select name="" id="" [(ngModel)]="item.level" class="edit-item-level">
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Small">Small</option>
+          </select>
+        </ng-container>
+      </td>
+      <td class="body-action">
+        <ng-container *ngIf="!item.isEdit">
+          <input type="button" class="btn btn-edit" value="Edit" (click)="editItem(item)">
+          <input type="button" class="btn btn-delete" value="Delete">
+        </ng-container>
+        <ng-container *ngIf="item.isEdit">
+          <input type="button" class="btn btn-cancel" value="Cancel" (click)="cancelEditItem(item)">
+          <input type="button" class="btn btn-save" value="Save" (click)="saveEditItem(item)">
+        </ng-container>
+      </td>
+    </tr>
+  </table>
 </div>
