@@ -14,10 +14,55 @@
     .table-main {
         width: 100%;
 
-        .table-row {
+        .table-header-row, .table-body-row {
           height: 40px;
           line-height: 40px;
           font-size: 20px;
+        }
+
+        .table-header-row {
+          .header-stt {
+            width: 5%;
+          }
+          .header-content {
+            width: 65%;
+          }
+          .header-level {
+            width: 15%;
+          }
+          .header-action {
+            width: 15%;
+          }
+        }
+
+        .table-body-row {
+          .body-stt {
+            text-align: center;
+          }
+          .body-content {
+            text-align: left;
+            padding-left: 10px;
+          }
+          .body-level {
+            text-align: center;
+
+            .edit-item-level {
+              width: 90px;
+              height: 25px;
+              text-align: center;
+              font-size: 17px;
+              border-radius: 11px;
+            }
+          }
+          .body-action {
+            text-align: center;
+            display: flex;
+            justify-content: space-evenly;
+             input {
+              margin-top: 7px;
+              width: 60px;
+             }
+          }
         }
 
         tr:nth-child(even) {
@@ -28,7 +73,7 @@
           background-color: #fff99f;
           color: purple;
         }
-        
+
         .edit-item-content {
           border: none;
           background: transparent;

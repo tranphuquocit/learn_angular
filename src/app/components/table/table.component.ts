@@ -8,7 +8,7 @@ import { ItemModel } from "src/app/models/item.model";
 })
 
 export class TableComponent {
-  
+
   public item!: ItemModel;
   public tempItem!: ItemModel;
   @Input() listItem!: ItemModel[];
@@ -17,17 +17,19 @@ export class TableComponent {
   ngOnInit() { }
 
   public editItem(item: ItemModel) {
-    this.tempItem = JSON.parse(JSON.stringify(item));
     item.isEdit = true;
+    this.tempItem = JSON.parse(JSON.stringify(item));
   }
 
   public cancelEditItem(item: ItemModel) {
-    item.isEdit = false;
     item.content = this.tempItem.content;
+    item.level = this.tempItem.level;
+    item.isEdit = false;
   }
 
   public saveEditItem(item: ItemModel) {
     item.isEdit = false;
+    item.content = this.item.content;
+    item.level = this.item.level;
   }
-
 }
