@@ -15,7 +15,7 @@
       </td>
       <td class="body-content">
 
-        <span *ngIf="!item.isEdit">
+        <span *ngIf="!item.isEdit" highlightNumber [content]="item.content">
           {{item.content}}
         </span>
 
@@ -26,7 +26,7 @@
       </td>
       <td class="body-level">
         <ng-container *ngIf="!item.isEdit">
-          <span>{{item.level}}</span>
+          <span appHighlight [level]="item.level">{{item.level}}</span>
         </ng-container>
         <ng-container *ngIf="item.isEdit">
           <select name="" id="" [(ngModel)]="item.level" class="edit-item-level">

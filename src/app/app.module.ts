@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { HeadingComponent } from './components/heading/heading.component';
 import { TableComponent } from './components/table/table.component';
 import { ItemComponent } from './components/item/item.component';
+import { AppHighlightDirective } from './directives/highlight.directive';
+import { HighlightNumberDirective } from './directives/highlight-number.directive';
 
 const COMPONENT = [
   HeadingComponent,
@@ -14,9 +16,14 @@ const COMPONENT = [
   ItemComponent,
 ]
 
+const DIRECTIVE = [
+  AppHighlightDirective,
+  HighlightNumberDirective
+]
+
 @NgModule({
   declarations: [
-    AppComponent, ...COMPONENT
+    AppComponent, ...COMPONENT, ...DIRECTIVE
   ],
   imports: [
     BrowserModule,
