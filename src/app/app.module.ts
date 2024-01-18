@@ -9,6 +9,8 @@ import { TableComponent } from './components/table/table.component';
 import { ItemComponent } from './components/item/item.component';
 import { AppHighlightDirective } from './directives/highlight.directive';
 import { HighlightNumberDirective } from './directives/highlight-number.directive';
+import { HighlightOnlyNumberDirective } from './directives/highlight-only-number.directive';
+import { ConvertNumberDirective } from './directives/convert-number.directive';
 
 const COMPONENT = [
   HeadingComponent,
@@ -18,7 +20,9 @@ const COMPONENT = [
 
 const DIRECTIVE = [
   AppHighlightDirective,
-  HighlightNumberDirective
+  HighlightNumberDirective,
+  HighlightOnlyNumberDirective,
+  ConvertNumberDirective
 ]
 
 @NgModule({
