@@ -15,8 +15,8 @@
       </td>
       <td class="body-content">
 
-        <span *ngIf="!item.isEdit" appConvertNumber [content]="item.content">
-          {{item.content}}
+        <span *ngIf="!item.isEdit">
+          {{item.content | customNumber:'5'}}
         </span>
 
         <input class="edit-item-content" type="text"

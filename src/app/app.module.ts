@@ -11,6 +11,8 @@ import { AppHighlightDirective } from './directives/highlight.directive';
 import { HighlightNumberDirective } from './directives/highlight-number.directive';
 import { HighlightOnlyNumberDirective } from './directives/highlight-only-number.directive';
 import { ConvertNumberDirective } from './directives/convert-number.directive';
+import { ToUppercasePipe } from './pipes/uppercase.pipe';
+import { CustomNumberPipe } from './pipes/custom-number.pipe';
 
 const COMPONENT = [
   HeadingComponent,
@@ -25,9 +27,14 @@ const DIRECTIVE = [
   ConvertNumberDirective
 ]
 
+const PIPE = [
+  ToUppercasePipe,
+  CustomNumberPipe
+]
+
 @NgModule({
   declarations: [
-    AppComponent, ...COMPONENT, ...DIRECTIVE
+    AppComponent, ...COMPONENT, ...DIRECTIVE, ...PIPE
   ],
   imports: [
     BrowserModule,
