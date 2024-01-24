@@ -4,13 +4,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 
 import { FormsModule } from '@angular/forms';
+import { CountClickDirective } from './directives/count-click.directive';
 
 const COMPONENT = [
 ]
 
+const DIRECTIVE = [
+  CountClickDirective
+]
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ...DIRECTIVE
   ],
   imports: [
     BrowserModule,

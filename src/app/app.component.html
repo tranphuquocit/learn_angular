@@ -1,1 +1,7 @@
-Nơi này là chỗ em import các component mà em tạo ra vào đây!
+<div class="app-container">
+  <div class="btn">
+    <input type="button" value="Click here to count" (click)="click()" (mouseover)="hover()">
+    <input type="button" value="Reset" (click)="resetCountClick()"> <br>
+  </div>
+  <span class="result" appCountClick ></span>
+</div>

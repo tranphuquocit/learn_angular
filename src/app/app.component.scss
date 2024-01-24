@@ -1,17 +1,16 @@
-// .mau-do {
-//   color: red;
-// }
+.app-container {
+  padding: 15% 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-// .mau-xanh {
-//   color: blue;
-// }
-
-.mau {
-  color: yellow;
-  &-do {
-    color: red;
-  }
-  &-xanh {
-    color: blue;
+  .history {
+    height: 100px;
+    width: 100%;
+    border: 1px solid black;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
