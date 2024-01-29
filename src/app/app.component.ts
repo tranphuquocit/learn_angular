@@ -9,34 +9,39 @@ import { LocalStorageService } from './local-storage.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  countClick: number = 0;
-  listTimeClick: string[] = [];
-  countHover: number = 0;
-  listTimeHover: string[] = [];
+  // countClick: number = 0;
+  // listTimeClick: string[] = [];
+  // countHover: number = 0;
+  // listTimeHover: string[] = [];
+
+  infoCount: InfoClick = {
+    count: 0,
+    listTimeClick: []
+  }
+
+  infoHover: InfoHover = {
+    count: 0,
+    listTimeHover: []
+  }
+
+  timeClick: string = '';
+  timeHover: string = '';
 
   constructor(private localStorage: LocalStorageService) {}
 
   public click() {
-    this.countClick += 1;
     const currentTime = Date().split(' ')[4];
-    this.listTimeClick.unshift(currentTime);
-    // console.log(currentTime);
-    this.localStorage.saveData('countClick', this.countClick.toString());
-    this.localStorage.saveData('listTimeClick', this.listTimeClick.join(', '));
-    // const x = this.localStorage.getData('listTimeClick')
-    // console.log(x)
+    this.localStorage.saveData('timeClick', currentTime);
   }
 
   public hover() {
-    this.countHover += 1;
     const currentTime = Date().split(' ')[4];
-    this.listTimeHover.unshift(currentTime);
-    this.localStorage.saveData('countHover', this.countHover.toString());
-    this.localStorage.saveData('listTimeHover', this.listTimeHover.join(', '));
+    this.localStorage.saveData('timeHover', currentTime);
   }
 
-  public resetCountClick() {
-    this.localStorage.clearData();
+  public reset() {
+    this.localStorage.removeData('timeClick');
+    this.localStorage.removeData('timeHover');
   }
 
 }
