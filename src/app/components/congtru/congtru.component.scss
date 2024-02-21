@@ -1,0 +1,25 @@
+.input {
+  margin-left: 37%;
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  input {
+    width: 50px;
+    margin-top: 5px;
+  }
+}
+
+.result-text {
+  font-size: 25px;
+  margin-left: 707px;
+}
+
+.btn-save {
+  margin-left: 717px;
+}

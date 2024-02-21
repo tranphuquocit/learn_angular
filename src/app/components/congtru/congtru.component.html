@@ -1,0 +1,18 @@
+<br> <br>
+<div class="input">
+  <div class="input-A">
+    Số A: <input type="number" [(ngModel)]="soA">
+  </div>
+  <div class="input-A">
+    Số B: <input type="number" [(ngModel)]="soB">
+  </div>
+</div>
+<br>
+<div class="result">
+  <div class="btn">
+    <input type="button" (click)="tinh('cong')" value="Cộng">
+    <input type="button" (click)="tinh('tru')" value="Trừ"> <br>
+  </div>
+  <span class="result-text">Kết quả: {{result}}</span> <br>
+  <input class="btn-save" type="button" value="Lưu kết quả" (click)="saveResult()">
+</div>

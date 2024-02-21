@@ -1,0 +1,17 @@
+<br> <br>
+<div class="input">
+  Số A:<input class="input-A" type="number" [(ngModel)]="soA">
+  Số B:<input class="input-B" type="number" [(ngModel)]="soB">
+</div>
+<br> <br>
+<div class="btn-gan">
+  <input type="button" value="Gán vào A" (click)="ganKetQua('a')">
+  <input type="button" value="Gán vào B" (click)="ganKetQua('b')">
+  <input type="button" value="Reset" (click)="ganKetQua('r')">
+</div>
+<div class="btn-tinh">
+  <input type="button" (click)="tinh('nhan')" value="Nhân">
+  <input type="button" (click)="tinh('chia')" value="Chia">
+</div>
+ <br>
+<span class="result-text">Kết quả: {{result}}</span>
