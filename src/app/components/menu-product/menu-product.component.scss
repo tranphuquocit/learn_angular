@@ -1,0 +1,40 @@
+.menu-product-container {
+  margin-top: 50px;
+
+  .menu-product {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 40px;
+  }
+
+  .phone, .tablet, .watch, .laptop {
+    font-size: 26px;
+
+    &:hover {
+      cursor: pointer;
+      color: pink;
+    }
+  }
+
+  .arrange-text {
+    margin-left: 1400px;
+    margin-top: 20px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .list-products {
+    display: flex;
+    justify-content: space-around;
+
+    .product {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

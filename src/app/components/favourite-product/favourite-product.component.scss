@@ -1,0 +1,27 @@
+.favourite-product {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+
+  span {
+    margin-left: 20px;
+    font-size: 20px;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
+  .list-products {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+
+    .product {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

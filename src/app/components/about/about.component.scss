@@ -1,0 +1,27 @@
+.menu-container {
+  // display: flex;
+  // gap: 10px;
+  // justify-content: center;
+  // border: 1px solid black;
+  height: 50px;
+  padding-left: 50px;
+  background-color: rgb(249, 105, 65);
+  display: flex;
+  align-items: center;
+
+  span {
+    text-decoration: none;
+    font-size: 25px;
+    margin-right: 20px;
+    font-weight: 700;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
+  .about {
+    text-decoration: underline;
+  }
+}
