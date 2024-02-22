@@ -1,0 +1,96 @@
+import { Injectable } from "@angular/core";
+import { BehaviorSubject, Observable } from "rxjs";
+import { ProductModel } from "../models/product.model";
+
+@Injectable({
+  providedIn: 'root'
+})
+
+export class ProductService {
+  public listPhone = [
+    {
+      id: 1,
+      type: 'phone',
+      description: 'Điện thoại iPhone 15 Pro Max 256GB',
+      image: 'https://cdn.tgdd.vn/Products/Images/42/305658/iphone-15-pro-max-black-2-1.jpg',
+      price: '31.690.000',
+      quantity: 99,
+      like: 0,
+      sold: 24
+    },
+    {
+      id: 2,
+      type: 'phone',
+      description: 'Điện thoại Samsung Galaxy S24 5G 256GB',
+      image: 'https://cdn.tgdd.vn/Products/Images/42/319665/Slider/samsung-galaxy-s24-256gb-5g638419881104020719.jpg',
+      price: '22.990.000',
+      quantity: 35,
+      like: 0,
+      sold: 50
+    },
+    {
+      id: 3,
+      type: 'phone',
+      description: 'Điện thoại Samsung Galaxy S24+ 5G 256GB',
+      image: 'https://cdn.tgdd.vn/Products/Images/42/307172/Slider/samsung-galaxy-s24-plus-5g638419875855586731.jpg',
+      price: '26.990.000',
+      quantity: 100,
+      like: 5,
+      sold: 33
+    },
+    {
+      id: 4,
+      type: 'phone',
+      description: 'Điện thoại realme C55 6GB',
+      image: 'https://cdn.tgdd.vn/Products/Images/42/301603/Slider/vi-vn-realme-c55-slider--(2).jpg',
+      price: '4.190.000',
+      quantity: 20,
+      like: 0,
+      sold: 13
+    }
+  ];
+  public listLaptop = [
+    {
+      id: 1,
+      type: 'laptop',
+      description: 'Laptop HP 240 G9 i5 1235U/8GB/256GB/Win11 (6L1Y1PA)',
+      image: 'https://cdn.tgdd.vn/Products/Images/44/291153/hp-240-g9-i5-6l1y1pa-glr-fix-2.jpg',
+      price: '13.690.000',
+      quantity: 33,
+      like: 10,
+      sold: 12
+    },
+    {
+      id: 2,
+      type: 'laptop',
+      description: 'Laptop Asus Vivobook X515EA i3 1115G4/8GB/512GB/Win11 (EJ3948W)',
+      image: 'https://cdn.tgdd.vn/Products/Images/44/305010/Slider/vi-vn-asus-vivobook-x515ea-i3-ej3948w-slider-5.jpg',
+      price: '8.990.000',
+      quantity: 30,
+      like: 40,
+      sold: 15
+    },
+    {
+      id: 3,
+      type: 'laptop',
+      description: 'Laptop Acer Aspire 3 A314 35 C3KS N5100/4GB/256GB/Win11 (NX.A7SSV.009)',
+      image: 'https://cdn.tgdd.vn/Products/Images/44/308490/Slider/vi-vn-acer-aspire-3-a314-35-c3ks-n5100-nxa7ssv009-slider-2.jpg',
+      price: '5.890.000',
+      quantity: 10,
+      like: 10,
+      sold: 18
+    },
+    {
+      id: 4,
+      type: 'laptop',
+      description: 'Laptop Apple MacBook Air 13 inch M1 2020 8-core CPU/8GB/256GB/7-core GPU (MGND3SA/A)',
+      image: 'https://cdn.tgdd.vn/Products/Images/44/231244/Slider/apple-macbook-air-2020-mgn63saa638168474820399305.jpg',
+      price: '18.490.000',
+      quantity: 20,
+      like: 30,
+      sold: 10
+    }
+  ];
+  public listWatch = [];
+  public listTablet = [];
+}

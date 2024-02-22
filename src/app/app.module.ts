@@ -26,7 +26,7 @@ const COMPONENT = [
   ProductComponent,
   AboutComponent,
   ContactComponent,
-  DetailProductComponent
+  DetailProductComponent,
 ]
 
 @NgModule({

@@ -25,8 +25,7 @@ export class BannerComponent {
     this.currentIndex += 1;
     if(this.currentIndex > this.images.length - 1) {
       this.currentIndex = 0;
-      // console.log('hi')
     }
     this.timeOut;
-  }, 1000)
+  }, 1000);
 }

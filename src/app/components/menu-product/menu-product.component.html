@@ -1,23 +1,23 @@
 <div class="menu-product-container">
   <div class="menu-product">
-    <div class="phone">Phone</div>
-    <div class="laptop">Laptop</div>
-    <div class="tablet">Tablet</div>
-    <div class="watch">Watch</div>
+    <div class="phone" (click)="showTypeProduct('phone')">Phone</div>
+    <div class="laptop" (click)="showTypeProduct('laptop')">Laptop</div>
+    <div class="tablet" (click)="showTypeProduct('tablet')">Tablet</div>
+    <div class="watch" (click)="showTypeProduct('watch')">Watch</div>
   </div>
   <span class="arrange-text">Sắp xếp</span>
   <div class="list-products">
-    <div class="product" (click)="navigate()">
+    <div class="product" *ngFor="let product of listProduct">
+      <app-product [product]="product"></app-product>
+    </div>
+    <!-- <div class="product" (click)="navigate('')">
       <app-product></app-product>
     </div>
-    <div class="product" (click)="navigate()">
+    <div class="product" (click)="navigate('')">
       <app-product></app-product>
     </div>
-    <div class="product" (click)="navigate()">
+    <div class="product" (click)="navigate('')">
       <app-product></app-product>
     </div>
-    <div class="product" (click)="navigate()">
-      <app-product></app-product>
-    </div>
-  </div>
+  </div> -->
 </div>

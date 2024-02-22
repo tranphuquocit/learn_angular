@@ -1,8 +1,8 @@
-<div class="product-container">
-  <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-ll0vt65t453f4f" alt="" class="image">
-  <div class="description">Đây là mô tả sản phẩm</div>
+<div class="product-container" (click)="navigate(product)">
+  <img [src]="product?.image" alt="" class="image">
+  <div class="description">{{product?.description}}</div>
   <div class="footer">
-    <div class="price">100.000</div>
-    <div class="sold">2.4k</div>
+    <div class="price">{{product?.price}}</div>
+    <div class="sold">Đã bán {{product?.sold}}</div>
   </div>
 </div>
