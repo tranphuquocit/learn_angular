@@ -5,19 +5,13 @@
     <div class="tablet" (click)="showTypeProduct('tablet')">Tablet</div>
     <div class="watch" (click)="showTypeProduct('watch')">Watch</div>
   </div>
-  <span class="arrange-text">Sắp xếp</span>
+  <select class="arrange-text">
+    <option value="">Sắp xếp theo</option>
+    <option value="">Giá</option>
+    <option value="">Tên</option>
+  </select>
   <div class="list-products">
     <div class="product" *ngFor="let product of listProduct">
       <app-product [product]="product"></app-product>
     </div>
-    <!-- <div class="product" (click)="navigate('')">
-      <app-product></app-product>
-    </div>
-    <div class="product" (click)="navigate('')">
-      <app-product></app-product>
-    </div>
-    <div class="product" (click)="navigate('')">
-      <app-product></app-product>
-    </div>
-  </div> -->
 </div>

@@ -2,7 +2,7 @@
   <app-menu></app-menu>
   <div class="detail-product-main">
     <div class="image-size">
-        <img class="image" [src]="product.image" alt="">
+        <img class="image" [src]="currentProduct.image" alt="">
         <div class="slideshow-button">
             <span ></span>
             <span ></span>
@@ -23,11 +23,11 @@
     </div>
     <div class="detail">
         <p class="text-1">WOMEN'S RUNNING SHOE</p>
-        <h3 class="text-2">{{product.description}}</h3>
-        <h3 class="price">{{product.price}}</h3>
+        <h3 class="text-2">{{currentProduct.description}}</h3>
+        <h3 class="price">{{currentProduct.price}}</h3>
         <p class="description">The Nike Epic React Flyknit foam cushioning is reponsive yet light-weight, durable yet soft. This craetes a sensation that not only enhances the feeling of moving forward.</p>
         <div class="button">
-            <button class="add-to-cart-button">ADD TO CART</button>
+            <button class="add-to-cart-button" (click)="getProductsOfType('')">ADD TO CART</button>
             <button class="icon-button" (click)="likeProduct()"><3</button>
         </div>
     </div>

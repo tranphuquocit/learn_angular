@@ -32,10 +32,10 @@ export class ProductComponent {
 
   }
 
-  public navigate(productChoise: any) {
-    console.log(productChoise)
-    let type  = productChoise.type;
-    let id = productChoise.id;
+  public navigate(productChoice: any) {
+    // console.log(productChoice)
+    let type  = productChoice.type;
+    let id = productChoice.id;
     this.router.navigate([`detail/${type}/${id}`]);
   }
 }

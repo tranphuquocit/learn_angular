@@ -1,23 +1,44 @@
 .menu-container {
-  // display: flex;
-  // gap: 10px;
-  // justify-content: center;
-  // border: 1px solid black;
   height: 50px;
   padding-left: 50px;
-  background-color: rgb(249, 105, 65);
+  background-color: rgb(218, 146, 167);
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
-  span {
-    text-decoration: none;
-    font-size: 25px;
-    margin-right: 20px;
-    font-weight: 700;
+  .menu-main {
+    span {
+      text-decoration: none;
+      font-size: 25px;
+      margin-right: 20px;
+      font-weight: 700;
 
-    &:hover {
-      cursor: pointer;
-      text-decoration: underline;
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .menu-login {
+
+    .sign-up, .login {
+      &:hover {
+        color: rgb(88, 80, 80);
+      }
+    }
+
+    .sign-up {
+      border-right: 0.5px solid black;
+      padding-right: 5px;
+      font-size: 20px;
+    }
+
+    .login {
+      border-left: 0.5px solid black;
+      margin-right: 30px;
+      padding-left: 5px;
+      font-size: 20px;
     }
   }
 }

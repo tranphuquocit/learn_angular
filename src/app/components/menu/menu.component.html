@@ -1,5 +1,15 @@
 <div class="menu-container">
-  <span (click)="navigate('')">Home</span>
-  <span (click)="navigate('contact')">Contact</span>
-  <span (click)="navigate('about')">About</span>
+  <div class="menu-main">
+    <span (click)="navigate('')">Home</span>
+    <span (click)="navigate('contact')">Contact</span>
+    <span (click)="navigate('about')">About</span>
+  </div>
+  <ng-container class="menu-login" *ngIf="!isLogin">
+    <span class="sign-up" (click)="navigate('sign-up')">Sign up</span>
+    <span class="login" (click)="navigate('login')">Log in</span>
+  </ng-container>
+  <ng-container class="menu-login" *ngIf="isLogin">
+    <span class="user-name">{{accLogin.username}}</span>
+    <span class="logout" (click)="logout()">Logout</span>
+  </ng-container>
 </div>

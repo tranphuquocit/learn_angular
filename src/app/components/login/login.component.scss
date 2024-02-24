@@ -1,0 +1,150 @@
+.login-container {
+  height: 100vh;
+  background: url('https://static.vecteezy.com/system/resources/previews/004/299/830/non_2x/shopping-online-on-phone-with-podium-paper-art-modern-pink-background-gifts-box-illustration-free-vector.jpg');
+  background-position: center;
+  background-repeat: none;
+  background-size: cover;
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .login-form {
+    // padding-top: 50px;
+    display: flex;
+    background-color: black;
+    opacity: 0.8;
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+    // margin-left: 33%;
+    flex-direction: column;
+    border-radius: 5%;
+    box-shadow: 5px 5px 20px;
+
+    .login-title {
+      margin-left: 145px;
+      margin-top: 50px;
+      color: white;
+      font-size: 50px;
+      font-weight: 700;
+    }
+
+    .username {
+      display: flex;
+      margin-top: 30px;
+      justify-content: space-around;
+
+      .username-input {
+        color: white;
+        font-size: 20px;
+        outline: white;
+        background: transparent;
+        width: 340px;
+        height: 45px;
+        padding-left: 10px;
+      }
+
+      .username-icon {
+        color: white;
+        font-size: 20px;
+      }
+    }
+
+    .password {
+      display: flex;
+      margin-top: 30px;
+      justify-content: space-around;
+
+      .password-input {
+        color: white;
+        font-size: 20px;
+        outline: white;
+        background: transparent;
+        width: 340px;
+        height: 45px;
+        padding-left: 10px;
+      }
+
+      .password-icon {
+        color: white;
+        font-size: 24px;
+      }
+    }
+
+    .forgot-regis {
+      margin-top: 30px;
+      color: white;
+      display: flex;
+      justify-content: space-around;
+      font-size: 18px;
+
+      .forgot {
+        margin-left: 10px;
+
+        .forgot-password {
+          margin-right: 5px;
+        }
+
+        .click-here {
+          color: green;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .regis {
+        .new-user {
+          margin-right: 5px;
+        }
+
+        .register-here {
+          color: green;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    .login {
+      font-weight: 700;
+      width: 150px;
+      margin-top: 25px;
+      margin-left: 36%;
+      padding: 10px;
+      font-size: 20px;
+      border-radius: 15px;
+
+      &:hover {
+        background-color: pink;
+      }
+    }
+
+    .footer {
+      margin-top: 33px;
+      color: white;
+      padding-left: 163px;
+
+      .text {
+        margin-left: 45px;
+      }
+
+      .images {
+        margin-top: 5px;
+        display: flex;
+        gap: 5px;
+        height: 40px;
+      }
+    }
+  }
+
+  .login-copyright {
+    margin-top: 120px;
+    color: black;
+    font-weight: 600;
+  }
+}

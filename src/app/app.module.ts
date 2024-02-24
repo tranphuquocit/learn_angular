@@ -15,6 +15,9 @@ import { ProductComponent } from './components/product/product.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { DetailProductComponent } from './components/detail-product/detail.product.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 const COMPONENT = [
   HomeComponent,
@@ -27,6 +30,9 @@ const COMPONENT = [
   AboutComponent,
   ContactComponent,
   DetailProductComponent,
+  LoginComponent,
+  SignUpComponent,
+  ForgotPasswordComponent
 ]
 
 @NgModule({
