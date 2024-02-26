@@ -6,5 +6,6 @@ export interface ProductModel {
   price?: string,
   quantity?: number,
   like?: number,
-  sold?: number
+  sold?: number,
+  isLiked?: boolean
 }

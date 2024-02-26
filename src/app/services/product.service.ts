@@ -175,4 +175,20 @@ export class ProductService {
       sold: 13
     }
   ];
+
+  public setListPhone(listPhone: any) {
+    this.listPhone = listPhone;
+  }
+
+  public setListLaptop(laptop: any) {
+    this.listLaptop = laptop;
+  }
+
+  public setListWatch(watch: any) {
+    this.listWatch = watch;
+  }
+
+  public setListTablet(tablet: any) {
+    this.listTablet = tablet;
+  }
 }
