@@ -26,8 +26,8 @@ export class MenuComponent {
     this.router.navigate([url]);
   }
 
-  public logout() {
-    this.router.navigate(['']);
+  public logout(url: string) {
+    this.router.navigate([url]);
     this.service.setIsLogin(false);
   }
 }

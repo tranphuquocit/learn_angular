@@ -7,6 +7,8 @@
   justify-content: space-between;
 
   .menu-main {
+    width: 30%;
+
     span {
       text-decoration: none;
       font-size: 25px;
@@ -15,7 +17,7 @@
 
       &:hover {
         cursor: pointer;
-        text-decoration: underline;
+        color: red;
       }
     }
   }

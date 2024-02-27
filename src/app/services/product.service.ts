@@ -16,7 +16,8 @@ export class ProductService {
       price: '31.690.000',
       quantity: 99,
       like: 0,
-      sold: 24
+      sold: 24,
+      isLiked: false
     },
     {
       id: 2,
@@ -26,7 +27,8 @@ export class ProductService {
       price: '22.990.000',
       quantity: 35,
       like: 0,
-      sold: 50
+      sold: 50,
+      isLiked: false
     },
     {
       id: 3,
@@ -36,7 +38,8 @@ export class ProductService {
       price: '26.990.000',
       quantity: 100,
       like: 0,
-      sold: 33
+      sold: 33,
+      isLiked: false
     },
     {
       id: 4,
@@ -46,7 +49,8 @@ export class ProductService {
       price: '4.190.000',
       quantity: 20,
       like: 0,
-      sold: 13
+      sold: 13,
+      isLiked: false
     }
   ];
   public listLaptop = [
@@ -58,7 +62,8 @@ export class ProductService {
       price: '13.690.000',
       quantity: 33,
       like: 0,
-      sold: 12
+      sold: 12,
+      isLiked: false
     },
     {
       id: 2,
@@ -68,7 +73,8 @@ export class ProductService {
       price: '8.990.000',
       quantity: 30,
       like: 0,
-      sold: 15
+      sold: 15,
+      isLiked: false
     },
     {
       id: 3,
@@ -78,7 +84,8 @@ export class ProductService {
       price: '5.890.000',
       quantity: 10,
       like: 0,
-      sold: 18
+      sold: 18,
+      isLiked: false
     },
     {
       id: 4,
@@ -88,7 +95,8 @@ export class ProductService {
       price: '18.490.000',
       quantity: 20,
       like: 0,
-      sold: 10
+      sold: 10,
+      isLiked: false
     }
   ];
   public listWatch = [
@@ -100,7 +108,8 @@ export class ProductService {
       price: '4.352.000',
       quantity: 99,
       like: 0,
-      sold: 24
+      sold: 24,
+      isLiked: false
     },
     {
       id: 2,
@@ -110,7 +119,8 @@ export class ProductService {
       price: '3.455.000',
       quantity: 99,
       like: 0,
-      sold: 24
+      sold: 24,
+      isLiked: false
     },
     {
       id: 3,
@@ -120,7 +130,8 @@ export class ProductService {
       price: '2.800.000',
       quantity: 99,
       like: 0,
-      sold: 24
+      sold: 24,
+      isLiked: false
     },
     {
       id: 4,
@@ -130,7 +141,8 @@ export class ProductService {
       price: '11.350.000',
       quantity: 99,
       like: 0,
-      sold: 24
+      sold: 24,
+      isLiked: false
     }
   ];
   public listTablet = [
@@ -142,7 +154,8 @@ export class ProductService {
       price: '6.690.000',
       quantity: 20,
       like: 0,
-      sold: 13
+      sold: 13,
+      isLiked: false
     },
     {
       id: 2,
@@ -152,7 +165,8 @@ export class ProductService {
       price: '14.490.000',
       quantity: 20,
       like: 0,
-      sold: 13
+      sold: 13,
+      isLiked: false
     },
     {
       id: 3,
@@ -162,7 +176,8 @@ export class ProductService {
       price: '28.190.000',
       quantity: 20,
       like: 0,
-      sold: 13
+      sold: 13,
+      isLiked: false
     },
     {
       id: 4,
@@ -172,7 +187,8 @@ export class ProductService {
       price: '3.990.000',
       quantity: 20,
       like: 0,
-      sold: 13
+      sold: 13,
+      isLiked: false
     }
   ];
 
