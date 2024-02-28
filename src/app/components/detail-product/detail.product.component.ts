@@ -21,7 +21,7 @@ export class DetailProductComponent {
   isLogin!: boolean;
   accLogin!: AccountModel;
 
-  listPhone: any = [];
+  listPhone: any[] = [];
   listLaptop: any = [];
   listWatch: any = [];
   listTablet: any = [];
@@ -73,6 +73,7 @@ export class DetailProductComponent {
     }
 
     this.listProduct.forEach(item => {
+      item.isLiked = false;
       if(item.id == id) {
         this.currentProduct = item;
       }
@@ -183,4 +184,6 @@ private scanArrListLikeProduct(product: ProductModel, userId: string) {
     })
   }
 }
+
+
 }

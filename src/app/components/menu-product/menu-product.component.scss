@@ -1,8 +1,10 @@
 .menu-product-container {
   margin-top: 50px;
+  background-color: rgb(231, 207, 227);
 
   .menu-product {
-    border: 1px solid black;
+    background-color: rgb(241, 157, 210);
+    box-shadow: 5px 5px 15px rgb(204, 137, 202);
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -14,7 +16,7 @@
 
     &:hover {
       cursor: pointer;
-      color: pink;
+      color: white;
     }
   }
 

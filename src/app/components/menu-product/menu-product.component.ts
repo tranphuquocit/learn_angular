@@ -40,7 +40,7 @@ export class MenuProductComponent {
         this.listProduct = this.service.listTablet;
         break;
       }
-      default: this.listProduct = this.service.listPhone;
+      // default: this.listProduct = this.service.listPhone;
     }
     // console.log(this.listProduct);
   }
