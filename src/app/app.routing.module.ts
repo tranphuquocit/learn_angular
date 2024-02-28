@@ -8,6 +8,7 @@ import { DetailProductComponent } from "./components/detail-product/detail.produ
 import { LoginComponent } from "./components/login/login.component";
 import { SignUpComponent } from "./components/sign-up/sign-up.component";
 import { ForgotPasswordComponent } from "./components/forgot-password/forgot-password.component";
+import { CartComponent } from "./components/cart/cart.component";
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'forgot-password',
     component: ForgotPasswordComponent
+  },
+  {
+    path: 'cart',
+    component: CartComponent
   }
 ]
 

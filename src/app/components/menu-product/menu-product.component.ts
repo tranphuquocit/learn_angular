@@ -25,6 +25,7 @@ export class MenuProductComponent {
     this.typeProduct = typeProduct;
     switch(this.typeProduct) {
       case 'phone': {
+        console.log('phone');
         this.listProduct = this.service.listPhone;
         break;
       }

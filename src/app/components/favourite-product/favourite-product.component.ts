@@ -31,7 +31,7 @@ export class FavouriteProduct {
   ngOnInit() {
     if(this.listTongHop && this.listTongHop.length > 0) {
       this.listTongHop.forEach((ele: any) => {
-        if(ele['like'] >= 2) {
+        if(ele['like'] >= 2 && this.favouriteList.length < 4) {
           this.favouriteList.push(ele);
         }
       })

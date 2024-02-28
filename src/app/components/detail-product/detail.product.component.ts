@@ -92,11 +92,7 @@ private getParamOfUrl() {
 }
 
 public likeProduct() {
-  let name = this.getParamOfUrl().name;
-  let id = this.getParamOfUrl().id;
-  let obj = this.getParamOfUrl();
-  let currentUrl: string = `detail/${obj.name}/${obj.id}`;
-  this.accService.setCurUrl(currentUrl);
+  this.setCurrentUrl();
 
   if(!this.isLogin) {
     this.router.navigate(['login']);
@@ -185,5 +181,21 @@ private scanArrListLikeProduct(product: ProductModel, userId: string) {
   }
 }
 
+public navigate(url: string) {
+  this.setCurrentUrl();
 
+  if(!this.isLogin) {
+    this.router.navigate(['login']);
+  }
+  else {
+    this.router.navigate([url]);
+  }
+}
+
+private setCurrentUrl() {
+  let name = this.getParamOfUrl().name;
+  let id = this.getParamOfUrl().id;
+  let currentUrl: string = `detail/${name}/${id}`;
+  this.accService.setCurUrl(currentUrl);
+}
 }

@@ -25,7 +25,10 @@
   .list-products {
     display: flex;
     justify-content: space-around;
+    // gap: 100px;
+    padding-top: 55px;
     background-color: rgb(231, 207, 227);
+    overflow: auto;
 
     .product {
       &:hover {
