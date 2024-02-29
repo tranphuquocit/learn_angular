@@ -12,20 +12,23 @@ import { ProductService } from "src/app/services/product.service";
 export class MenuProductComponent {
 
   public typeProduct!: string;
-  public listProduct: ProductModel[] = this.service.listPhone;
+  public listProduct!: ProductModel[];
 
   constructor(
     private router: Router,
     private service: ProductService
     ) {
-    // console.log(this.service.listLaptop);
+      if(this.service.listPhone && this.service.listPhone.length > 0) {
+        this.listProduct = this.service.listPhone;
+      }
+    // console.log(this.listProduct);
   }
 
   public showTypeProduct(typeProduct: string) {
     this.typeProduct = typeProduct;
+    // console.log(typeProduct)
     switch(this.typeProduct) {
       case 'phone': {
-        console.log('phone');
         this.listProduct = this.service.listPhone;
         break;
       }

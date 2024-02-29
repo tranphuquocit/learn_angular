@@ -92,6 +92,7 @@ private getParamOfUrl() {
 }
 
 public likeProduct() {
+  let name = this.getParamOfUrl().name;
   this.setCurrentUrl();
 
   if(!this.isLogin) {
@@ -112,8 +113,7 @@ public likeProduct() {
 
       //set like
 
-      let newListPlus = this.updateLike('plus');
-      this.productService.setListPhone(newListPlus);
+      this.updateListOnService(name, 'plus');
     }
     else {
       this.currentProduct.isLiked = false;
@@ -128,13 +128,12 @@ public likeProduct() {
 
       //set like
 
-      let newListMinus = this.updateLike('minus');
-      this.productService.setListPhone(newListMinus);
+      this.updateListOnService(name, 'minus');
     }
   }
 }
 
-public updateLike(plusOrMinus: any) {
+public updateListProduct(plusOrMinus: any) {
   switch(plusOrMinus) {
     case 'plus': {
       if(this.listProduct && this.listProduct.length > 0) {
@@ -167,6 +166,27 @@ public updateLike(plusOrMinus: any) {
       };
       let newList: any = this.listProduct;
       return newList;
+    }
+  }
+}
+
+private updateListOnService(name: string, plusOrMinus: string) {
+  switch(name) {
+    case 'phone': {
+      this.productService.setListPhone(this.updateListProduct(plusOrMinus));
+      break;
+    }
+    case 'laptop': {
+      this.productService.setListLaptop(this.updateListProduct(plusOrMinus));
+      break;
+    }
+    case 'tablet': {
+      this.productService.setListTablet(this.updateListProduct(plusOrMinus));
+      break;
+    }
+    case 'watch': {
+      this.productService.setListWatch(this.updateListProduct(plusOrMinus));
+      break;
     }
   }
 }

@@ -27,6 +27,7 @@ export class HomeComponent {
     this.listTablet = this.productService.listTablet;
     this.listWatch = this.productService.listWatch;
     // console.log(this.arrListLikeProduct)
+    this.resetLikeOfListProduct();
     this.scanLike();
   }
 
@@ -68,6 +69,29 @@ export class HomeComponent {
     let newListPhone = this.listPhone;
     this.productService.setListPhone(newListPhone)
     // console.log(this.listPhone)
+  }
+
+  private resetLikeOfListProduct() {
+    this.listPhone.forEach((ele: any) => {
+      if(ele['like']) {
+        ele['like'] = 0;
+      }
+    })
+    this.listLaptop.forEach((ele: any) => {
+      if(ele['like']) {
+        ele['like'] = 0;
+      }
+    })
+    this.listTablet.forEach((ele: any) => {
+      if(ele['like']) {
+        ele['like'] = 0;
+      }
+    })
+    this.listWatch.forEach((ele: any) => {
+      if(ele['like']) {
+        ele['like'] = 0;
+      }
+    })
   }
 }
 
