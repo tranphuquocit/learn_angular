@@ -28,6 +28,8 @@ export class DetailProductComponent {
 
   arrListLikeProduct: any[] = [];
 
+  listProductOnCart: any[] = [];
+
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
@@ -36,10 +38,18 @@ export class DetailProductComponent {
     ){
     this.accService.getIsLogin().subscribe(isLogin => this.isLogin = isLogin);
     this.accService.getAccLogin().subscribe(acc => this.accLogin = acc);
+
     this.listPhone = this.productService.listPhone;
     this.listLaptop = this.productService.listLaptop;
     this.listWatch = this.productService.listWatch;
     this.listTablet = this.productService.listTablet;
+
+    if(localStorage.getItem(JSON.stringify(this.accLogin.userId))) {
+      let arr = [];
+      arr = JSON.parse(`${localStorage.getItem(JSON.stringify(this.accLogin.userId))}`);
+      this.listProductOnCart = arr;
+    }
+
     // localStorage.setItem('productsLiked', JSON.stringify([]))//reset de test
     if(localStorage.getItem('productsLiked')) {
       let arr = [];
@@ -201,14 +211,15 @@ private scanArrListLikeProduct(product: ProductModel, userId: string) {
   }
 }
 
-public navigate(url: string) {
+public addToCart(url: string) {
   this.setCurrentUrl();
 
   if(!this.isLogin) {
     this.router.navigate(['login']);
   }
   else {
-    this.router.navigate([url]);
+    this.listProductOnCart.push(this.currentProduct);
+    localStorage.setItem(JSON.stringify(this.accLogin.userId), JSON.stringify(this.listProductOnCart));
   }
 }
 

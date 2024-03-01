@@ -20,9 +20,11 @@
         border-radius: 15px;
         display: flex;
         height: 200px;
+        // overflow: hidden;
 
         img {
           height: 100%;
+          width: 300px;
           border-radius: 15px 0 0 15px;
         }
       }
@@ -40,7 +42,7 @@
         .product-price {
           margin: 35px 0 0 15px;
           display: flex;
-          gap: 55px;
+          gap: 30px;
           align-items: center;
 
           .quantity-text {
@@ -128,18 +130,19 @@
 
       .subtotal-delivery {
         margin-top: 20px;
-        font-size: 20px;
         display: flex;
         flex-direction: column;
         gap: 10px;
 
         .subtotal, .delivery, .total {
+          font-size: 20px;
           display: flex;
           justify-content: space-between;
         }
 
         .total {
           align-items: center;
+          font-size: 25px;
 
           .total-text {
             font-weight: 700;

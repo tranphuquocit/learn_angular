@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { AccountModel } from "src/app/models/account.model";
 import { AccountService } from "src/app/services/account.service";
 
@@ -16,7 +16,8 @@ export class MenuComponent {
 
   constructor(
     private router: Router,
-    private service: AccountService
+    private service: AccountService,
+    private accService: AccountService
     ) {
     this.service.getIsLogin().subscribe(isLogin => this.isLogin = isLogin);
     this.service.getAccLogin().subscribe(acc => this.accLogin = acc);
@@ -29,5 +30,15 @@ export class MenuComponent {
   public logout(url: string) {
     this.router.navigate([url]);
     this.service.setIsLogin(false);
+  }
+
+  public navigateToCart() {
+    if(!this.isLogin) {
+      this.router.navigate(['login']);
+      this.accService.setCurUrl('cart');
+    }
+    else {
+      this.router.navigate(['cart']);
+    }
   }
 }

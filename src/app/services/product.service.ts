@@ -196,15 +196,15 @@ export class ProductService {
     this.listPhone = listPhone;
   }
 
-  public setListLaptop(laptop: any) {
-    this.listLaptop = laptop;
+  public setListLaptop(listLaptop: any) {
+    this.listLaptop = listLaptop;
   }
 
-  public setListWatch(watch: any) {
-    this.listWatch = watch;
+  public setListWatch(listWatch: any) {
+    this.listWatch = listWatch;
   }
 
-  public setListTablet(tablet: any) {
-    this.listTablet = tablet;
+  public setListTablet(listTablet: any) {
+    this.listTablet = listTablet;
   }
 }

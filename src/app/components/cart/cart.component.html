@@ -2,93 +2,21 @@
   <app-menu></app-menu>
   <div class="cart-main">
     <div class="list-products">
-      <div class="product">
+      <div class="product" *ngFor="let product of listProductCart">
         <div class="product-image">
-          <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2018/11/2-10.png" alt="">
+          <img [src]="product.image" alt="">
         </div>
         <div class="product-detail">
-          <span class="product-description">LEGO 71043 Harry Potter Hogwards Castle Toy for Teens & Adults</span>
+          <span class="product-description">{{product.description}}</span>
           <span class="product-price">
             <span class="quantity-text">Quantity: </span>
             <span class="quantity">
-              <div class="quantity-minus">-</div>
-              <div class="quantity-number">1</div>
-              <div class="quantity-plus">+</div>
+              <div class="quantity-minus" (click)="changeQuantity(product.id, 'minus')">-</div>
+              <div class="quantity-number">{{product.quantity}}</div>
+              <div class="quantity-plus" (click)="changeQuantity(product.id, 'plus')">+</div>
             </span>
-            <span class="price">190.000</span>
-            <span class="total">190.000</span>
-          </span>
-        </div>
-      </div>
-      <div class="product">
-        <div class="product-image">
-          <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2018/11/2-10.png" alt="">
-        </div>
-        <div class="product-detail">
-          <span class="product-description">LEGO 71043 Harry Potter Hogwards Castle Toy for Teens & Adults</span>
-          <span class="product-price">
-            <span class="quantity-text">Quantity: </span>
-            <span class="quantity">
-              <div class="quantity-minus">-</div>
-              <div class="quantity-number">1</div>
-              <div class="quantity-plus">+</div>
-            </span>
-            <span class="price">190.000</span>
-            <span class="total">190.000</span>
-          </span>
-        </div>
-      </div>
-      <div class="product">
-        <div class="product-image">
-          <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2018/11/2-10.png" alt="">
-        </div>
-        <div class="product-detail">
-          <span class="product-description">LEGO 71043 Harry Potter Hogwards Castle Toy for Teens & Adults</span>
-          <span class="product-price">
-            <span class="quantity-text">Quantity: </span>
-            <span class="quantity">
-              <div class="quantity-minus">-</div>
-              <div class="quantity-number">1</div>
-              <div class="quantity-plus">+</div>
-            </span>
-            <span class="price">190.000</span>
-            <span class="total">190.000</span>
-          </span>
-        </div>
-      </div>
-      <div class="product">
-        <div class="product-image">
-          <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2018/11/2-10.png" alt="">
-        </div>
-        <div class="product-detail">
-          <span class="product-description">LEGO 71043 Harry Potter Hogwards Castle Toy for Teens & Adults</span>
-          <span class="product-price">
-            <span class="quantity-text">Quantity: </span>
-            <span class="quantity">
-              <div class="quantity-minus">-</div>
-              <div class="quantity-number">1</div>
-              <div class="quantity-plus">+</div>
-            </span>
-            <span class="price">190.000</span>
-            <span class="total">190.000</span>
-          </span>
-        </div>
-      </div>
-      <div class="product">
-        <div class="product-image">
-          <img src="https://cdn.sforum.vn/sforum/wp-content/uploads/2018/11/2-10.png" alt="">
-        </div>
-        <div class="product-detail">
-          <span class="product-description">LEGO 71043 Harry Potter Hogwards Castle Toy for Teens & Adults</span>
-          <span class="product-price">
-            <span class="quantity-text">Quantity: </span>
-            <span class="quantity">
-              <div class="quantity-minus">-</div>
-              <div class="quantity-number">1</div>
-              <div class="quantity-plus">+</div>
-            </span>
-            <span class="price">190.000</span>
-            <span class="total">190.000</span>
+            <span class="price">{{product.price}}</span>
+            <span class="total">{{product.subtotal}}</span>
           </span>
         </div>
       </div>
@@ -105,15 +33,15 @@
       <div class="subtotal-delivery">
         <div class="subtotal">
           <span class="subtotal-text">Subtotal</span>
-          <span class="subtotal-number">190.000</span>
+          <span class="subtotal-number">{{subtotal}}</span>
         </div>
         <div class="delivery">
           <span class="delivery-text">Delivery</span>
-          <span class="delivery-number">0</span>
+          <span class="delivery-number">{{delivery}}</span>
         </div>
         <div class="total">
           <span class="total-text">Total</span>
-          <span class="total-number">190.000</span>
+          <span class="total-number">{{total}}</span>
         </div>
         <div class="checkout">
           <input type="button" value="Checkout">
