@@ -1,0 +1,10 @@
+<div class="favourite-product">
+  <div class="title">
+    <span>Sản phẩm ưa thích</span>
+  </div>
+  <div class="list-products">
+    <div class="product" *ngFor="let item of arr">
+      <app-product [product]="item"></app-product>
+    </div>
+  </div>
+</div>
