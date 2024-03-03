@@ -8,13 +8,13 @@
   <ng-container *ngIf="!isLogin">
     <div class="menu-login">
       <span class="sign-up">Sign up</span>
-      <span class="login" (click)="navigate('login')">Log in</span>
+      <span class="login" (click)="navigate('login')">Login</span>
     </div>
   </ng-container>
   <ng-container *ngIf="isLogin">
     <div class="menu-login">
       <span class="sign-up username">{{accLogin.username}}</span>
-      <span class="login" (click)="navigate('login')">Logout</span>
+      <span class="login" (click)="logout()">Logout</span>
     </div>
   </ng-container>
 </div>

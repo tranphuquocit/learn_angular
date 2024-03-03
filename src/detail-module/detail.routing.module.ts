@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DetailPageComponent } from './layouts/detail-page/detail-page.component';
+import { DetailComponent } from './components/detail/detail.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: DetailPageComponent
+    path: ':name/:id',
+    component: DetailComponent
   }
 ];
 

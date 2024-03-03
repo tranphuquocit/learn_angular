@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { HomePageComponent } from './layouts/home-page/home-page.component';
 import { HomeRoutingModule } from './home.routing.module';
 import { BannerComponent } from './components/banner/banner.component';
@@ -10,6 +9,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { FavouriteProductComponent } from './components/favourite-product/favourite-product.component';
 import { MenuProductComponent } from './components/menu-product/menu-product.component';
 import { ProductComponent } from './components/product/product.component';
+import { CommonModule } from '@angular/common';
 
 
 const COMPONENT = [
@@ -28,6 +28,7 @@ const COMPONENT = [
     HomePageComponent, ...COMPONENT
   ],
   imports: [
+    CommonModule,
     HomeRoutingModule
   ],
   providers: [],

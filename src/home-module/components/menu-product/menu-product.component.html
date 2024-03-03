@@ -1,9 +1,9 @@
 <div class="menu-product-container">
   <div class="menu-product">
-    <div class="phone">Phone</div>
-    <div class="laptop">Laptop</div>
-    <div class="tablet">Tablet</div>
-    <div class="watch">Watch</div>
+    <div class="phone" (click)="chooseTypeProduct('phone')">Phone</div>
+    <div class="laptop" (click)="chooseTypeProduct('laptop')">Laptop</div>
+    <div class="tablet" (click)="chooseTypeProduct('tablet')">Tablet</div>
+    <div class="watch" (click)="chooseTypeProduct('watch')">Watch</div>
   </div>
   <select class="arrange-text">
     <option value="">Sắp xếp theo</option>
@@ -11,7 +11,7 @@
     <option value="">Tên</option>
   </select>
   <div class="list-products">
-    <div class="product" *ngFor="let item of arr">
-      <app-product></app-product>
+    <div class="product" *ngFor="let product of listProduct">
+      <app-product [product]="product"></app-product>
     </div>
 </div>
