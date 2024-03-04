@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { ChangeDetectorRef, Component } from "@angular/core";
 import { ProductService } from "src/share-services/product.service";
 
 @Component({
@@ -13,10 +13,17 @@ export class FavouriteProductComponent {
 
   favouriteList: any[] = [];
 
-  constructor(private proSrv: ProductService) {
+  arrLikeProduct: any[] = [];
+
+  constructor(private proSrv: ProductService, private cdf: ChangeDetectorRef) {
     this.listProduct = [...this.proSrv.listPhone, ...this.proSrv.listLaptop, ...this.proSrv.listTablet, ...this.proSrv.listWatch];
+    if(localStorage.getItem('productsLiked')) {
+      this.arrLikeProduct = JSON.parse(`${localStorage.getItem('productsLiked')}`);
+    }
+
+    this.scanLike();
+
     this.getFavouriteList();
-    // console.log(this.listProduct)
   }
 
   ngOnInit() {
@@ -25,11 +32,23 @@ export class FavouriteProductComponent {
   private getFavouriteList() {
     if(this.listProduct && this.listProduct.length > 0) {
       this.listProduct.forEach((ele: any) => {
-        if(ele['like'] >= 2) {
+        // console.log(ele['like'])
+        if(ele['like'] > 1) {
           this.favouriteList.push(ele);
         }
       })
+      // this.cdf.detectChanges();
     }
+  }
+
+  private scanLike() {
+    this.listProduct.forEach((eleP: any) => {
+      this.arrLikeProduct.forEach((eleLP: any) => {
+        if((eleP['type'] === eleLP['type']) && (eleP['id'] === eleLP['productId'])) {
+          eleP['like'] += 1;
+        }
+      })
+    })
   }
 
 }

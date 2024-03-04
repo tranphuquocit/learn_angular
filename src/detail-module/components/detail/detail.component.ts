@@ -26,6 +26,8 @@ export class DetailComponent {
 
   currentUrl!: string;
 
+  productInfo: any = {};
+
   constructor(
     private proSrv: ProductService,
     private route: ActivatedRoute,
@@ -38,10 +40,23 @@ export class DetailComponent {
 
       this.setArrLikeProduct();
 
+      if(localStorage.getItem('productInfo')) {
+        this.productInfo = JSON.parse(`${localStorage.getItem('productInfo')}`);
+        console.log(this.productInfo)
+        if(this.accLogin && !this.currentProduct.isLiked) {
+          let obj = {
+            productId: this.productInfo['productId'],
+            type: this.productInfo['type'],
+            userId: this.accLogin['userId']
+          }
+          this.arrLikeProduct.push(obj);
+          localStorage.setItem('productsLiked', JSON.stringify(this.arrLikeProduct));
+          localStorage.removeItem('productInfo')
+        }
+      }
+
       this.checkIsLiked(this.currentProduct, this.accLogin);
     }
-
-    ngOnInit() {}
 
   private getParamUrl() {
     let id = this.route.snapshot.params['id'];
@@ -107,6 +122,13 @@ export class DetailComponent {
     if(!this.accLogin) {
       this.accSrv.setCurUrl(`detail/${this.getParamUrl().name}/${this.getParamUrl().id}`);
       this.router.navigate(['login']);
+
+      let obj = {
+        type: this.currentProduct.type,
+        productId: this.currentProduct.id
+      }
+
+      localStorage.setItem('productInfo', JSON.stringify(obj));
     }
     else {
       //active like

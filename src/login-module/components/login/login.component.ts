@@ -19,6 +19,8 @@ export class LoginComponent {
 
   currentUrl!: string;
 
+  productInfo: any = {};
+
   constructor(
     private accSrv: AccountService,
     private router: Router
@@ -27,6 +29,11 @@ export class LoginComponent {
       this.listAccount = this.accSrv.listAccount;
     }
     this.currentUrl = this.accSrv.currentUrl;
+
+    if(localStorage.getItem('productInfo')) {
+      this.productInfo = JSON.parse(`${localStorage.getItem('productInfo')}`)
+    }
+    // console.log(this.productInfo);
   }
 
   public login() {
@@ -37,6 +44,13 @@ export class LoginComponent {
             this.accSrv.setIsLogin(true);
             this.accSrv.setAccLogin(ele);
             this.router.navigate([this.currentUrl]);
+
+            let obj = {
+              userId: ele['id'],
+              type: this.productInfo['type'],
+              productId: this.productInfo['productId']
+            }
+            localStorage.setItem('productInfo', JSON.stringify(obj));
             return;
           }
           else {
