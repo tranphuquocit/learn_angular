@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { ProductService } from "src/share-services/product.service";
 
 @Component({
   selector: 'app-favourite-product',
@@ -8,5 +9,27 @@ import { Component } from "@angular/core";
 
 export class FavouriteProductComponent {
 
-  arr: any[] = [1,2,3,4]
+  listProduct: any[] = [];
+
+  favouriteList: any[] = [];
+
+  constructor(private proSrv: ProductService) {
+    this.listProduct = [...this.proSrv.listPhone, ...this.proSrv.listLaptop, ...this.proSrv.listTablet, ...this.proSrv.listWatch];
+    this.getFavouriteList();
+    // console.log(this.listProduct)
+  }
+
+  ngOnInit() {
+  }
+
+  private getFavouriteList() {
+    if(this.listProduct && this.listProduct.length > 0) {
+      this.listProduct.forEach((ele: any) => {
+        if(ele['like'] >= 2) {
+          this.favouriteList.push(ele);
+        }
+      })
+    }
+  }
+
 }

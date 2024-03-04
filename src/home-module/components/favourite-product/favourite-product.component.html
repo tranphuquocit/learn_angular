@@ -3,8 +3,8 @@
     <span>Sản phẩm ưa thích</span>
   </div>
   <div class="list-products">
-    <div class="product" *ngFor="let item of arr">
-      <app-product [product]="item"></app-product>
+    <div class="product" *ngFor="let product of favouriteList">
+      <app-product [product]="product"></app-product>
     </div>
   </div>
 </div>

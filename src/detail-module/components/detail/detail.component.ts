@@ -36,17 +36,12 @@ export class DetailComponent {
 
       this.setCurrentProduct();
 
-      if(localStorage.getItem('productsLiked')) {
-        this.arrLikeProduct = JSON.parse(`${localStorage.getItem('productsLiked')}`);
-      }
+      this.setArrLikeProduct();
 
       this.checkIsLiked(this.currentProduct, this.accLogin);
-
-      this.countLike();
     }
 
-    ngOnInit() {
-  }
+    ngOnInit() {}
 
   private getParamUrl() {
     let id = this.route.snapshot.params['id'];
@@ -55,21 +50,6 @@ export class DetailComponent {
       id: id,
       name: type
     }
-  }
-
-  private countLike() {
-    if(this.listProduct && this.listProduct.length > 0) {
-      this.listProduct.forEach((item: any) => {
-        item.like = 0;
-      })
-    }
-    this.arrLikeProduct.forEach((ele: any) => {
-      this.listProduct.forEach((eleP: any) => {
-        if(ele['productId'] === eleP['id']) {
-          eleP['like'] += 1;
-        }
-      })
-    })
   }
 
   private setCurrentProduct() {
@@ -139,9 +119,10 @@ export class DetailComponent {
         }
         this.arrLikeProduct.push(obj);
         localStorage.setItem('productsLiked', JSON.stringify(this.arrLikeProduct));
+        this.setArrLikeProduct();
 
-        //update like
-        this.updateLike();
+        //update like on service
+        this.updateLike('plus');
       }
       //remove like
       else {
@@ -154,40 +135,84 @@ export class DetailComponent {
         });
         const newList = this.arrLikeProduct.filter(item => !newArray.includes(item));
         localStorage.setItem('productsLiked', JSON.stringify(newList));
+        this.setArrLikeProduct();
 
-        //update like
-        this.updateLike();
+        //update like on service
+        this.updateLike('minus');
       }
     }
   }
 
-  private updateLike() {
-    if(this.listProduct && this.listProduct.length > 0) {
-      this.listProduct.forEach((ele: any) => {
-        if(ele['id'] === this.currentProduct.id) {
-          ele['like'] += 1;
-        }
-      })
+  private setArrLikeProduct() {
+    if(localStorage.getItem('productsLiked')) {
+      this.arrLikeProduct = JSON.parse(`${localStorage.getItem('productsLiked')}`);
     }
+  }
+
+  private updateLike(plusOrMinus: string) {
     let type = this.getParamUrl().name;
-    switch(type) {
-      case 'phone': {
-        this.proSrv.setListPhone(this.listProduct);
+    switch(plusOrMinus) {
+      case 'plus': {
+        if(this.listProduct && this.listProduct.length > 0) {
+          this.listProduct.forEach((ele: any) => {
+            if(ele['id'] === this.currentProduct.id) {
+              ele['like'] += 1;
+            }
+          })
+        }
+        switch(type) {
+          case 'phone': {
+            this.proSrv.setListPhone(this.listProduct);
+            break;
+          }
+          case 'laptop': {
+            this.proSrv.setListLaptop(this.listProduct);
+            break;
+          }
+          case 'tablet': {
+            this.proSrv.setListTablet(this.listProduct);
+            break;
+          }
+          case 'watch': {
+            this.proSrv.setListWatch(this.listProduct);
+            break;
+          }
+        }
         break;
       }
-      case 'laptop': {
-        this.proSrv.setListLaptop(this.listProduct);
-        break;
-      }
-      case 'tablet': {
-        this.proSrv.setListTablet(this.listProduct);
-        break;
-      }
-      case 'watch': {
-        this.proSrv.setListWatch(this.listProduct);
+      case 'minus': {
+        if(this.listProduct && this.listProduct.length > 0) {
+          this.listProduct.forEach((ele: any) => {
+            if(ele['id'] === this.currentProduct.id) {
+              if(ele['like'] > 0) {
+                ele['like'] -= 1;
+              }
+            }
+          })
+        }
+        switch(type) {
+          case 'phone': {
+            this.proSrv.setListPhone(this.listProduct);
+            break;
+          }
+          case 'laptop': {
+            this.proSrv.setListLaptop(this.listProduct);
+            break;
+          }
+          case 'tablet': {
+            this.proSrv.setListTablet(this.listProduct);
+            break;
+          }
+          case 'watch': {
+            this.proSrv.setListWatch(this.listProduct);
+            break;
+          }
+        }
         break;
       }
     }
+
+
   }
 
   private checkIsLiked(currentProduct: ProductModel, accLogin: AccountModel) {

@@ -11,8 +11,18 @@ export class MenuProductComponent {
 
   listProduct!: any[];
 
+  arrLikeProduct: any[] = [];
+
   constructor(private proSrv: ProductService) {
     this.listProduct = this.proSrv.listPhone;
+
+    if(localStorage.getItem('productsLiked')) {
+      this.arrLikeProduct = JSON.parse(`${localStorage.getItem('productsLiked')}`);
+    }
+  }
+
+  ngOnInit() {
+    this.countLike();
   }
 
   public chooseTypeProduct(type: string) {
@@ -34,5 +44,21 @@ export class MenuProductComponent {
         break;
       }
     }
+    this.countLike();
+  }
+
+  private countLike() {
+    if(this.listProduct && this.listProduct.length > 0) {
+      this.listProduct.forEach((item: any) => {
+        item.like = 0;
+      })
+    }
+    this.arrLikeProduct.forEach((ele: any) => {
+      this.listProduct.forEach((eleP: any) => {
+        if((ele['productId'] === eleP['id']) && (ele['type'] === eleP['type'])) {
+          eleP['like'] += 1;
+        }
+      })
+    })
   }
 }

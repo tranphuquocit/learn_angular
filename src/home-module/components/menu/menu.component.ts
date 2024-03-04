@@ -25,4 +25,9 @@ export class MenuComponent {
   public navigate(url: string) {
     this.router.navigate([url]);
   }
+
+  public logout() {
+    this.accSrv.setCurUrl('');
+    this.router.navigate(['login']);
+  }
 }
