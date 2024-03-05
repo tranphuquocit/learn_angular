@@ -1,8 +1,21 @@
-<!-- <div class="banner-container">
-  <img src="https://cf.shopee.vn/file/vn-50009109-f81ab5783c8fb07067286a51d6366120_xxhdpi" alt="">
-</div> -->
 <div class="slideshow">
   <button (click)="prev()"><</button>
   <img [src]="images[currentIndex]" alt="Slide">
   <button (click)="next()">></button>
 </div>
+
+
+<!-- <c-carousel [animate]="false" transition="crossfade">
+  <c-carousel-inner>
+    <c-carousel-item *ngFor="let slide of slides">
+      <img
+        [src]="slide.src"
+        alt="{{slide.title}}"
+        class="d-block w-100"
+        loading="lazy"
+      />
+    </c-carousel-item>
+  </c-carousel-inner>
+  <c-carousel-control [routerLink] caption="Previous" direction="prev"></c-carousel-control>
+  <c-carousel-control [routerLink] caption="Next" direction="next"></c-carousel-control>
+</c-carousel> -->
