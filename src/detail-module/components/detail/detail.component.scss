@@ -21,6 +21,7 @@
     height: auto;
     display: flex;
     justify-content: space-between;
+    gap: 20px;
     width: 60%;
     background: var(--white);
     border-radius: 10px;
@@ -126,6 +127,11 @@
         font-size: 1em;
         line-height: 1.6em;
         text-align: justify;
+    }
+
+    .sold {
+      font-size: 20px;
+      color: red;
     }
 
     button {

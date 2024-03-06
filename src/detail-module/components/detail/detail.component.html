@@ -26,6 +26,7 @@
         <h3 class="text-2">{{currentProduct.description}}</h3>
         <h3 class="price">{{currentProduct.price | number: '1.0-0'}}</h3>
         <p class="description">The Nike Epic React Flyknit foam cushioning is reponsive yet light-weight, durable yet soft. This craetes a sensation that not only enhances the feeling of moving forward.</p>
+        <p class="sold">Đã bán {{currentProduct.sold}}</p>
         <div class="button">
             <button class="add-to-cart-button" (click)="addToCart()">ADD TO CART</button>
             <ng-container *ngIf="currentProduct.isLiked">

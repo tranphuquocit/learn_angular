@@ -52,10 +52,6 @@ export class CartComponent {
     }
 
     //set price
-    this.listProduct.forEach((ele: any) => {
-      ele['subtotal'] = ele['price'] * ele['quantity'];
-    })
-
     this.resetTotal();
   }
 
@@ -78,6 +74,7 @@ export class CartComponent {
       //reset subtotal
     this.subtotal = 0;
     this.listProduct.forEach((ele: any) => {
+      ele['subtotal'] = ele['price'] * ele['quantity'];
       this.subtotal += ele['subtotal'];
     })
 

@@ -290,24 +290,22 @@ export class DetailComponent {
       }
 
       //check quantity
-      // if(this.listProductOnCart.length > 0) {
-      //   this.listProductOnCart.forEach((ele: any) => {
-      //       if((ele['image'] === obj.image) && (ele['description'] === obj.description) && (ele['price'] === obj.price) && (ele['quantity'] === obj.quantity) && (ele['subtotal'] === obj.subtotal) && (ele['ideliverymage'] === obj.delivery) && (ele['deliveryOption'] === obj.deliveryOption) && (ele['total'] === obj.total)) {
-      //         ele['quantity'] += 1;
-      //         ele['subtotal'] = ele['quantity'] * ele['price'];
-      //       }
-      //       else {
-      //         this.listProductOnCart.push(obj)
-      //         localStorage.setItem(`${this.accLogin.userId}`, JSON.stringify(this.listProductOnCart));
-      //         this.listProductOnCart = JSON.parse(`${localStorage.getItem(`${this.accLogin.userId}`)}`);
-      //       }
-      // })
-      // }
-      // else {
+      let isSame: boolean = false;
+      this.listProductOnCart.forEach((ele: any) => {
+        if((ele['image'] === obj.image) && (ele['description'] === obj.description) && (ele['price'] === obj.price) && (ele['delivery'] === obj.delivery) && (ele['deliveryOption'] === obj.deliveryOption) && (ele['total'] === obj.total)) {
+          isSame = true;
+          ele['quantity'] += 1;
+          ele['subtotal'] = ele['quantity'] * ele['price'];
+        }
+        localStorage.setItem(`${this.accLogin.userId}`, JSON.stringify(this.listProductOnCart));
+        this.listProductOnCart = JSON.parse(`${localStorage.getItem(`${this.accLogin.userId}`)}`);
+      })
+
+      if(!isSame) {
         this.listProductOnCart.push(obj)
         localStorage.setItem(`${this.accLogin.userId}`, JSON.stringify(this.listProductOnCart));
         this.listProductOnCart = JSON.parse(`${localStorage.getItem(`${this.accLogin.userId}`)}`);
-// }
+      }
 }
 }
 }

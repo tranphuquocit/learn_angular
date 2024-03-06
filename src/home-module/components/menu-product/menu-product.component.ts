@@ -94,7 +94,7 @@ export class MenuProductComponent {
         }
         case 'best-seller': {
           if(this.listProduct) {
-            this.listProduct.sort((a,b) => (a.description > b.description) ? -1 : ((b.description > a.description) ? 1 : 0))
+            this.listProduct.sort((a,b) => (a.sold > b.sold) ? -1 : ((b.sold > a.sold) ? 1 : 0))
           }
           break;
         }
