@@ -1,7 +1,8 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-import { AccountModel } from "src/login-module/models/account.model";
+import { AccountModel } from "src/share-models/account.model";
 import { AccountService } from "src/share-services/account.service";
+import { CartService } from "src/share-services/cart.service";
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,7 @@ export class LoginComponent {
 
   constructor(
     private accSrv: AccountService,
+    private cartSrc: CartService,
     private router: Router
     ) {
     if(this.accSrv.listAccount && this.accSrv.listAccount.length > 0) {
@@ -43,6 +45,7 @@ export class LoginComponent {
           if(ele['password'] === this.password) {
             this.accSrv.setIsLogin(true);
             this.accSrv.setAccLogin(ele);
+            this.cartSrc.setAccLogin(ele);
             this.router.navigate([this.currentUrl]);
 
             let obj = {

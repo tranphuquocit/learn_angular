@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { AccountModel } from "src/login-module/models/account.model";
+import { AccountModel } from "src/share-models/account.model";
 
 @Injectable({
   providedIn: 'root'

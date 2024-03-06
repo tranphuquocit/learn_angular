@@ -6,6 +6,11 @@
   align-items: center;
   justify-content: space-between;
 
+  .example-button-row {
+    display: table-cell;
+    max-width: 600px;
+  }
+
   .menu-main {
     width: 30%;
 

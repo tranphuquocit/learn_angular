@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-import { AccountModel } from "src/login-module/models/account.model";
+import { AccountModel } from "src/share-models/account.model";
 import { AccountService } from "src/share-services/account.service";
 
 @Component({
@@ -20,7 +20,6 @@ export class MenuComponent {
     private accSrv: AccountService
     ) {
       this.isLogin = this.accSrv.isLogin;
-      console.log(this.isLogin)
       this.accLogin = this.accSrv.accLogin;
     }
   public navigate(url: string) {
@@ -31,5 +30,15 @@ export class MenuComponent {
     this.accSrv.setCurUrl('');
     this.accSrv.setIsLogin(false);
     this.router.navigate(['login']);
+  }
+
+  public cart() {
+    if(!this.accLogin) {
+      this.router.navigate(['login']);
+      this.accSrv.setCurUrl('cart');
+    }
+    else {
+      this.router.navigate(['cart']);
+    }
   }
 }

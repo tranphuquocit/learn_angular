@@ -13,7 +13,7 @@ const COMPONENT = [
     MenuComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   providers: [],
   bootstrap: [MenuComponent]

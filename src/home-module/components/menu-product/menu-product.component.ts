@@ -13,12 +13,15 @@ export class MenuProductComponent {
 
   arrLikeProduct: any[] = [];
 
+  arrange!: string;
+
   constructor(private proSrv: ProductService) {
     this.listProduct = this.proSrv.listPhone;
 
     if(localStorage.getItem('productsLiked')) {
       this.arrLikeProduct = JSON.parse(`${localStorage.getItem('productsLiked')}`);
     }
+
   }
 
   ngOnInit() {
@@ -60,5 +63,43 @@ export class MenuProductComponent {
         }
       })
     })
+  }
+
+  public arrangeProduct() {
+    if(this.arrange) {
+      switch(this.arrange) {
+        case 'price-increase': {
+          if(this.listProduct) {
+            this.listProduct.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0))
+          }
+          break;
+        }
+        case 'price-decrease': {
+          if(this.listProduct) {
+            this.listProduct.sort((a,b) => (a.price > b.price) ? -1 : ((b.price > a.price) ? 1 : 0))
+          }
+          break;
+        }
+        case 'name-a-to-z': {
+          if(this.listProduct) {
+            this.listProduct.sort((a,b) => (a.description > b.description) ? 1 : ((b.description > a.description) ? -1 : 0))
+          }
+          break;
+        }
+        case 'name-z-to-a': {
+          if(this.listProduct) {
+            this.listProduct.sort((a,b) => (a.description > b.description) ? -1 : ((b.description > a.description) ? 1 : 0))
+          }
+          break;
+        }
+        case 'best-seller': {
+          if(this.listProduct) {
+            this.listProduct.sort((a,b) => (a.description > b.description) ? -1 : ((b.description > a.description) ? 1 : 0))
+          }
+          break;
+        }
+      }
+    }
+
   }
 }

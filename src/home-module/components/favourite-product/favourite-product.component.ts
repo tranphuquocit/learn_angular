@@ -39,6 +39,8 @@ export class FavouriteProductComponent {
       })
       // this.cdf.detectChanges();
     }
+    this.favouriteList.sort((a,b) => (a.like > b.like) ? -1 : ((b.like > a.like) ? 1 : 0))
+
   }
 
   private scanLike() {

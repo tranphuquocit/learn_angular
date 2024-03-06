@@ -3,7 +3,7 @@ export interface ProductModel {
   type?: string,
   description?: string,
   image?: string,
-  price?: string,
+  price?: number,
   quantity?: number,
   like?: number,
   sold?: number,

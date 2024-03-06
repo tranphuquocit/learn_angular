@@ -9,6 +9,7 @@ import { MenuProductComponent } from './components/menu-product/menu-product.com
 import { ProductComponent } from './components/product/product.component';
 import { CommonModule } from '@angular/common';
 import { MenuModule } from 'src/menu-module/menu.module';
+import { FormsModule } from '@angular/forms';
 
 
 const COMPONENT = [
@@ -27,6 +28,7 @@ const COMPONENT = [
   ],
   imports: [
     CommonModule,
+    FormsModule,
     MenuModule,
     HomeRoutingModule
   ],

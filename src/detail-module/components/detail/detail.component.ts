@@ -1,9 +1,10 @@
 import { LocalizedString } from "@angular/compiler";
 import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { ProductModel } from "src/detail-module/models/product.model";
-import { AccountModel } from "src/login-module/models/account.model";
+import { AccountModel } from "src/share-models/account.model";
+import { ProductModel } from "src/share-models/product.model";
 import { AccountService } from "src/share-services/account.service";
+import { CartService } from "src/share-services/cart.service";
 import { ProductService } from "src/share-services/product.service";
 
 @Component({
@@ -28,6 +29,8 @@ export class DetailComponent {
 
   productInfo: any = {};
 
+  listProductOnCart!: any[];
+
   constructor(
     private proSrv: ProductService,
     private route: ActivatedRoute,
@@ -40,9 +43,17 @@ export class DetailComponent {
 
       this.setArrLikeProduct();
 
+      if(this.accLogin) {
+        if(localStorage.getItem(`${this.accLogin.userId}`)) {
+          this.listProductOnCart = JSON.parse(`${localStorage.getItem(`${this.accLogin.userId}`)}`);
+        }
+        else {
+          this.listProductOnCart = [];
+        }
+      }
+
       if(localStorage.getItem('productInfo')) {
         this.productInfo = JSON.parse(`${localStorage.getItem('productInfo')}`);
-        console.log(this.productInfo)
         if(this.accLogin && !this.currentProduct.isLiked) {
           let obj = {
             productId: this.productInfo['productId'],
@@ -258,4 +269,45 @@ export class DetailComponent {
       })
     }
   }
+
+  public addToCart() {
+    if(!this.accLogin) {
+      this.accSrv.setCurUrl(`detail/${this.getParamUrl().name}/${this.getParamUrl().id}`);
+      this.router.navigate(['login']);
+    }
+    else {
+      //tang sp trong cart
+      let obj = {
+        id: this.listProductOnCart.length + 1,
+        image: this.currentProduct.image,
+        description: this.currentProduct.description,
+        price: this.currentProduct.price,
+        quantity: 1,
+        subtotal: this.currentProduct.price,
+        deliveryOption: '',
+        delivery: 0,
+        total: this.currentProduct.price
+      }
+
+      //check quantity
+      // if(this.listProductOnCart.length > 0) {
+      //   this.listProductOnCart.forEach((ele: any) => {
+      //       if((ele['image'] === obj.image) && (ele['description'] === obj.description) && (ele['price'] === obj.price) && (ele['quantity'] === obj.quantity) && (ele['subtotal'] === obj.subtotal) && (ele['ideliverymage'] === obj.delivery) && (ele['deliveryOption'] === obj.deliveryOption) && (ele['total'] === obj.total)) {
+      //         ele['quantity'] += 1;
+      //         ele['subtotal'] = ele['quantity'] * ele['price'];
+      //       }
+      //       else {
+      //         this.listProductOnCart.push(obj)
+      //         localStorage.setItem(`${this.accLogin.userId}`, JSON.stringify(this.listProductOnCart));
+      //         this.listProductOnCart = JSON.parse(`${localStorage.getItem(`${this.accLogin.userId}`)}`);
+      //       }
+      // })
+      // }
+      // else {
+        this.listProductOnCart.push(obj)
+        localStorage.setItem(`${this.accLogin.userId}`, JSON.stringify(this.listProductOnCart));
+        this.listProductOnCart = JSON.parse(`${localStorage.getItem(`${this.accLogin.userId}`)}`);
+// }
+}
+}
 }

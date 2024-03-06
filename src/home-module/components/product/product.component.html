@@ -2,7 +2,7 @@
   <img [src]="product.image" alt="" class="image">
   <div class="description">{{product.description}}</div>
   <div class="footer">
-    <div class="price">{{product.price}}</div>
+    <div class="price">{{product.price | number: '1.0-0'}}</div>
     <div class="sold">Đã thích {{product.like}}</div>
   </div>
 </div>
