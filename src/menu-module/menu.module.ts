@@ -7,13 +7,14 @@ const COMPONENT = [
 
 @NgModule({
   declarations: [
-    MenuComponent
+    MenuComponent,
   ],
   exports: [
     MenuComponent
   ],
   imports: [
     CommonModule,
+
   ],
   providers: [],
   bootstrap: [MenuComponent]
