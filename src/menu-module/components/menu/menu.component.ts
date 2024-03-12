@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { AccountModel } from "src/share-models/account.model";
 import { AccountService } from "src/share-services/account.service";
+import { CartService } from "src/share-services/cart.service";
 
 @Component({
   selector: 'app-menu',
@@ -17,7 +18,8 @@ export class MenuComponent {
 
   constructor(
     private router: Router,
-    private accSrv: AccountService
+    private accSrv: AccountService,
+    private cartSrv: CartService
     ) {
       this.isLogin = this.accSrv.isLogin;
       this.accLogin = this.accSrv.accLogin;
@@ -29,16 +31,17 @@ export class MenuComponent {
   public logout() {
     this.accSrv.setCurUrl('');
     this.accSrv.setIsLogin(false);
+    this.cartSrv.setListTempProduct([]);
     this.router.navigate(['login']);
   }
 
-  public cart() {
-    if(!this.accLogin) {
-      this.router.navigate(['login']);
-      this.accSrv.setCurUrl('cart');
-    }
-    else {
-      this.router.navigate(['cart']);
-    }
-  }
+  // public cart() {
+  //   if(!this.accLogin) {
+  //     this.router.navigate(['login']);
+  //     this.accSrv.setCurUrl('cart');
+  //   }
+  //   else {
+  //     this.router.navigate(['cart']);
+  //   }
+  // }
 }

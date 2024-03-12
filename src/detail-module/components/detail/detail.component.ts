@@ -21,6 +21,8 @@ export class DetailComponent {
 
   accLogin!: AccountModel;
 
+  isLogin!: boolean;
+
   isLiked: boolean = false;
 
   arrLikeProduct: any[] = [];
@@ -29,27 +31,31 @@ export class DetailComponent {
 
   productInfo: any = {};
 
-  listProductOnCart!: any[];
+  listProductOnCart: any[] = [];
+
+  tempListProductOnCart: any[] = [];
 
   constructor(
     private proSrv: ProductService,
     private route: ActivatedRoute,
     private accSrv: AccountService,
+    private cartSrv: CartService,
     private router: Router
     ) {
       this.accLogin = this.accSrv.accLogin;
+      this.isLogin = this.accSrv.isLogin;
 
       this.setCurrentProduct();
 
       this.setArrLikeProduct();
 
-      if(this.accLogin) {
+      if(this.isLogin) {
         if(localStorage.getItem(`${this.accLogin.userId}`)) {
           this.listProductOnCart = JSON.parse(`${localStorage.getItem(`${this.accLogin.userId}`)}`);
         }
-        else {
-          this.listProductOnCart = [];
-        }
+      }
+      else {
+        this.listProductOnCart = this.cartSrv.listTempProduct;
       }
 
       if(localStorage.getItem('productInfo')) {
@@ -271,14 +277,9 @@ export class DetailComponent {
   }
 
   public addToCart() {
-    if(!this.accLogin) {
-      this.accSrv.setCurUrl(`detail/${this.getParamUrl().name}/${this.getParamUrl().id}`);
-      this.router.navigate(['login']);
-    }
-    else {
       //tang sp trong cart
       let obj = {
-        id: this.listProductOnCart.length + 1,
+        id: Math.floor(Math.random() * 100) + 1,  //random 1-100
         image: this.currentProduct.image,
         description: this.currentProduct.description,
         price: this.currentProduct.price,
@@ -290,22 +291,41 @@ export class DetailComponent {
       }
 
       //check quantity
-      let isSame: boolean = false;
-      this.listProductOnCart.forEach((ele: any) => {
-        if((ele['image'] === obj.image) && (ele['description'] === obj.description) && (ele['price'] === obj.price) && (ele['delivery'] === obj.delivery) && (ele['deliveryOption'] === obj.deliveryOption) && (ele['total'] === obj.total)) {
-          isSame = true;
-          ele['quantity'] += 1;
-          ele['subtotal'] = ele['quantity'] * ele['price'];
-        }
-        localStorage.setItem(`${this.accLogin.userId}`, JSON.stringify(this.listProductOnCart));
-        this.listProductOnCart = JSON.parse(`${localStorage.getItem(`${this.accLogin.userId}`)}`);
+      if(this.isLogin) {
+        let isSame: boolean = false;
+        this.listProductOnCart.forEach((ele: any) => {
+          if((ele['image'] === obj.image) && (ele['description'] === obj.description) && (ele['price'] === obj.price) && (ele['delivery'] === obj.delivery) && (ele['deliveryOption'] === obj.deliveryOption) && (ele['total'] === obj.total)) {
+            isSame = true;
+            ele['quantity'] += 1;
+            ele['subtotal'] = ele['quantity'] * ele['price'];
+            localStorage.setItem(`${this.accLogin.userId}`, JSON.stringify(this.listProductOnCart));
+            this.listProductOnCart = JSON.parse(`${localStorage.getItem(`${this.accLogin.userId}`)}`);
+          }
       })
 
-      if(!isSame) {
-        this.listProductOnCart.push(obj)
-        localStorage.setItem(`${this.accLogin.userId}`, JSON.stringify(this.listProductOnCart));
-        this.listProductOnCart = JSON.parse(`${localStorage.getItem(`${this.accLogin.userId}`)}`);
+        if(!isSame) {
+          this.listProductOnCart.push(obj)
+          localStorage.setItem(`${this.accLogin.userId}`, JSON.stringify(this.listProductOnCart));
+          this.listProductOnCart = JSON.parse(`${localStorage.getItem(`${this.accLogin.userId}`)}`);
+        }
       }
-}
+      else {
+        let isSame: boolean = false;
+        this.listProductOnCart.forEach((ele: any) => {
+          if((ele['image'] === obj.image) && (ele['description'] === obj.description) && (ele['price'] === obj.price) && (ele['delivery'] === obj.delivery) && (ele['deliveryOption'] === obj.deliveryOption) && (ele['total'] === obj.total)) {
+            isSame = true;
+            ele['quantity'] += 1;
+            ele['subtotal'] = ele['quantity'] * ele['price'];
+            this.cartSrv.setListTempProduct(this.listProductOnCart);
+            this.listProductOnCart = this.cartSrv.listTempProduct;
+          }
+      })
+
+        if(!isSame) {
+          this.listProductOnCart.push(obj)
+          this.cartSrv.setListTempProduct(this.listProductOnCart);
+          this.listProductOnCart = this.cartSrv.listTempProduct;
+        }
+      }
 }
 }
