@@ -7,5 +7,6 @@ export interface CartItem {
   subtotal?: number,
   deliveryOption?: string,
   delivery?: number,
-  total?: number
+  total?: number,
+  isChecked?: boolean
 }

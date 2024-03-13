@@ -29,12 +29,19 @@
           border-radius: 15px 0 0 15px;
         }
 
-        .exit {
+        .product-exit-check {
           z-index: 99;
           position: absolute;
           top: 10px;
           right: 10px;
-          color: red;
+
+          .exit {
+            color: red;
+          }
+
+          .check {
+
+          }
 
           &:hover {
             cursor: pointer;
@@ -43,20 +50,23 @@
       }
 
       .product-detail {
+        width: 550px;
         display: flex;
         flex-direction: column;
 
         .product-description {
           font-size: 30px;
           font-weight: 900;
-          margin: 15px 0 0 15px;
+          box-sizing: border-box;
+          padding: 15px 0 0 15px
         }
 
         .product-price {
-          margin: 35px 0 0 15px;
+          box-sizing: border-box;
+          padding: 35px 10px 0 15px;
           display: flex;
-          gap: 30px;
           align-items: center;
+          justify-content: space-between;
 
           .quantity-text {
             font-size: 25px;
@@ -111,7 +121,7 @@
       }
     }
 
-    .bill {
+    .bill-total {
       width: 45%;
       height: 300px;
       background-color: white;
@@ -181,6 +191,20 @@
           margin-top: 10px;
         }
       }
+    }
+
+    .bill-checkout {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      width: 45%;
+      height: 300px;
+      background-color: white;
+      border-radius: 15px;
+      box-sizing: border-box;
+      padding: 20px;
+      position: sticky;
+      top: 80px;
     }
   }
 }

@@ -4,6 +4,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { CartRoutingModule } from './cart.routing.module';
 import { CommonModule } from '@angular/common';
 import { MenuModule } from 'src/menu-module/menu.module';
+import { FormsModule } from '@angular/forms';
 
 
 const COMPONENT = [
@@ -16,6 +17,7 @@ const COMPONENT = [
   ],
   imports: [
     CommonModule,
+    FormsModule,
     MenuModule,
     CartRoutingModule
   ],

@@ -49,9 +49,9 @@ export class LoginComponent {
             this.router.navigate([this.currentUrl]);
 
             let obj = {
-              userId: ele['id'],
               type: this.productInfo['type'],
-              productId: this.productInfo['productId']
+              productId: this.productInfo['productId'],
+              userId: ele['id']
             }
             localStorage.setItem('productInfo', JSON.stringify(obj));
             return;

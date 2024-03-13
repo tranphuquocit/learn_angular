@@ -9,14 +9,15 @@ import { ProductComponent } from './components/product/product.component';
 import { CommonModule } from '@angular/common';
 import { MenuModule } from 'src/menu-module/menu.module';
 import { FormsModule } from '@angular/forms';
-import { CarouselModule } from 'src/carousel-module/carousel.module';
+import { BannerComponent } from './components/banner/banner.component';
 
 const COMPONENT = [
   AboutComponent,
   ContactComponent,
   FavouriteProductComponent,
   MenuProductComponent,
-  ProductComponent
+  ProductComponent,
+  BannerComponent
 ]
 
 @NgModule({
@@ -27,7 +28,6 @@ const COMPONENT = [
     CommonModule,
     FormsModule,
     MenuModule,
-    CarouselModule,
     HomeRoutingModule
   ],
   providers: [],

@@ -23,8 +23,6 @@ export class DetailComponent {
 
   isLogin!: boolean;
 
-  isLiked: boolean = false;
-
   arrLikeProduct: any[] = [];
 
   currentUrl!: string;
@@ -39,7 +37,6 @@ export class DetailComponent {
     private proSrv: ProductService,
     private route: ActivatedRoute,
     private accSrv: AccountService,
-    private cartSrv: CartService,
     private router: Router
     ) {
       this.accLogin = this.accSrv.accLogin;
@@ -49,18 +46,24 @@ export class DetailComponent {
 
       this.setArrLikeProduct();
 
+      //get list products on cart
       if(this.isLogin) {
         if(localStorage.getItem(`${this.accLogin.userId}`)) {
           this.listProductOnCart = JSON.parse(`${localStorage.getItem(`${this.accLogin.userId}`)}`);
         }
       }
       else {
-        this.listProductOnCart = this.cartSrv.listTempProduct;
+        if(localStorage.getItem('guess')) {
+          this.listProductOnCart = JSON.parse(`${localStorage.getItem('guess')}`);
+        }
       }
 
+      this.checkIsLiked();
+
+      //set like cho hành động trước đó khi chưa đăng nhập
       if(localStorage.getItem('productInfo')) {
         this.productInfo = JSON.parse(`${localStorage.getItem('productInfo')}`);
-        if(this.accLogin && !this.currentProduct.isLiked) {
+        if(this.isLogin && !this.currentProduct.isLiked) {
           let obj = {
             productId: this.productInfo['productId'],
             type: this.productInfo['type'],
@@ -72,7 +75,8 @@ export class DetailComponent {
         }
       }
 
-      this.checkIsLiked(this.currentProduct, this.accLogin);
+      this.checkIsLiked();
+
     }
 
   private getParamUrl() {
@@ -148,13 +152,15 @@ export class DetailComponent {
       localStorage.setItem('productInfo', JSON.stringify(obj));
     }
     else {
+      this.checkIsLiked();
+
       //active like
       if(!this.currentProduct.isLiked) {
         this.currentProduct.isLiked = true;
         let obj = {
-          userId: this.accLogin.userId,
           type: this.currentProduct.type,
-          productId: this.currentProduct.id
+          productId: this.currentProduct.id,
+          userId: this.accLogin.userId
         }
         this.arrLikeProduct.push(obj);
         localStorage.setItem('productsLiked', JSON.stringify(this.arrLikeProduct));
@@ -164,7 +170,7 @@ export class DetailComponent {
         this.updateLike('plus');
       }
       //remove like
-      else {
+      else if(this.currentProduct.isLiked) {
         this.currentProduct.isLiked = false;
         let newArray: any = [];
         this.arrLikeProduct.forEach((ele: any) => {
@@ -254,7 +260,7 @@ export class DetailComponent {
 
   }
 
-  private checkIsLiked(currentProduct: ProductModel, accLogin: AccountModel) {
+  private checkIsLiked() {
     //reset isLiked
     if(this.listProduct && this.listProduct.length > 0) {
       this.listProduct.forEach((item: any) => {
@@ -263,20 +269,23 @@ export class DetailComponent {
     }
 
     //scan isLiked
-    if(!this.accLogin) {
+    if(!this.isLogin) {
+      this.currentProduct.isLiked = false;
     }
     else if(this.arrLikeProduct && this.arrLikeProduct.length > 0) {
       this.arrLikeProduct.forEach((ele: any) => {
-        if((ele['type'] === currentProduct.type) && (ele['productId'] === currentProduct.id) && (ele['userId'] === accLogin.userId)) {
+        if((ele['type'] === this.currentProduct.type) && (ele['productId'] === this.currentProduct.id) && (ele['userId'] === this.accLogin.userId)) {
           this.currentProduct.isLiked = true;
         }
         else {
+          this.currentProduct.isLiked = false;
         }
       })
     }
   }
 
   public addToCart() {
+    alert('Đã thêm vào giỏ hàng!')
       //tang sp trong cart
       let obj = {
         id: Math.floor(Math.random() * 100) + 1,  //random 1-100
@@ -316,15 +325,15 @@ export class DetailComponent {
             isSame = true;
             ele['quantity'] += 1;
             ele['subtotal'] = ele['quantity'] * ele['price'];
-            this.cartSrv.setListTempProduct(this.listProductOnCart);
-            this.listProductOnCart = this.cartSrv.listTempProduct;
+            localStorage.setItem('guess', JSON.stringify(this.listProductOnCart));
+            this.listProductOnCart = JSON.parse(`${localStorage.getItem('guess')}`);
           }
       })
 
         if(!isSame) {
           this.listProductOnCart.push(obj)
-          this.cartSrv.setListTempProduct(this.listProductOnCart);
-          this.listProductOnCart = this.cartSrv.listTempProduct;
+          localStorage.setItem('guess', JSON.stringify(this.listProductOnCart));
+            this.listProductOnCart = JSON.parse(`${localStorage.getItem('guess')}`);
         }
       }
 }

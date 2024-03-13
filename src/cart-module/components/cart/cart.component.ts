@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 import { AccountModel } from "src/share-models/account.model";
 import { CartItem } from "src/share-models/cart-item.model";
 import { AccountService } from "src/share-services/account.service";
@@ -23,15 +24,29 @@ export class CartComponent {
   delivery: number = 0;
   total: number = 0;
 
-  constructor(private cartSrv: CartService, private accSrv: AccountService) {
+  isCheckout: boolean = false;
+
+  address!: string;
+  phoneNumber!: string;
+
+  isSelect!: boolean;
+
+  constructor(private accSrv: AccountService, private router: Router) {
+    //set status login
     this.accLogin = this.accSrv.accLogin;
     this.isLogin = this.accSrv.isLogin;
 
+    //set list products
     if(this.isLogin) {
+      //đã login: listProduct = list tạm của user khách + list của user login
       if(localStorage.getItem(`${this.accLogin.userId}`)) {
         this.listProduct = JSON.parse(`${localStorage.getItem(`${this.accLogin.userId}`)}`);
-        this.listTempProduct = this.cartSrv.listTempProduct;
 
+        if(localStorage.getItem('guess')) {
+          this.listTempProduct = JSON.parse(`${localStorage.getItem('guess')}`)
+        }
+
+        //list lưu những product đã join (trùng product thì tăng số lượng lên)
         let listIdAdded: any[] = [];
 
         this.listProduct.forEach((eleP: any) => {
@@ -46,6 +61,7 @@ export class CartComponent {
           })
         })
 
+        //thêm những product chưa join
         this.listTempProduct.forEach((ele: any) => {
           if(!listIdAdded.includes(ele['id'])) {
             this.listProduct.push(ele);
@@ -54,33 +70,34 @@ export class CartComponent {
           }
         })
 
-        this.cartSrv.setListTempProduct([]);
+        localStorage.removeItem('guess');
       }
     }
     else {
-      this.listProduct = this.cartSrv.listTempProduct;
+      this.listProduct = JSON.parse(`${localStorage.getItem('guess')}`);
     }
 
-    this.resetTotal();
+    //set total
+    this.checkProduct();
+
+    // //set tất cả sản phẩm chưa đc select
+    // if(this.listProduct) {
+    //   this.listProduct.forEach((ele: any) => {
+    //     ele['isChecked'] = false;
+    //   })
+    // }
   }
 
-  // ngOnChange() {
-  //   if(this.isLogin) {
-  //     this.listProduct = JSON.parse(`${localStorage.getItem(`${this.accLogin.userId}`)}`);
-  //   }
-  //   else {
-  //     this.listProduct = this.cartSrv.listTempProduct;
-  //   }
-  // }
-
   public changeQuantity(productId: any, plusOrMinus: string) {
-    if(this.accLogin) {
+    if(this.isLogin) {
       if(this.listProduct && this.listProduct.length > 0) {
         this.listProduct.forEach((ele: any) => {
           if(ele['id'] === productId) {
             switch(plusOrMinus) {
               case 'plus': {
                   ele['quantity'] += 1;
+                  ele['subtotal'] = ele['price'] * ele['quantity'];
+                  this.checkProduct();
                   localStorage.setItem(`${this.accLogin.userId}`, JSON.stringify(this.listProduct));
                   this.listProduct = JSON.parse(`${localStorage.getItem(`${this.accLogin.userId}`)}`);
                 break;
@@ -88,6 +105,8 @@ export class CartComponent {
               case 'minus': {
                 if(ele['quantity'] > 1) {
                   ele['quantity'] -= 1;
+                  ele['subtotal'] = ele['price'] * ele['quantity'];
+                  this.checkProduct();
                   localStorage.setItem(`${this.accLogin.userId}`, JSON.stringify(this.listProduct));
                   this.listProduct = JSON.parse(`${localStorage.getItem(`${this.accLogin.userId}`)}`);
                 }
@@ -105,15 +124,19 @@ export class CartComponent {
             switch(plusOrMinus) {
               case 'plus': {
                   ele['quantity'] += 1;
-                  this.cartSrv.setListTempProduct(this.listProduct);
-                  this.listProduct = this.cartSrv.listTempProduct;
+                  ele['subtotal'] = ele['price'] * ele['quantity'];
+                  this.checkProduct();
+                  localStorage.setItem('guess', JSON.stringify(this.listProduct))
+                  this.listProduct = JSON.parse(`${localStorage.getItem('guess')}`);
                 break;
               }
               case 'minus': {
                 if(ele['quantity'] > 1) {
                   ele['quantity'] -= 1;
-                  this.cartSrv.setListTempProduct(this.listProduct);
-                  this.listProduct = this.cartSrv.listTempProduct;
+                  ele['subtotal'] = ele['price'] * ele['quantity'];
+                  this.checkProduct();
+                  localStorage.setItem('guess', JSON.stringify(this.listProduct))
+                  this.listProduct = JSON.parse(`${localStorage.getItem('guess')}`);
                 }
                 break;
               }
@@ -122,9 +145,6 @@ export class CartComponent {
         })
       }
     }
-
-    //set price
-    this.resetTotal();
   }
 
   public removeProduct(productId: any) {
@@ -136,27 +156,88 @@ export class CartComponent {
     })
     const newList = this.listProduct.filter(item => !newArr.includes(item));
     this.listProduct = newList;
-    localStorage.setItem(`${this.accLogin.userId}`, JSON.stringify(newList));
 
-    this.resetTotal();
+    if(this.isLogin) {
+      this.checkProduct();
+      localStorage.setItem(`${this.accLogin.userId}`, JSON.stringify(newList));
+      // this.listProduct = JSON.parse(`${localStorage.getItem(`${this.accLogin.userId}`)}`)
+    }
+    else {
+      this.checkProduct();
+      localStorage.setItem('guess', JSON.stringify(newList));
+      // this.listProduct = JSON.parse(`${localStorage.getItem('guess')}`)
+    }
+
+    // this.resetTotal();
   }
 
   private resetTotal() {
-    if(this.listProduct.length > 0) {
-      //reset subtotal
-    this.subtotal = 0;
-    this.listProduct.forEach((ele: any) => {
-      ele['subtotal'] = ele['price'] * ele['quantity'];
-      this.subtotal += ele['subtotal'];
-    })
-
-    //reset total
     this.total = 0;
     this.total = this.subtotal - this.delivery;
+  }
+
+  //func set subtotal when selecting product to checkout
+  public checkProduct() {
+    this.subtotal = 0;
+    if(this.listProduct) {
+      this.listProduct.forEach((ele: any) => {
+        if(ele['isChecked']) {
+          this.subtotal += ele['subtotal'];
+        }
+      })
+    }
+    this.resetTotal();
+  }
+
+  public checkout() {
+    //check có sản phẩm nào đc chọn chưa
+    this.listProduct.forEach((ele: any) => {
+      if(ele['isChecked']) {
+        this.isSelect = true;
+        return;
+      }
+    })
+
+    if(this.isLogin) {
+      if(this.isSelect) {
+        //
+        this.isCheckout = true;
+
+        //reset list product
+        let newList: any[] = [];
+        this.listProduct.forEach((ele: any) => {
+          if(!ele['isChecked']) {
+            // console.log('he')
+            newList.push(ele);
+            this.listProduct = newList;
+          }
+      })
+      // console.log(this.listProduct)
+      }
+      else {
+        alert('Bạn chưa chọn sản phẩm để thanh toán!')
+      }
     }
     else {
-      this.total = 0;
-      this.subtotal = 0;
+      alert('Vui lòng đăng nhập!')
+    }
+  }
+
+  public cancelBill() {
+    this.isCheckout = false;
+  }
+
+  public confirm() {
+    if(!this.address || !this.phoneNumber) {
+      alert('Hãy nhập đầy đủ thông tin');
+    }
+    else {
+      alert('Đơn hàng của bạn đã được thêm vào hàng chờ!')
+      //reset list product on cart
+      localStorage.setItem(`${this.accLogin.userId}`, JSON.stringify(this.listProduct));
+
+      //back to homepage
+      this.router.navigate(['']);
     }
   }
 }

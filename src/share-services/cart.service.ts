@@ -12,8 +12,6 @@ export class CartService {
 
   public listProduct: CartItem[] = [];
 
-  public listTempProduct: CartItem[] = [];
-
   constructor() {}
 
   public setListProduct(list: any) {
@@ -23,9 +21,4 @@ export class CartService {
   public setAccLogin(acc: any) {
     this.accLogin = acc;
   }
-
-  public setListTempProduct(list: any) {
-    this.listTempProduct = list;
-  }
-
 }

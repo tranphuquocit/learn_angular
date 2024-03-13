@@ -4,7 +4,10 @@
     <span (click)="navigate('contact')">Contact</span>
     <span (click)="navigate('about')">About</span>
   </div>
-  <span [style.fontSize]="'20px'" (click)="navigate('cart')">Cart</span>
+  <div class="menu-cart">
+    <span [style.fontSize]="'20px'" (click)="navigate('cart')">Cart</span>
+    <span [style.marginLeft]="'3px'">{{quantityOnCart}}</span>
+  </div>
   <ng-container *ngIf="!isLogin">
     <div class="menu-login">
       <span class="sign-up">Sign up</span>
