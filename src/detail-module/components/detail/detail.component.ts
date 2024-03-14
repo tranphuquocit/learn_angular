@@ -93,7 +93,12 @@ export class DetailComponent {
     let type = this.getParamUrl()['name'];
     switch(type) {
       case 'phone': {
-        this.listProduct = this.proSrv.listPhone;
+        if(localStorage.getItem('listPhone')) {
+          this.listProduct = JSON.parse(`${localStorage.getItem('listPhone')}`)
+        }
+        else {
+          this.listProduct = this.proSrv.listPhone;
+        }
         if(this.listProduct && this.listProduct.length > 0) {
           this.listProduct.forEach((ele: any) => {
             if(ele['id'] === id) {
@@ -104,7 +109,12 @@ export class DetailComponent {
         break;
       }
       case 'laptop': {
-        this.listProduct = this.proSrv.listLaptop;
+        if(localStorage.getItem('listLaptop')) {
+          this.listProduct = JSON.parse(`${localStorage.getItem('listLaptop')}`)
+        }
+        else {
+          this.listProduct = this.proSrv.listLaptop;
+        }
         if(this.listProduct && this.listProduct.length > 0) {
           this.listProduct.forEach((ele: any) => {
             if(ele['id'] === id) {
@@ -115,7 +125,12 @@ export class DetailComponent {
         break;
       }
       case 'tablet': {
-        this.listProduct = this.proSrv.listTablet;
+        if(localStorage.getItem('listTablet')) {
+          this.listProduct = JSON.parse(`${localStorage.getItem('listTablet')}`)
+        }
+        else {
+          this.listProduct = this.proSrv.listTablet;
+        }
         if(this.listProduct && this.listProduct.length > 0) {
           this.listProduct.forEach((ele: any) => {
             if(ele['id'] === id) {
@@ -126,7 +141,12 @@ export class DetailComponent {
         break;
       }
       case 'watch': {
-        this.listProduct = this.proSrv.listWatch;
+        if(localStorage.getItem('listWatch')) {
+          this.listProduct = JSON.parse(`${localStorage.getItem('listWatch')}`)
+        }
+        else {
+          this.listProduct = this.proSrv.listWatch;
+        }
         if(this.listProduct && this.listProduct.length > 0) {
           this.listProduct.forEach((ele: any) => {
             if(ele['id'] === id) {
@@ -277,9 +297,6 @@ export class DetailComponent {
         if((ele['type'] === this.currentProduct.type) && (ele['productId'] === this.currentProduct.id) && (ele['userId'] === this.accLogin.userId)) {
           this.currentProduct.isLiked = true;
         }
-        else {
-          this.currentProduct.isLiked = false;
-        }
       })
     }
   }
@@ -289,6 +306,7 @@ export class DetailComponent {
       //tang sp trong cart
       let obj = {
         id: Math.floor(Math.random() * 100) + 1,  //random 1-100
+        type: this.currentProduct.type,
         image: this.currentProduct.image,
         description: this.currentProduct.description,
         price: this.currentProduct.price,

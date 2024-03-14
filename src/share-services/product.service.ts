@@ -14,7 +14,7 @@ export class ProductService {
       price: 31990000,
       quantity: 99,
       like: 0,
-      sold: 24,
+      sold: 0,
       isLiked: false
     },
     {
@@ -25,7 +25,7 @@ export class ProductService {
       price: 22990000,
       quantity: 35,
       like: 0,
-      sold: 50,
+      sold: 0,
       isLiked: false
     },
     {
@@ -36,7 +36,7 @@ export class ProductService {
       price: 26990000,
       quantity: 100,
       like: 0,
-      sold: 33,
+      sold: 0,
       isLiked: false
     },
     {
@@ -47,7 +47,7 @@ export class ProductService {
       price: 4190000,
       quantity: 20,
       like: 0,
-      sold: 13,
+      sold: 0,
       isLiked: false
     }
   ];
@@ -60,7 +60,7 @@ export class ProductService {
       price: 13690000,
       quantity: 33,
       like: 0,
-      sold: 12,
+      sold: 0,
       isLiked: false
     },
     {
@@ -71,7 +71,7 @@ export class ProductService {
       price: 8990000,
       quantity: 30,
       like: 0,
-      sold: 15,
+      sold: 0,
       isLiked: false
     },
     {
@@ -82,7 +82,7 @@ export class ProductService {
       price: 5890000,
       quantity: 10,
       like: 0,
-      sold: 18,
+      sold: 0,
       isLiked: false
     },
     {
@@ -93,7 +93,7 @@ export class ProductService {
       price: 18490000,
       quantity: 20,
       like: 0,
-      sold: 10,
+      sold: 0,
       isLiked: false
     }
   ];
@@ -106,7 +106,7 @@ export class ProductService {
       price: 4352000,
       quantity: 99,
       like: 0,
-      sold: 24,
+      sold: 0,
       isLiked: false
     },
     {
@@ -117,7 +117,7 @@ export class ProductService {
       price: 3455000,
       quantity: 99,
       like: 0,
-      sold: 24,
+      sold: 0,
       isLiked: false
     },
     {
@@ -128,7 +128,7 @@ export class ProductService {
       price: 2800000,
       quantity: 99,
       like: 0,
-      sold: 24,
+      sold: 0,
       isLiked: false
     },
     {
@@ -139,7 +139,7 @@ export class ProductService {
       price: 11350000,
       quantity: 99,
       like: 0,
-      sold: 24,
+      sold: 0,
       isLiked: false
     }
   ];
@@ -152,7 +152,7 @@ export class ProductService {
       price: 6690000,
       quantity: 20,
       like: 0,
-      sold: 13,
+      sold: 0,
       isLiked: false
     },
     {
@@ -163,7 +163,7 @@ export class ProductService {
       price: 14490000,
       quantity: 20,
       like: 0,
-      sold: 13,
+      sold: 0,
       isLiked: false
     },
     {
@@ -174,7 +174,7 @@ export class ProductService {
       price: 28190000,
       quantity: 20,
       like: 0,
-      sold: 13,
+      sold: 0,
       isLiked: false
     },
     {
@@ -185,7 +185,7 @@ export class ProductService {
       price: 3990000,
       quantity: 20,
       like: 0,
-      sold: 13,
+      sold: 0,
       isLiked: false
     }
   ];

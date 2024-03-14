@@ -1,9 +1,11 @@
+import { getLocaleDateTimeFormat } from "@angular/common";
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { AccountModel } from "src/share-models/account.model";
 import { CartItem } from "src/share-models/cart-item.model";
 import { AccountService } from "src/share-services/account.service";
 import { CartService } from "src/share-services/cart.service";
+import { ProductService } from "src/share-services/product.service";
 
 @Component({
   selector: 'app-cart',
@@ -34,7 +36,7 @@ export class CartComponent {
 
   isSelect!: boolean;
 
-  constructor(private accSrv: AccountService, private router: Router) {
+  constructor(private accSrv: AccountService, private router: Router, private proSrv: ProductService) {
     //set status login
     this.accLogin = this.accSrv.accLogin;
     this.isLogin = this.accSrv.isLogin;
@@ -241,8 +243,63 @@ export class CartComponent {
       this.listProduct = newList;
       localStorage.setItem(`${this.accLogin.userId}`, JSON.stringify(this.listProduct));
 
+      //set sold
+      this.listCheckout.forEach((ele: any) => {
+        this.setSold(ele, ele['type']);
+      })
+
       //back to homepage
       this.router.navigate(['']);
+    }
+  }
+
+  private setSold(product: CartItem, type: string) {
+    switch(type) {
+      case 'phone': {
+        let listProduct: any[] = this.proSrv.listPhone;
+        listProduct.forEach((ele: any) => {
+          if(ele['description'] === product['description']) {
+            ele['sold'] += product['quantity'];
+          }
+        })
+        this.proSrv.setListPhone(listProduct);
+        localStorage.setItem('listPhone', JSON.stringify(listProduct));
+        break;
+      }
+      case 'laptop': {
+        let listProduct: any[] = this.proSrv.listLaptop;
+        listProduct.forEach((ele: any) => {
+          if(ele['description'] === product['description']) {
+            ele['sold'] += product['quantity'];
+          }
+        })
+        this.proSrv.setListLaptop(listProduct);
+        localStorage.setItem('listLaptop', JSON.stringify(listProduct));
+        break;
+      }
+      case 'tablet': {
+        let listProduct: any[] = this.proSrv.listTablet;
+        listProduct.forEach((ele: any) => {
+          if(ele['description'] === product['description']) {
+            ele['sold'] += product['quantity'];
+          }
+        })
+        this.proSrv.setListTablet(listProduct);
+        localStorage.setItem('listTablet', JSON.stringify(listProduct));
+
+        break;
+      }
+      case 'watch': {
+        let listProduct: any[] = this.proSrv.listWatch;
+        listProduct.forEach((ele: any) => {
+          if(ele['description'] === product['description']) {
+            ele['sold'] += product['quantity'];
+          }
+        })
+        this.proSrv.setListWatch(listProduct);
+        localStorage.setItem('listWatch', JSON.stringify(listProduct));
+        break;
+      }
     }
   }
 }
