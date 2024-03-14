@@ -29,6 +29,9 @@ export class CartComponent {
   address!: string;
   phoneNumber!: string;
 
+  listCheckout: CartItem[] = [];
+  listWhenCancelBill!: CartItem[];
+
   isSelect!: boolean;
 
   constructor(private accSrv: AccountService, private router: Router) {
@@ -80,12 +83,12 @@ export class CartComponent {
     //set total
     this.checkProduct();
 
-    // //set tất cả sản phẩm chưa đc select
-    // if(this.listProduct) {
-    //   this.listProduct.forEach((ele: any) => {
-    //     ele['isChecked'] = false;
-    //   })
-    // }
+    //set tất cả sản phẩm chưa đc select
+    if(this.listProduct) {
+      this.listProduct.forEach((ele: any) => {
+        ele['isChecked'] = false;
+      })
+    }
   }
 
   public changeQuantity(productId: any, plusOrMinus: string) {
@@ -190,29 +193,20 @@ export class CartComponent {
   }
 
   public checkout() {
-    //check có sản phẩm nào đc chọn chưa
+    //check có sản phẩm nào đc chọn chưa và add list checkout
+    this.listCheckout = [];
     this.listProduct.forEach((ele: any) => {
       if(ele['isChecked']) {
         this.isSelect = true;
-        return;
+        this.listCheckout.push(ele);
       }
     })
 
     if(this.isLogin) {
       if(this.isSelect) {
-        //
         this.isCheckout = true;
-
-        //reset list product
-        let newList: any[] = [];
-        this.listProduct.forEach((ele: any) => {
-          if(!ele['isChecked']) {
-            // console.log('he')
-            newList.push(ele);
-            this.listProduct = newList;
-          }
-      })
-      // console.log(this.listProduct)
+        this.listWhenCancelBill = this.listProduct;
+        this.listProduct = this.listCheckout;
       }
       else {
         alert('Bạn chưa chọn sản phẩm để thanh toán!')
@@ -225,6 +219,8 @@ export class CartComponent {
 
   public cancelBill() {
     this.isCheckout = false;
+    this.listProduct = this.listWhenCancelBill;
+    this.listWhenCancelBill = [];
   }
 
   public confirm() {
@@ -234,6 +230,14 @@ export class CartComponent {
     else {
       alert('Đơn hàng của bạn đã được thêm vào hàng chờ!')
       //reset list product on cart
+      this.listProduct = this.listWhenCancelBill;
+      let newList: any[] = [];
+      this.listProduct.forEach((ele: any) => {
+        if(!this.listCheckout.includes(ele)) {
+          newList.push(ele);
+        }
+      });
+      this.listProduct = newList;
       localStorage.setItem(`${this.accLogin.userId}`, JSON.stringify(this.listProduct));
 
       //back to homepage
