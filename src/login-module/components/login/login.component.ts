@@ -49,10 +49,11 @@ export class LoginComponent {
             this.router.navigate([this.currentUrl]);
 
             let obj = {
-              type: this.productInfo['type'],
               productId: this.productInfo['productId'],
+              type: this.productInfo['type'],
               userId: ele['id']
             }
+            localStorage.removeItem('productInfo');
             localStorage.setItem('productInfo', JSON.stringify(obj));
             return;
           }

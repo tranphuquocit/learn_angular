@@ -145,8 +145,8 @@ export class DetailComponent {
       this.router.navigate(['login']);
 
       let obj = {
-        type: this.currentProduct.type,
-        productId: this.currentProduct.id
+        productId: this.currentProduct.id,
+        type: this.currentProduct.type
       }
 
       localStorage.setItem('productInfo', JSON.stringify(obj));
@@ -158,8 +158,8 @@ export class DetailComponent {
       if(!this.currentProduct.isLiked) {
         this.currentProduct.isLiked = true;
         let obj = {
-          type: this.currentProduct.type,
           productId: this.currentProduct.id,
+          type: this.currentProduct.type,
           userId: this.accLogin.userId
         }
         this.arrLikeProduct.push(obj);

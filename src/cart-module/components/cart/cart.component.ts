@@ -207,6 +207,7 @@ export class CartComponent {
         this.isCheckout = true;
         this.listWhenCancelBill = this.listProduct;
         this.listProduct = this.listCheckout;
+        alert('Hãy nhập thông tin!')
       }
       else {
         alert('Bạn chưa chọn sản phẩm để thanh toán!')
