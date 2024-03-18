@@ -1,16 +1,19 @@
 import { getLocaleDateTimeFormat } from "@angular/common";
 import { Component } from "@angular/core";
+import { MatDialog, MatDialogModule } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { AccountModel } from "src/share-models/account.model";
 import { CartItem } from "src/share-models/cart-item.model";
 import { AccountService } from "src/share-services/account.service";
 import { CartService } from "src/share-services/cart.service";
 import { ProductService } from "src/share-services/product.service";
+import { CheckoutDialogComponent } from "../checkout-dialog/checkout-dialog.component";
+
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  styleUrls: ['./cart.component.scss'],
 })
 
 export class CartComponent {
@@ -36,7 +39,7 @@ export class CartComponent {
 
   isSelect!: boolean;
 
-  constructor(private accSrv: AccountService, private router: Router, private proSrv: ProductService) {
+  constructor(private accSrv: AccountService, private router: Router, private proSrv: ProductService, private dialog: MatDialog) {
     //set status login
     this.accLogin = this.accSrv.accLogin;
     this.isLogin = this.accSrv.isLogin;
@@ -195,29 +198,31 @@ export class CartComponent {
   }
 
   public checkout() {
-    //check có sản phẩm nào đc chọn chưa và add list checkout
-    this.listCheckout = [];
-    this.listProduct.forEach((ele: any) => {
-      if(ele['isChecked']) {
-        this.isSelect = true;
-        this.listCheckout.push(ele);
-      }
-    })
+    // //check có sản phẩm nào đc chọn chưa và add list checkout
+    // this.listCheckout = [];
+    // this.listProduct.forEach((ele: any) => {
+    //   if(ele['isChecked']) {
+    //     this.isSelect = true;
+    //     this.listCheckout.push(ele);
+    //   }
+    // })
 
-    if(this.isLogin) {
-      if(this.isSelect) {
-        this.isCheckout = true;
-        this.listWhenCancelBill = this.listProduct;
-        this.listProduct = this.listCheckout;
-        alert('Hãy nhập thông tin!')
-      }
-      else {
-        alert('Bạn chưa chọn sản phẩm để thanh toán!')
-      }
-    }
-    else {
-      alert('Vui lòng đăng nhập!')
-    }
+    // if(this.isLogin) {
+    //   if(this.isSelect) {
+    //     this.isCheckout = true;
+    //     this.listWhenCancelBill = this.listProduct;
+    //     this.listProduct = this.listCheckout;
+    //     alert('Hãy nhập thông tin!')
+    //   }
+    //   else {
+    //     alert('Bạn chưa chọn sản phẩm để thanh toán!')
+    //   }
+    // }
+    // else {
+    //   alert('Vui lòng đăng nhập!')
+    // }
+
+    const dialogRef = this.dialog.open(CheckoutDialogComponent);
   }
 
   public cancelBill() {

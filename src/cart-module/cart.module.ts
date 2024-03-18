@@ -5,21 +5,23 @@ import { CartRoutingModule } from './cart.routing.module';
 import { CommonModule } from '@angular/common';
 import { MenuModule } from 'src/menu-module/menu.module';
 import { FormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 const COMPONENT = [
-  CartComponent,
+  CartComponent
 ]
 
 @NgModule({
   declarations: [
-    CartPageComponent, COMPONENT
+    CartPageComponent, ...COMPONENT
   ],
   imports: [
     CommonModule,
     FormsModule,
     MenuModule,
-    CartRoutingModule
+    CartRoutingModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [CartPageComponent]
