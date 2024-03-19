@@ -5,8 +5,10 @@ import { AppComponent } from './app.component';
 
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 
 const COMPONENT = [
+  DialogComponent
 ]
 
 @NgModule({
@@ -16,7 +18,7 @@ const COMPONENT = [
   imports: [
     BrowserModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
