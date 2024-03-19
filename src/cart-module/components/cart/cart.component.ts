@@ -5,7 +5,6 @@ import { Router } from "@angular/router";
 import { AccountModel } from "src/share-models/account.model";
 import { CartItem } from "src/share-models/cart-item.model";
 import { AccountService } from "src/share-services/account.service";
-import { CartService } from "src/share-services/cart.service";
 import { ProductService } from "src/share-services/product.service";
 import { CheckoutDialogComponent } from "../checkout-dialog/checkout-dialog.component";
 
