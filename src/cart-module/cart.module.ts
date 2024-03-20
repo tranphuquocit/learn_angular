@@ -2,10 +2,13 @@ import { NgModule } from '@angular/core';
 import { CartPageComponent } from './layouts/cart-page/cart-page.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CartRoutingModule } from './cart.routing.module';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { MenuModule } from 'src/menu-module/menu.module';
 import { FormsModule } from '@angular/forms';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogContent, MatDialogModule } from '@angular/material/dialog';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeModule } from 'src/home-module/home.module';
 
 
 const COMPONENT = [
@@ -21,7 +24,9 @@ const COMPONENT = [
     FormsModule,
     MenuModule,
     CartRoutingModule,
-    MatDialogModule
+    MatDialogModule,
+    // BrowserModule,
+    // BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [CartPageComponent]

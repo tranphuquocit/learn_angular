@@ -30,6 +30,9 @@ const COMPONENT = [
     MenuModule,
     HomeRoutingModule
   ],
+  exports: [
+    ProductComponent
+  ],
   providers: [],
   bootstrap: [HomePageComponent]
 })

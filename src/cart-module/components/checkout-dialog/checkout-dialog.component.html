@@ -1,12 +1,16 @@
-<h1 mat-dialog-title>Hi </h1>
+<h1 mat-dialog-title>Enter your information!</h1>
 <div mat-dialog-content>
-  <p>What's your favorite animal?</p>
+  <p>Where do you want it delivered?</p>
   <mat-form-field>
-    <mat-label>Favorite Animal</mat-label>
-    <input matInput>
+    <mat-label>Address</mat-label>
+    <input matInput [(ngModel)]="data.address">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Phone Number</mat-label>
+    <input matInput [(ngModel)]="data.phoneNumber">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button cdkFocusInitial>Ok</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial (click)="confirm()">Ok</button>
 </div>
