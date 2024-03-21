@@ -13,7 +13,7 @@ export class MenuProductComponent {
 
   arrLikeProduct: any[] = [];
 
-  arrange!: string;
+  arrange: string = 'SX';
 
   constructor(private proSrv: ProductService) {
     this.listProduct = this.proSrv.listPhone;

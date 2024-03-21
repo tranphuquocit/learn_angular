@@ -29,7 +29,13 @@
     }
   }
 
+  .menu-cart {
+    color: white;
+  }
+
   .menu-login {
+    display: flex;
+    justify-content: center;
 
     .sign-up, .login {
       &:hover {
@@ -52,6 +58,7 @@
 
     .username {
       font-weight: 600;
+
     }
   }
 }

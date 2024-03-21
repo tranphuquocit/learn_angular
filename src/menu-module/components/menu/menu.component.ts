@@ -3,15 +3,21 @@ import { Router } from "@angular/router";
 import { AccountModel } from "src/share-models/account.model";
 import { CartItem } from "src/share-models/cart-item.model";
 import { AccountService } from "src/share-services/account.service";
-import { CartService } from "src/share-services/cart.service";
+
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  styleUrls: ['./menu.component.scss'],
 })
 
 export class MenuComponent {
+
+  hidden = false;
+
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
+  }
 
   isLogin!: boolean;
 

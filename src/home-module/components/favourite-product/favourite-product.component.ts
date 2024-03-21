@@ -16,19 +16,40 @@ export class FavouriteProductComponent {
   arrLikeProduct: any[] = [];
 
   constructor(private proSrv: ProductService) {
-    this.listProduct = [...this.proSrv.listPhone, ...this.proSrv.listLaptop, ...this.proSrv.listTablet, ...this.proSrv.listWatch];
     if(localStorage.getItem('productsLiked')) {
       this.arrLikeProduct = JSON.parse(`${localStorage.getItem('productsLiked')}`);
     }
+    this.getListProduct()
+      .then((res: any) => {
+        this.listProduct = res;
+        this.countLike();
+        this.getFavouriteList();
+      })
+      .catch(err => {
+        // hiện chưa có data
+      })
 
     // this.scanLike();
-    this.countLike();
 
-    this.getFavouriteList();
   }
 
   ngOnInit() {
     // this.countLike();
+  }
+
+  private getListProduct() {
+    return new Promise((resolve, reject) => {
+      const listProduct = [...this.proSrv.listPhone, ...this.proSrv.listLaptop, ...this.proSrv.listTablet, ...this.proSrv.listWatch];
+      if(listProduct && listProduct.length > 0) {
+        const newList = listProduct.map((value) => {
+          value.like = 0;
+          return value;
+        })
+        resolve(newList);
+      } else {
+        reject([])
+      }
+    })
   }
 
   private getFavouriteList() {
@@ -54,11 +75,11 @@ export class FavouriteProductComponent {
   }
 
   private countLike() {
-    if(this.listProduct && this.listProduct.length > 0) {
-      this.listProduct.forEach((item: any) => {
-        item.like = 0;
-      })
-    }
+    // if(this.listProduct && this.listProduct.length > 0) {
+    //   this.listProduct.forEach((item: any) => {
+    //     item.like = 0;
+    //   })
+    // }
     this.arrLikeProduct.forEach((ele: any) => {
       this.listProduct.forEach((eleP: any) => {
         if((ele['productId'] === eleP['id']) && (ele['type'] === eleP['type'])) {

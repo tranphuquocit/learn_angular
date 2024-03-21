@@ -4,9 +4,8 @@
     <span (click)="navigate('contact')">Contact</span>
     <span (click)="navigate('about')">About</span>
   </div>
-  <div class="menu-cart">
-    <span [style.fontSize]="'20px'" (click)="navigate('cart')">Cart</span>
-    <span [style.marginLeft]="'3px'">{{quantityOnCart}}</span>
+  <div class="menu-cart" (click)="navigate('cart')">
+  <mat-icon [matBadge]="quantityOnCart" matBadgeColor="warn">add_shopping_cart</mat-icon>
   </div>
   <ng-container *ngIf="!isLogin">
     <div class="menu-login">
@@ -16,7 +15,9 @@
   </ng-container>
   <ng-container *ngIf="isLogin">
     <div class="menu-login">
-      <span class="sign-up username">{{accLogin.username}}</span>
+      <!-- <span class="sign-up username"><mat-icon>account_circle</mat-icon> {{accLogin.username}}</span>
+       -->
+      <mat-icon>account_circle</mat-icon>
       <span class="login" (click)="logout()">Logout</span>
     </div>
   </ng-container>
