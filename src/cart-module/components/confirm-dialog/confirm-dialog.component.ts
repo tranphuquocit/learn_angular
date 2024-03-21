@@ -22,26 +22,25 @@ import { ProductService } from "src/share-services/product.service";
 
 export class ConfirmDialogComponent {
 
-  inforDeli!: InforDeli;
+  // inforDeli!: InforDeli;
   listCheckout!: CartItem[];
   listWhenCancel!: CartItem[];
 
   accLogin!: AccountModel;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: {address: string, phoneNumber: string},
+    @Inject(MAT_DIALOG_DATA) public infoDeli: {address: string, phoneNumber: string},
     public dialogRef: MatDialogRef<ConfirmDialogComponent>,
     private dialog: MatDialog, private router: Router,
     private accSrv: AccountService,
     private proSrv: ProductService)
     {
 
-    this.accLogin = this.accSrv.accLogin;
-
     if(localStorage.getItem('listCheckout')) {
       this.listCheckout = JSON.parse(`${localStorage.getItem('listCheckout')}`);
-      localStorage.removeItem('listCheckout');
     }
+
+    this.accLogin = this.accSrv.accLogin;
 
   }
 

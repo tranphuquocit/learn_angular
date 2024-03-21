@@ -30,8 +30,8 @@ export class CartComponent {
 
   isCheckout: boolean = false;
 
-  address!: string;
-  phoneNumber!: string;
+  // address!: string;
+  // phoneNumber!: string;
 
   inforDeli!: InforDeli;
 
@@ -216,14 +216,10 @@ export class CartComponent {
         // this.listWhenCancelBill = this.listProduct;
         // // this.listProduct = this.listCheckout;
 
-        localStorage.setItem('listWhenCancel', JSON.stringify(this.listProduct))
+        // localStorage.setItem('listWhenCancel', JSON.stringify(this.listProduct))
         localStorage.setItem('listCheckout', JSON.stringify(this.listCheckout))
 
         const dialogRef = this.dialog.open(CheckoutDialogComponent, {
-          data: {
-            address: this.address,
-            phoneNumber: this.phoneNumber
-          },
           height: '400px',
           width: '600px',
         });
@@ -247,80 +243,4 @@ export class CartComponent {
     this.listWhenCancelBill = [];
   }
 
-  public confirm() {
-    if(!this.address || !this.phoneNumber) {
-      alert('Hãy nhập đầy đủ thông tin');
-    }
-    else {
-      alert('Đơn hàng của bạn đã được thêm vào hàng chờ!')
-      //reset list product on cart
-      this.listProduct = this.listWhenCancelBill;
-      let newList: any[] = [];
-      this.listProduct.forEach((ele: any) => {
-        if(!this.listCheckout.includes(ele)) {
-          newList.push(ele);
-        }
-      });
-      this.listProduct = newList;
-      localStorage.setItem(`${this.accLogin.userId}`, JSON.stringify(this.listProduct));
-
-      //set sold
-      this.listCheckout.forEach((ele: any) => {
-        this.setSold(ele, ele['type']);
-      })
-
-      //back to homepage
-      this.router.navigate(['']);
-    }
-  }
-
-  private setSold(product: CartItem, type: string) {
-    switch(type) {
-      case 'phone': {
-        let listProduct: any[] = this.proSrv.listPhone;
-        listProduct.forEach((ele: any) => {
-          if(ele['description'] === product['description']) {
-            ele['sold'] += product['quantity'];
-          }
-        })
-        this.proSrv.setListPhone(listProduct);
-        localStorage.setItem('listPhone', JSON.stringify(listProduct));
-        break;
-      }
-      case 'laptop': {
-        let listProduct: any[] = this.proSrv.listLaptop;
-        listProduct.forEach((ele: any) => {
-          if(ele['description'] === product['description']) {
-            ele['sold'] += product['quantity'];
-          }
-        })
-        this.proSrv.setListLaptop(listProduct);
-        localStorage.setItem('listLaptop', JSON.stringify(listProduct));
-        break;
-      }
-      case 'tablet': {
-        let listProduct: any[] = this.proSrv.listTablet;
-        listProduct.forEach((ele: any) => {
-          if(ele['description'] === product['description']) {
-            ele['sold'] += product['quantity'];
-          }
-        })
-        this.proSrv.setListTablet(listProduct);
-        localStorage.setItem('listTablet', JSON.stringify(listProduct));
-
-        break;
-      }
-      case 'watch': {
-        let listProduct: any[] = this.proSrv.listWatch;
-        listProduct.forEach((ele: any) => {
-          if(ele['description'] === product['description']) {
-            ele['sold'] += product['quantity'];
-          }
-        })
-        this.proSrv.setListWatch(listProduct);
-        localStorage.setItem('listWatch', JSON.stringify(listProduct));
-        break;
-      }
-    }
-  }
 }

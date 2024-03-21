@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserModule } from "@angular/platform-browser";
 import { CartComponent } from "../cart/cart.component";
 import { ConfirmDialogComponent } from "../confirm-dialog/confirm-dialog.component";
+import { CartItem } from "src/share-models/cart-item.model";
 
 
 @Component({
@@ -23,14 +24,14 @@ import { ConfirmDialogComponent } from "../confirm-dialog/confirm-dialog.compone
 export class CheckoutDialogComponent {
 
 
-  data: InforDeli = {
+  infoDeli: InforDeli = {
     address: '',
     phoneNumber: ''
   };
 
-  constructor(public dialogRef: MatDialogRef<CheckoutDialogComponent>, private dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public info: InforDeli) {
-    }
+  constructor(public dialogRef: MatDialogRef<CheckoutDialogComponent>, private dialog: MatDialog)
+  {
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -38,13 +39,13 @@ export class CheckoutDialogComponent {
 
   public confirm() {
     // console.log(this.data)
-    if(this.data.address !== '' && this.data.phoneNumber !== '') {
+    if(this.infoDeli.address !== '' && this.infoDeli.phoneNumber !== '') {
       const dialogRef = this.dialog.open(ConfirmDialogComponent, {
         height: 'auto',
         width: '600px',
         data: {
-          address: this.data.address,
-          phoneNumber: this.data.phoneNumber
+          address: this.infoDeli.address,
+          phoneNumber: this.infoDeli.phoneNumber,
         }
       });
 

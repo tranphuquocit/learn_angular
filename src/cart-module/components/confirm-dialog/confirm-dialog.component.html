@@ -1,7 +1,7 @@
 <h2 mat-dialog-title>Your bill.</h2>
 <mat-dialog-content class="mat-typography">
-  <span>Address: {{ data.address }}</span> <br>
-  <span>Phone Number: {{ data.phoneNumber }}</span>
+  <span>Address: {{ infoDeli.address }}</span> <br>
+  <span>Phone Number: {{ infoDeli.phoneNumber }}</span>
   <div class="items">
     <span class="title">Your items</span>
     <div class="list-item" *ngFor="let product of listCheckout">
