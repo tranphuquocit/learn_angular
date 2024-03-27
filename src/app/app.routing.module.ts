@@ -1,23 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeModule } from '../home-module/home.module';
+import { HomeModule } from './layouts/home/home.module';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('../home-module/home.module').then(m => m.HomeModule)
+    loadChildren: () => import('./layouts/home/home.module').then(m => m.HomeModule)
   },
   {
     path: 'detail',
-    loadChildren: () => import('../detail-module/detail.module').then(m => m.DetailModule)
+    loadChildren: () => import('./layouts/detail-product/detail.module').then(m => m.DetailModule)
   },
   {
     path: 'cart',
-    loadChildren: () => import('../cart-module/cart.module').then(m => m.CartModule)
+    loadChildren: () => import('./layouts/cart/cart.module').then(m => m.CartModule)
   },
   {
     path: 'login',
-    loadChildren: () => import('../login-module/login.module').then(m => m.LoginModule)
+    loadChildren: () => import('./layouts/login/login.module').then(m => m.LoginModule)
+  },
+  {
+    path: 'sign-up',
+    loadChildren: () => import('./layouts/sign-up/sign-up.module').then(m => m.SignUpModule)
+  },
+  {
+    path: 'forgot-password',
+    loadChildren: () => import('./layouts/forgot-password/forgot-password.module').then(m => m.ForgotPasswordModule)
   }
 ];
 

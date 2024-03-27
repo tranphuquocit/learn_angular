@@ -1,0 +1,20 @@
+<router-outlet></router-outlet>
+<div class="home-container">
+  <div class="home-header">
+    <app-header></app-header>
+    <app-menu></app-menu>
+  </div>
+  <div class="home-main">
+    <div class="home-left">
+      <app-banner></app-banner>
+      <app-favourite-product></app-favourite-product>
+      <app-list-product></app-list-product>
+    </div>
+    <div class="home-right">
+      <app-ads [imgUrl]="item" *ngFor="let item of imgUrl"></app-ads>
+    </div>
+  </div>
+  <div class="home-footer">
+    <app-footer></app-footer>
+  </div>
+</div>

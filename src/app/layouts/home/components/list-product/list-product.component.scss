@@ -1,0 +1,35 @@
+.menu-product-container {
+
+  .menu-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    .menu-text {
+      display: flex;
+      align-items: center;
+
+      span {
+        font-size: 25px;
+      }
+    }
+
+    .arrange-text {
+      height: 25px;
+    }
+  }
+
+  .list-products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+
+    .product {
+      width: 32%;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

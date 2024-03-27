@@ -1,0 +1,30 @@
+.favourite-product {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .title {
+    height: 30px;
+    display: flex;
+    align-items: center;
+
+    span {
+      font-size: 25px;
+    }
+  }
+
+  .list-products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+
+    .product {
+      width: 32%;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

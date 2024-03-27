@@ -1,0 +1,31 @@
+<div class="header-container">
+  <div class="header-logo" (click)="navigate('')">
+    <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQWscN5MgxlbxOyppX6sHv_Ggw_-qw4EdivM_J91z-tVogojVyI" alt="">
+    <span class="logo-text">DAVIDTUAN MOBILE SHOP</span>
+  </div>
+  <div class="header-search">
+    <input type="text" placeholder="Tìm kiếm">
+    <div class="search-text">Tìm kiếm</div>
+  </div>
+  <div class="header-cart" (click)="navigate('cart')">
+    <span class="cart-text">Giỏ hàng</span>
+    <mat-icon [matBadge]="quantityOnCart" matBadgeColor="warn">add_shopping_cart</mat-icon>
+  </div>
+  <ng-container *ngIf="!isLogin">
+    <div class="header-login">
+      <span class="sign-up" (click)="navigate('sign-up')">Sign up</span>
+      <span class="login" (click)="navigate('login')">Log in</span>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="isLogin">
+    <div class="header-login">
+      <mat-icon>account_circle</mat-icon>
+      <span class="user" [matMenuTriggerFor]="menu">{{ this.accLogin.username }}</span>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
+      <span class="logout" (click)="logout()">Logout</span>
+    </div>
+  </ng-container>
+</div>

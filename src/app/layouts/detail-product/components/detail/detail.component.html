@@ -1,0 +1,41 @@
+<div class="detail-product-container">
+  <mat-icon class="back" aria-hidden="false" fontIcon="arrow_back" (click)="navigate()"></mat-icon>
+  <div class="detail-product-main">
+    <div class="image-size">
+        <img class="image" [src]="currentProduct.image" alt="">
+        <div class="slideshow-button">
+            <span ></span>
+            <span ></span>
+            <span class="focus"></span>
+            <span ></span>
+        </div>
+        <p class="text-choose-size">choose size</p>
+        <div class="choose-size">
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span class="focus">9</span>
+            <span>10</span>
+            <span>11</span>
+            <span>12</span>
+        </div>
+    </div>
+    <div class="detail">
+        <p class="text-1">WOMEN'S RUNNING SHOE</p>
+        <h3 class="text-2">{{currentProduct.description}}</h3>
+        <h3 class="price">{{currentProduct.price | number: '1.0-0'}}</h3>
+        <p class="description">The Nike Epic React Flyknit foam cushioning is reponsive yet light-weight, durable yet soft. This craetes a sensation that not only enhances the feeling of moving forward.</p>
+        <p class="sold">Đã bán {{currentProduct.sold}}</p>
+        <div class="button">
+            <button class="add-to-cart-button" (click)="addToCart()">ADD TO CART</button>
+            <ng-container *ngIf="currentProduct.isLiked">
+              <button class="icon-button-like" (click)="likeProduct()"><3</button>
+            </ng-container>
+            <ng-container *ngIf="!currentProduct.isLiked">
+              <button class="icon-button" (click)="likeProduct()"><3</button>
+            </ng-container>
+        </div>
+    </div>
+  </div>
+</div>

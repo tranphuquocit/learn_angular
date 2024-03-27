@@ -1,0 +1,23 @@
+.menu-container {
+  background-color: red;
+  height: 45px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  font-size: 25px;
+  padding-left: 15px;
+  color: white;
+
+  .menu-item {
+    border-right: 0.5px solid black;
+    height: 100%;
+    line-height: 45px;
+    text-align: center;
+    padding-right: 15px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

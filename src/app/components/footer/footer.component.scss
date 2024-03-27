@@ -1,0 +1,66 @@
+.footer-container {
+  background-color: white;
+  height: 230px;
+  padding: 20px 0 20px 0;
+  display: flex;
+  justify-content: space-evenly;
+
+  .info {
+    width: 23%;
+
+    .info-logo {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 50px;
+      }
+
+      span {
+        font-size: 20px;
+        font-weight: 800;
+      }
+    }
+
+    .info-para {
+      margin-top: 10px;
+
+      span {
+        display: flex;
+        justify-content: space-between;
+        font-size: 18px;
+      }
+    }
+  }
+
+  .info-address, .info-service, .info-hotline {
+    width: 23%;
+
+    .header {
+      height: 50px;
+      width: 100%;
+      line-height: 50px;
+      align-items: center;
+      border-bottom: 1px solid black;
+
+      span {
+        font-size: 25px;
+      }
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+      padding-top: 10px;
+      font-size: 18px;
+
+      span {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
