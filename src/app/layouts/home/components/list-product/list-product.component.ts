@@ -21,26 +21,20 @@ export class ListProductComponent {
       this.arrLikeProduct = JSON.parse(`${localStorage.getItem('productsLiked')}`);
     }
 
-    this.getListProduct()
-      .then((res: any) => {
-        this.listProduct = res;
-        this.scanLike();
-      })
-      .catch(err => {
-        // hiện chưa có data
-      })
+    this.proSrv.getListProduct().subscribe(list => {
+      this.listProduct = this.scanLike(list);
+    });
+
+    // this.scanLike();
+    // this.getListProduct()
+    //   .then((res: any) => {
+    //     this.listProduct = res;
+    //   })
+    //   .catch(err => {
+    //     // hiện chưa có data
+    //   })
 
   }
-
-  // ngOnChange() {
-  //   this.getListProducts()
-  //   .then((res: any) => {
-  //     this.listProduct = res;
-  //   })
-  //   .catch(err => {
-  //     console.log('Error');
-  //   })
-  // }
 
   public arrangeProduct() {
     if(this.arrange) {
@@ -82,27 +76,35 @@ export class ListProductComponent {
 
   private getListProduct() {
     return new Promise((resolve, reject) => {
-      let listProduct: any[] = [];
-      this.proSrv.getListProduct().subscribe(list => listProduct = list);
-      if(listProduct && listProduct.length > 0) {
-        const newList = listProduct.map((value) => {
-          value.like = 0;
-          return value;
-        })
-        resolve(newList);
-      } else {
-        reject([])
-      }
+      setTimeout(() => {
+        let listProduct: any[] = [];
+        this.proSrv.getListProduct().subscribe(list => listProduct = list);
+        if(this.scanLike(listProduct).length > 0) {
+          resolve(this.scanLike(listProduct));
+        }
+        else {
+          reject([]);
+        }
+      }, 500)
     })
   }
 
-  private scanLike() {
-    this.listProduct.forEach((eleP: any) => {
-      this.arrLikeProduct.forEach((eleLP: any) => {
-        if((eleP['type'] === eleLP['type']) && (eleP['id'] === eleLP['productId'])) {
-          eleP['like'] += 1;
+  private scanLike(list: any[]) {
+    let resetList = list.map((ele: any) => {
+      ele['like'] = 0;
+      return ele;
+    })
+
+    let newList: any[] = [];
+    this.arrLikeProduct.forEach((eleLP: any) => {
+      newList = resetList.map((ele: any) => {
+        if((ele['type'] === eleLP['type']) && (ele['id'] === eleLP['productId'])) {
+          ele['like'] += 1;
+          return ele;
         }
+        else return ele;
       })
     })
+    return newList;
   }
 }
