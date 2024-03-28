@@ -24,19 +24,7 @@ export class FavouriteProductComponent {
     this.proSrv.getListProduct().subscribe(list => {
       this.listProduct = this.scanLike(list);
       this.getFavouriteList();
-      console.log(this.favouriteList)
     });
-
-
-
-    // this.getListProduct()
-    //   .then((res: any) => {
-    //     this.listProduct = res;
-    //     this.getFavouriteList();
-    //   })
-    //   .catch(err => {
-    //     // hiện chưa có data
-    //   })
   }
 
   private getFavouriteList() {

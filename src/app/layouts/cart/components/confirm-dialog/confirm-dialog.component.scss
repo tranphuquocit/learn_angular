@@ -1,0 +1,43 @@
+.title {
+  font-size: 25px;
+  margin-left: 37%;
+}
+
+.main {
+  .list-items {
+    color: black;
+
+    .list-title {
+      font-size: 20px;
+    }
+
+    .item {
+      margin-left: 20px;
+      display: flex;
+      gap: 10px;
+    }
+  }
+
+  .address, .phone-number {
+    color: black;
+    font-size: 20px;
+  }
+}
+
+.action {
+  display: flex;
+  justify-content: flex-end;
+
+  .btn-no {
+    color: white;
+    border: 1px solid black;
+    background-color: red;
+  }
+
+  .btn-ok {
+    border: 1px solid black;
+    background-color: green;
+    color: white;
+    width: 69px;
+  }
+}

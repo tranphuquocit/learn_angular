@@ -12,8 +12,14 @@
       <option value="best-seller">Bán chạy</option>
     </select>
   </div>
-  <div class="list-products">
-    <div class="product" *ngFor="let product of listProduct">
-      <app-product [product]="product"></app-product>
+  <ng-container *ngIf="listProduct.length > 0">
+    <div class="list-products">
+      <div class="product" *ngFor="let product of listProduct">
+        <app-product [product]="product"></app-product>
+      </div>
     </div>
+  </ng-container>
+  <ng-container *ngIf="listProduct.length <= 0">
+    <span class="no-list">Chưa có sản phẩm</span>
+  </ng-container>
 </div>

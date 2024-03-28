@@ -1,16 +1,16 @@
-<h1 mat-dialog-title>Enter your information!</h1>
-<div mat-dialog-content>
-  <p>Where do you want it delivered?</p>
-  <mat-form-field>
-    <mat-label>Address</mat-label>
+<h1 class="title">Enter your information!</h1>
+<div class="main" mat-dialog-content>
+  <p class="main-title">Where do you want it delivered?</p>
+  <mat-form-field class="main-form">
+    <mat-label class="main-form-label">Address</mat-label>
     <input matInput [(ngModel)]="infoDeli.address">
   </mat-form-field>
-  <mat-form-field>
-    <mat-label>Phone Number</mat-label>
+  <mat-form-field class="main-form">
+    <mat-label class="main-form-label">Phone Number</mat-label>
     <input matInput [(ngModel)]="infoDeli.phoneNumber">
   </mat-form-field>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="infoDeli" cdkFocusInitial (click)="confirm()">Ok</button>
+<div mat-dialog-actions class="action">
+  <button mat-button (click)="onNoClick()" class="btn-no">No Thanks</button>
+  <button mat-button [mat-dialog-close]="infoDeli" class="btn-ok" cdkFocusInitial (click)="confirm()">Ok</button>
 </div>

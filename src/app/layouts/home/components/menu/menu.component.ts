@@ -14,8 +14,17 @@ export class MenuComponent {
   listProduct!: any[];
 
   constructor(private proSrv: ProductService) {
-    //set default list products
-    this.proSrv.setListProduct(this.proSrv.listPhone)
+    let listProduct: any[];
+    this.proSrv.getListProduct().subscribe(list => {
+      listProduct = list;
+      if(listProduct.length > 0) {
+        //do nothing
+      }
+      else {
+        //set default list products
+        this.proSrv.setListProduct(this.proSrv.listPhone);
+      }
+    });
   }
 
   public chooseTypeProduct(type: string) {

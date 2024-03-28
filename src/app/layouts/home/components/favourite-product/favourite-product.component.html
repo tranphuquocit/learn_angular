@@ -2,9 +2,14 @@
   <div class="title">
     <span>Sản phẩm ưa thích</span>
   </div>
-  <div class="list-products">
-    <div class="product" *ngFor="let product of favouriteList">
-      <app-product [product]="product"></app-product>
+  <ng-container *ngIf="favouriteList.length > 0">
+    <div class="list-products">
+      <div class="product" *ngFor="let product of favouriteList">
+        <app-product [product]="product"></app-product>
+      </div>
     </div>
-  </div>
+  </ng-container>
+  <ng-container *ngIf="favouriteList.length <= 0">
+    <span class="no-list">Chưa có sản phẩm ưa thích</span>
+  </ng-container>
 </div>

@@ -9,8 +9,12 @@ import { Component } from '@angular/core';
 export class BannerComponent {
 
   images: string[] = [
-    'https://i.pinimg.com/564x/e4/50/86/e450866ac33a6eb6bffe71bb77c39075.jpg',
-    'https://i.pinimg.com/564x/38/0f/71/380f71c4e505523f641e4c6b635ee398.jpg'
+    '../../../../../assets/shop-template/images/slide-1.png',
+    '../../../../../assets/shop-template/images/slide-2.png',
+    '../../../../../assets/shop-template/images/slide-3.png',
+    '../../../../../assets/shop-template/images/slide-4.png',
+    '../../../../../assets/shop-template/images/slide-5.png',
+    '../../../../../assets/shop-template/images/slide-6.png'
   ]
   currentIndex: number = 0;
 

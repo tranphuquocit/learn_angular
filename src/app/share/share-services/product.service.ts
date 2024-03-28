@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ProductModel } from "../share-models/product.model";
 import { BehaviorSubject, Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class ProductService {
     {
       id: '1',
       type: 'phone',
-      description: 'Điện thoại iPhone 15 Pro Max 256GB',
-      image: 'https://cdn.tgdd.vn/Products/Images/42/305658/iphone-15-pro-max-black-2-1.jpg',
+      description: 'iPhone Xs Max 2 Sim - 256GB',
+      image: '../../../assets/shop-template/images/product-1.png',
       price: 31990000,
       quantity: 99,
       like: 0,
@@ -22,10 +23,10 @@ export class ProductService {
     {
       id: '2',
       type: 'phone',
-      description: 'Điện thoại Samsung Galaxy S24 5G 256GB',
-      image: 'https://cdn.tgdd.vn/Products/Images/42/319665/Slider/samsung-galaxy-s24-256gb-5g638419881104020719.jpg',
-      price: 22990000,
-      quantity: 35,
+      description: 'iPhone Xs Max 2 Sim - 256GB',
+      image: '../../../assets/shop-template/images/product-2.png',
+      price: 31990000,
+      quantity: 99,
       like: 0,
       sold: 0,
       isLiked: false
@@ -33,10 +34,10 @@ export class ProductService {
     {
       id: '3',
       type: 'phone',
-      description: 'Điện thoại Samsung Galaxy S24+ 5G 256GB',
-      image: 'https://cdn.tgdd.vn/Products/Images/42/307172/Slider/samsung-galaxy-s24-plus-5g638419875855586731.jpg',
-      price: 26990000,
-      quantity: 100,
+      description: 'iPhone Xs Max 2 Sim - 256GB',
+      image: '../../../assets/shop-template/images/product-3.png',
+      price: 31990000,
+      quantity: 99,
       like: 0,
       sold: 0,
       isLiked: false
@@ -44,10 +45,54 @@ export class ProductService {
     {
       id: '4',
       type: 'phone',
-      description: 'Điện thoại realme C55 6GB',
-      image: 'https://cdn.tgdd.vn/Products/Images/42/301603/Slider/vi-vn-realme-c55-slider--(2).jpg',
-      price: 4190000,
-      quantity: 20,
+      description: 'iPhone Xs Max 2 Sim - 256GB',
+      image: '../../../assets/shop-template/images/product-4.png',
+      price: 31990000,
+      quantity: 99,
+      like: 0,
+      sold: 0,
+      isLiked: false
+    },
+    {
+      id: '5',
+      type: 'phone',
+      description: 'iPhone Xs Max 2 Sim - 256GB',
+      image: '../../../assets/shop-template/images/product-5.png',
+      price: 31990000,
+      quantity: 99,
+      like: 0,
+      sold: 0,
+      isLiked: false
+    },
+    {
+      id: '6',
+      type: 'phone',
+      description: 'iPhone Xs Max 2 Sim - 256GB',
+      image: '../../../assets/shop-template/images/product-6.png',
+      price: 31990000,
+      quantity: 99,
+      like: 0,
+      sold: 0,
+      isLiked: false
+    },
+    {
+      id: '7',
+      type: 'phone',
+      description: 'iPhone Xs Max 2 Sim - 256GB',
+      image: '../../../assets/shop-template/images/product-7.png',
+      price: 31990000,
+      quantity: 99,
+      like: 0,
+      sold: 0,
+      isLiked: false
+    },
+    {
+      id: '8',
+      type: 'phone',
+      description: 'iPhone Xs Max 2 Sim - 256GB',
+      image: '../../../assets/shop-template/images/product-8.png',
+      price: 31990000,
+      quantity: 99,
       like: 0,
       sold: 0,
       isLiked: false
@@ -192,6 +237,8 @@ export class ProductService {
     }
   ];
 
+  constructor(private http: HttpClient) {}
+
   public listProduct = new BehaviorSubject<ProductModel[]>([]);
 
   public getListProduct(): Observable<ProductModel[]> {
@@ -216,5 +263,22 @@ export class ProductService {
 
   public setListTablet(listTablet: any) {
     this.listTablet = listTablet;
+  }
+
+  public getListProductFromJson() {
+    return this.http.get('../../../assets/data/product.json');
+  }
+
+  public createProduct() {
+    const body = {
+      id: 2,
+      name: 'laptop'
+    };
+    this.http.post('../../../assets/data/product.json', body)
+    .subscribe((data) => {
+      console.log(data);
+    }, (error) => {
+      console.log(error);
+    })
   }
 }

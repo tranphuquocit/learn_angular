@@ -24,12 +24,13 @@ export class ConfirmDialogComponent {
 
   // inforDeli!: InforDeli;
   listCheckout!: CartItem[];
+  total!: number;
   listWhenCancel!: CartItem[];
 
   accLogin!: AccountModel;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public infoDeli: {address: string, phoneNumber: string},
+    @Inject(MAT_DIALOG_DATA) public infoDeli: {address: string, phoneNumber: string, total: number},
     public dialogRef: MatDialogRef<ConfirmDialogComponent>,
     private dialog: MatDialog, private router: Router,
     private accSrv: AccountService,
@@ -39,6 +40,9 @@ export class ConfirmDialogComponent {
     if(localStorage.getItem('listCheckout')) {
       this.listCheckout = JSON.parse(`${localStorage.getItem('listCheckout')}`);
     }
+
+    this.listCheckout.forEach((ele: any) => this.total += ele['subtotal']);
+    console.table(typeof this.total)
 
     this.accLogin = this.accSrv.accLogin;
 

@@ -4,8 +4,8 @@
     <span class="logo-text">DAVIDTUAN MOBILE SHOP</span>
   </div>
   <div class="header-search">
-    <input type="text" placeholder="Tìm kiếm">
-    <div class="search-text">Tìm kiếm</div>
+    <input type="text" placeholder="Tìm kiếm" [(ngModel)]="searchKey">
+    <div class="search-text" (click)="search()">Tìm kiếm</div>
   </div>
   <div class="header-cart" (click)="navigate('cart')">
     <span class="cart-text">Giỏ hàng</span>

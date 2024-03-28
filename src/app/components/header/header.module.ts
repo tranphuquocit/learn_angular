@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './header.component';
 import { MatMenuModule} from '@angular/material/menu';
+import { FormsModule } from '@angular/forms';
 
 const COMPONENT = [
 ]
@@ -21,7 +22,8 @@ const COMPONENT = [
     MatBadgeModule,
     MatButtonModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [HeaderComponent]

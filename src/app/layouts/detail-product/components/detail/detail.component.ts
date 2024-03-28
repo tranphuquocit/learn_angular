@@ -361,6 +361,25 @@ export class DetailComponent {
 }
 
 public navigate() {
+  //set list product user just selected
+  switch(this.currentProduct.type) {
+    case 'phone': {
+      this.proSrv.setListProduct(this.proSrv.listPhone);
+      break;
+    }
+    case 'laptop': {
+      this.proSrv.setListProduct(this.proSrv.listLaptop);
+      break;
+    }
+    case 'tablet': {
+      this.proSrv.setListProduct(this.proSrv.listTablet);
+      break;
+    }
+    case 'watch': {
+      this.proSrv.setListProduct(this.proSrv.listWatch);
+      break;
+    }
+  }
   this.router.navigate(['']);
 }
 }

@@ -9,7 +9,7 @@ import { ProductService } from "src/app/share/share-services/product.service";
 
 export class ListProductComponent {
 
-  listProduct!: any[];
+  listProduct: any[] = [];
 
   arrLikeProduct: any[] = [];
 
@@ -25,15 +25,26 @@ export class ListProductComponent {
       this.listProduct = this.scanLike(list);
     });
 
-    // this.scanLike();
-    // this.getListProduct()
-    //   .then((res: any) => {
-    //     this.listProduct = res;
-    //   })
-    //   .catch(err => {
-    //     // hiện chưa có data
-    //   })
+    this.getListProductFromApi()
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
 
+    // this.proSrv.createProduct();
+  }
+
+  private getListProductFromApi() {
+    return new Promise((resolve, reject) => {
+      this.proSrv.getListProductFromJson()
+      .subscribe((data) => {
+        resolve(data);
+      }, (error) => {
+        reject(error);
+      });
+    })
   }
 
   public arrangeProduct() {

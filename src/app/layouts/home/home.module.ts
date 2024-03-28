@@ -14,6 +14,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { AdsComponent } from './components/advertise/advertise.component';
 import { FooterModule } from 'src/app/components/footer/footer.module';
 import {MatIconModule} from '@angular/material/icon';
+import { HttpClientModule } from '@angular/common/http';
 
 const COMPONENT = [
   AboutComponent,
@@ -36,6 +37,7 @@ const COMPONENT = [
     HeaderModule,
     FooterModule,
     MatIconModule,
+    HttpClientModule,
     HomeRoutingModule,
   ],
   exports: [
